@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<link rel="stylesheet" href="css/bootstrap.css">
+
+			<link rel="stylesheet" href="css/bootstrap-lumen-custom.css">
+
+			<link rel="stylesheet" href="css/simple-sidebar.css">
+
+			<script src="bootstrap.js"></script>
+
+			<style type="text/css">
+  .nav > li.active, .nav > li > a:hover {
+    text-decoration: underline;
+}
+
+.code {
+	/*width: 100%;*/
+}
+
+pre {
+	font-size: 0.85em;
+}
+  </style>
+	</head>
+	<body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Apache Flink</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Overview</a></li>
+        <li><a href="#">Quickstart</a></li>
+        <li><a href="#">Setup &amp; Configuration</a></li>
+        <li><a href="#">Programming Guides</a></li>
+        <li><a href="#">Execution &amp; Debugging</a></li>
+        <li><a href="#">Internals</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+
+<div class="row">
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">Table of Contents</div>
+			<div class="panel-body">
+				<ul>
+					<li> Setup &amp; Configuration
+						<ul>
+							<li><a href="">Local Mode</a></li>
+							<li><a href="">Cluster Mode</a></li>
+							<li><a href="">YARN</a></li>
+							<li><a href="">Configuration</a></li>
+						</ul>
+					</li>
+
+					<li>Programming Guides
+						<ul>
+							<li><a href="">Java API</a></li>
+							<li><a href="">Scala API</a></li>
+						</ul>
+					</li>
+
+					<li> Program Execution
+						<ul>
+							<li><a href="">Java API</a></li>
+							<li><a href="">Scala API</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="text-center">
+		<img src="img/apache-incubator-logo.png">
+		</div>
+	</div>
+	<div class="col-md-9">
+		<ol class="breadcrumb">
+  			<li><a href="#">Home</a></li>
+  			<li><a href="#">Library</a></li>
+  			<li class="active">Data</li>
+		</ol>
+
+		<h1>Iterations</h1>
+
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">Outline</div>
+  <div class="panel-body">
+<ul id="markdown-toc">
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#why-iterations">Why iterations?</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Iterative algorithms occur in many domains of data analysis, such as machine learning or graph analysis.
+Such algorithms are crucial in order to realize the promise of Big Data to extract meaningful information out of your data. With increasing interest to run these kinds of algorithms on very large data sets, there is a need to execute iterations in a massively parallel fashion.</p>
+
+<p><code>This is Spart</code>. Stratosphere programs implement iterative algorithms by defining a step function and embedding it into a special iteration operator. There are two variants of this operator: Iterate and Delta Iterate. Both operators repeatedly invoke the step function on the current iteration state until a certain termination condition is reached.</p>
+
+<p>Here, we provide background on both operator variants and outline their usage. The programming guides explain how to implement the operators in both Scala and Java. We also provide a vertex-centric graph processing API called Spargel.</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">WordCountExample</span> {
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">void</span> main(<span style="color:#0a8;font-weight:bold">String</span><span style="color:#339;font-weight:bold">[]</span> args) <span style="color:#088;font-weight:bold">throws</span> <span style="color:#C00;font-weight:bold">Exception</span> {
+        <span style="color:#088;font-weight:bold">final</span> ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+
+        DataSet&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; text = env.fromElements(
+            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Who's there?</span><span style="color:#710">&quot;</span></span>,
+            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I think I hear them. Stand, ho! Who's there?</span><span style="color:#710">&quot;</span></span>);
+
+        DataSet&lt;Tuple2&lt;<span style="color:#0a8;font-weight:bold">String</span>, <span style="color:#0a8;font-weight:bold">Integer</span>&gt;&gt; wordCounts = text
+            .flatMap(<span style="color:#080;font-weight:bold">new</span> LineSplitter())
+            .groupBy(<span style="color:#00D">0</span>)
+            .aggregate(Aggregations.SUM, <span style="color:#00D">1</span>);
+
+        wordCounts.print();
+
+        env.execute(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Word Count Example</span><span style="color:#710">&quot;</span></span>);
+    }
+
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">LineSplitter</span>
+            <span style="color:#088;font-weight:bold">extends</span> FlatMapFunction&lt;<span style="color:#0a8;font-weight:bold">String</span>, Tuple2&lt;<span style="color:#0a8;font-weight:bold">String</span>, <span style="color:#0a8;font-weight:bold">Integer</span>&gt;&gt; {
+
+        <span style="color:#007">@Override</span>
+        <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> flatMap(<span style="color:#0a8;font-weight:bold">String</span> line, Collector&lt;Tuple2&lt;<span style="color:#0a8;font-weight:bold">String</span>, <span style="color:#0a8;font-weight:bold">Integer</span>&gt;&gt; out) {
+            <span style="color:#080;font-weight:bold">for</span> (<span style="color:#0a8;font-weight:bold">String</span> word : line.split(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>)) {
+                out.collect(<span style="color:#080;font-weight:bold">new</span> Tuple2&lt;<span style="color:#0a8;font-weight:bold">String</span>, <span style="color:#0a8;font-weight:bold">Integer</span>&gt;(word, <span style="color:#00D">1</span>));
+            }
+        }
+    }
+}
+</pre></div>
+</div>
+</div>
+
+<h1 id="why-iterations">Why iterations?</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+	<div>
+</div>
+
+</div>
+
+
+
+<div class="container">
+	<hr>
+
+	<p>
+		Apache Flink is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
+	</p>
+</div>
+
+	</body>
+</html>

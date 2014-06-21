@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+<div class="row">
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">Table of Contents</div>
+			<div class="panel-body">
+				<ul>
+					<li> Setup &amp; Configuration
+						<ul>
+							<li><a href="">Local Mode</a></li>
+							<li><a href="">Cluster Mode</a></li>
+							<li><a href="">YARN</a></li>
+							<li><a href="">Configuration</a></li>
+						</ul>
+					</li>
+
+					<li>Programming Guides
+						<ul>
+							<li><a href="">Java API</a></li>
+							<li><a href="">Scala API</a></li>
+						</ul>
+					</li>
+
+					<li> Program Execution
+						<ul>
+							<li><a href="">Java API</a></li>
+							<li><a href="">Scala API</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="text-center">
+		<img src="img/apache-incubator-logo.png">
+		</div>
+	</div>
+	<div class="col-md-9">
+		<ol class="breadcrumb">
+  			<li><a href="#">Home</a></li>
+  			<li><a href="#">Library</a></li>
+  			<li class="active">Data</li>
+		</ol>
+
+		<h1>{{ page.title }}</h1>
+
+{% capture doc_page %}
+<div class="panel panel-default">
+  <div class="panel-heading">Outline</div>
+  <div class="panel-body" markdown="1">
+* This will be replaced by a TOC based on the Markdown headings
+{:toc}
+  </div>
+</div>
+
+{{ page.content }}
+{% endcapture %}
+
+{{ doc_page | markdownify }}
+	<div>
+</div>
