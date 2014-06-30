@@ -12,10 +12,35 @@
 # specific language governing permissions and limitations under the License.
 ########################################################################################################################
 
-function updateDocsDir() {
-	git clone https://github.com/apache/incubator-flink.git flink-src-repo
-	cp -r flink-src-repo docs/
+# arguments <branch name> <dirName>
+function checkoutDocsForVersionInBranch() {
+	BRANCH=$1
+	DIR=$2
+	echo "Checking out docs from branch '$BRANCH' into dir '$DIR' "
+
+	cd flink-src-repo
+	git checkout origin/$BRANCH #this will be different soon
+	cd ..
+	mkdir -p docs/$DIR/
+	cp -r flink-src-repo/docs/* docs/$DIR/
 }
+
+# no args
+function updateDocsDir() {
+	echo "Clone if necessary"
+	if [ ! -d "flink-src-repo" ]; then
+		git clone https://github.com/apache/incubator-flink.git flink-src-repo
+	fi
+	echo "Fetch rep"
+	cd flink-src-repo
+	git fetch
+	cd ..
+
+	echo "Create docs for versions"
+	checkoutDocsForVersionInBranch "master" "0.5"
+	checkoutDocsForVersionInBranch "master" "0.6-SNAPSHOT"
+}
+
 HAS_JEKYLL=true
 
 command -v jekyll > /dev/null
@@ -48,8 +73,7 @@ DST=${SRC}/content
 # default jekyll command is to just build site
 JEKYLL_CMD="build"
 
-# integrate documentation
-cat _config.yml docs/_config.yml > _config.generated.yml
+
 
 OPTIND=1
 # if -p flag is provided, serve site on localhost
@@ -64,6 +88,9 @@ while getopts ":up" opt; do
 			;;
 	esac
 done
+
+# integrate documentation
+cat _config.yml docs/*/_config.yml > _config.generated.yml
 
 if $HAS_JEKYLL; then
 	jekyll ${JEKYLL_CMD} --config _config.generated.yml --source ${SRC} --destination ${DST}
