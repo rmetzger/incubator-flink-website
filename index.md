@@ -1,54 +1,114 @@
 ---
-layout: docs
-title: Iterations
+title: "Home"
 ---
 
-# Introduction
+<div class="row">
+  <div class="col-md-12">
+    <p class="lead text-center">Apache Flink is a platform for efficient, distributed, general-purpose data processing.</p>
 
-Iterative algorithms occur in many domains of data analysis, such as machine learning or graph analysis.
-Such algorithms are crucial in order to realize the promise of Big Data to extract meaningful information out of your data. With increasing interest to run these kinds of algorithms on very large data sets, there is a need to execute iterations in a massively parallel fashion.
+    <div class="startpage-buttons">
+      <a href="{{ site.FLINK_DOWNLOAD_URL_HADOOP_1_STABLE }}">
+        <button type="button" class="btn btn-primary btn-lg">
+          <i class="fa fa-download"></i> Download {{ site.FLINK_VERSION_STABLE }}<br/>
+          (Pre Apache)
+        </button>
+      </a>
 
-`This is Spart`. Stratosphere programs implement iterative algorithms by defining a step function and embedding it into a special iteration operator. There are two variants of this operator: Iterate and Delta Iterate. Both operators repeatedly invoke the step function on the current iteration state until a certain termination condition is reached.
+       <a href="{{ site.FLINK_GITHUB_URL }}">
+          <button type="button" class="btn btn-info btn-lg">
+            <i class="fa fa-github"></i> View on GitHub
+          </button>
+        </a>
+    </div>
 
-Here, we provide background on both operator variants and outline their usage. The programming guides explain how to implement the operators in both Scala and Java. We also provide a vertex-centric graph processing API called Spargel.
+    <div class="startpage-buttons">
+      <a href="community.html#mailing-lists">
+        <button type="button" class="btn btn-default btn-lg">
+          <i class="fa fa-send"></i> Mailing Lists
+        </button>
+      </a>
 
-```java
-public class WordCountExample {
-    public static void main(String[] args) throws Exception {
-        final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+      <a href="{{ site.FLINK_ISSUES_URL }} ">
+        <button type="button" class="btn btn-default btn-lg">
+          <i class="fa fa-coffee"></i> Issues
+        </button>
+      </a>
+    </div>
 
-        DataSet<String> text = env.fromElements(
-            "Who's there?",
-            "I think I hear them. Stand, ho! Who's there?");
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        Note
+      </div>
+      <div class="panel-body">
+        Apache Flink originated from the <a href="http://stratosphere.eu">Stratosphere project</a> and is currently moving to the Apache Incubator. The first Apache release is under preparation - the latest stable release of the system is from the Stratosphere project.
+      </div>
+    </div>
 
-        DataSet<Tuple2<String, Integer>> wordCounts = text
-            .flatMap(new LineSplitter())
-            .groupBy(0)
-            .aggregate(Aggregations.SUM, 1);
+    <hr class="divider">
 
-        wordCounts.print();
+    <h1>What is Apache Flink?</h1>
 
-        env.execute("Word Count Example");
-    }
+    <p>Flink features powerful programming abstractions in Java and Scala, a high-performance runtime, and automatic program optimization. It has native support for iterations, incremental iterations, and programs consisting of large DAGs of operations.</p>
 
-    public static final class LineSplitter
-    	extends FlatMapFunction<String, Tuple2<String, Integer>> {
+    <div class="row">
+      <div class="col-md-12"><h2>Concise and Expressive APIs</h2></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+{% markdown %}
+Flink allows you to express algorithms in a concise fashion in the programming languages Java and Scala.
+Programs may freely compose many operations to long pipelines and mix and match built-in operations and
+user-defined functions.
 
-        @Override
-        public void flatMap(String line, Collector<Tuple2<String, Integer>> out) {
-            for (String word : line.split(" ")) {
-                out.collect(new Tuple2<String, Integer>(word, 1));
-            }
-        }
-    }
-}
-```
+Flink programs have support for highly efficient **iterative algorithms**, allowing the system to model
+complex tasks efficiently.
+{% endmarkdown %}
+      </div>
+      <div class="col-md-6">
+{% highlight java %}
+DataSet<String> input = env.readTextFile(inputPath)
 
-# Why iterations?
+input.flatmap(new FlatMapFunction() {
+   public void flatMap(String value, Collector out) {
+       for (String s : value.split(" ")) {
+           out.collect(new Tuple2<String, Long>(s, 1L);
+       }
+   }
+})
+.groupBy(0)
+.sum(1)
+.writeAsText(outputPath);
+{% endhighlight %}
+      </div>
+    </div>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div class="row">
+      <div class="col-md-12"><h2>System Stack</h2></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+{% markdown %}
+The Apache Flink stack consists of
+
+- **Programming APIs** for different languages (Java, Scala) and
+paradigms (record-oriented, graph-oriented).
+- A **program optimizer** that decides how to execute the program
+for good performance. It decides among other things about data
+movement and caching strategies.
+- A **distributed runtime** that executes programs in parallel
+distributed over many machines.
+
+Flink runs independently from Hadoop, but integrates
+seamlessly with YARN (Hadoop's next-generation scheduler).
+Various differnt file systems (including the Hadoop Distributed
+File System, HDFS) can act as data sources.
+{% endmarkdown %}
+      </div>
+      <div class="col-md-6">
+        <div style="text-align: center;">
+          <img src="img/flink_stack.svg" alt="Flink Stack"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,62 +3,65 @@ layout: default
 ---
 
 <div class="row">
-	<div class="col-md-3">
-		<div class="panel panel-default">
-			<div class="panel-heading">Table of Contents</div>
-			<div class="panel-body">
-				<ul>
-					<li> Setup &amp; Configuration
-						<ul>
-							<li><a href="">Local Mode</a></li>
-							<li><a href="">Cluster Mode</a></li>
-							<li><a href="">YARN</a></li>
-							<li><a href="">Configuration</a></li>
-						</ul>
-					</li>
+  <div class="col-md-3">
+    <ul>
+      <li><a href="faq.html">FAQ</a></li>
+      <li>Quickstart
+        <ul>
+          <li><a href="setup_quickstart.html">Setup</a></li>
+          <li><a href="run_example_quickstart.html">Run Example</a></li>
+          <li><a href="java_api_quickstart.html">Java API</a></li>
+          <li><a href="scala_api_quickstart.html">Scala API</a></li>
+        </ul>
+      </li>
 
-					<li>Programming Guides
-						<ul>
-							<li><a href="">Java API</a></li>
-							<li><a href="">Scala API</a></li>
-						</ul>
-					</li>
+      <li>Setup &amp; Configuration
+        <ul>
+          <li><a href="local_setup.html">Local Setup</a></li>
+          <li><a href="cluster_setup.html">Cluster Setup</a></li>
+          <li><a href="yarn_setup.html">YARN Setup</a></li>
+          <li><a href="config.html">Configuration</a></li>
+        </ul>
+      </li>
 
-					<li> Program Execution
-						<ul>
-							<li><a href="">Java API</a></li>
-							<li><a href="">Scala API</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
+      <li>Programming Guides
+        <ul>
+          <li><a href="java_api_guide.html">Java API</a></li>
+          <li><a href="scala_api_guide.html">Scala API</a></li>
+          <li><a href="hadoop_compatability.html">Hadoop Compatability</a></li>
+          <li><a href="iterations.html">Iterations</a></li>
+          <li><a href="spargel_guide.html">Spargel Graph API</a></li>
+        </ul>
+      </li>
 
-		<div class="text-center">
-		<img src="img/apache-incubator-logo.png">
-		</div>
-	</div>
-	<div class="col-md-9">
-		<ol class="breadcrumb">
-  			<li><a href="#">Home</a></li>
-  			<li><a href="#">Library</a></li>
-  			<li class="active">Data</li>
-		</ol>
+      <li>Examples
+        <ul>
+          <li><a href="java_api_examples.html">Java API</a></li>
+          <li><a href="scala_api_examples.html">Scala API</a></li>
+        </ul>
+      </li>
 
-		<h1>{{ page.title }}</h1>
+      <li>Execution
+        <ul>
+          <li><a href="local_execution.html">Local/Debugging</a></li>
+          <li><a href="cluster_execution.html">Cluster</a></li>
+          <li><a href="cli.html">Command-Line Interface</a></li>
+          <li><a href="web_client.html">Web Interface</a></li>
+        </ul>
+      </li>
 
-{% capture doc_page %}
-<div class="panel panel-default">
-  <div class="panel-heading">Outline</div>
-  <div class="panel-body" markdown="1">
-* This will be replaced by a TOC based on the Markdown headings
-{:toc}
+      <li>Internals
+        <ul>
+          <li><a href="internals/overview.html">Overview</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
-</div>
+  <div class="col-md-9">
+      <h1>{{ page.title }}</h1>
 
-{{ page.content }}
-{% endcapture %}
+      {{ page.content | tocify }}
 
-{{ doc_page | markdownify }}
-	<div>
+      {{ content }}
+  </div>
 </div>

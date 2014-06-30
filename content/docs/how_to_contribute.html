@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apache Flink (incubating): Contribute</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="bootstrap.js"></script>
+  </head>
+  <body>
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="/index.html">Home</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/docs/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/docs/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/docs/scala_api_quickstart.html">Scala API</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/downloads.html" class="">Downloads</a>
+        </li>
+
+        <li>
+          <a href="/docs/index.html" class="active">Documentation</a>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="community.html#mailing-lists">Mailing Lists</a></li>
+            <li><a href="community.html#issues">Issues</a></li>
+            <li><a href="community.html#committers">Committers</a></li>
+            <li class="divider"></li>
+            <li><a href="how-to-contribute.html">How To Contribute</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="project.html#history">History</a></li>
+            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal</a></li>
+            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
+            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="container">
+
+<div class="row">
+  <div class="col-md-3">
+    <ul>
+      <li><a href="faq.html">FAQ</a></li>
+      <li>Quickstart
+        <ul>
+          <li><a href="setup_quickstart.html">Setup</a></li>
+          <li><a href="run_example_quickstart.html">Run Example</a></li>
+          <li><a href="java_api_quickstart.html">Java API</a></li>
+          <li><a href="scala_api_quickstart.html">Scala API</a></li>
+        </ul>
+      </li>
+
+      <li>Setup &amp; Configuration
+        <ul>
+          <li><a href="local_setup.html">Local Setup</a></li>
+          <li><a href="cluster_setup.html">Cluster Setup</a></li>
+          <li><a href="yarn_setup.html">YARN Setup</a></li>
+          <li><a href="config.html">Configuration</a></li>
+        </ul>
+      </li>
+
+      <li>Programming Guides
+        <ul>
+          <li><a href="java_api_guide.html">Java API</a></li>
+          <li><a href="scala_api_guide.html">Scala API</a></li>
+          <li><a href="hadoop_compatability.html">Hadoop Compatability</a></li>
+          <li><a href="iterations.html">Iterations</a></li>
+          <li><a href="spargel_guide.html">Spargel Graph API</a></li>
+        </ul>
+      </li>
+
+      <li>Examples
+        <ul>
+          <li><a href="java_api_examples.html">Java API</a></li>
+          <li><a href="scala_api_examples.html">Scala API</a></li>
+        </ul>
+      </li>
+
+      <li>Execution
+        <ul>
+          <li><a href="local_execution.html">Local/Debugging</a></li>
+          <li><a href="cluster_execution.html">Cluster</a></li>
+          <li><a href="cli.html">Command-Line Interface</a></li>
+          <li><a href="web_client.html">Web Interface</a></li>
+        </ul>
+      </li>
+
+      <li>Internals
+        <ul>
+          <li><a href="internals/overview.html">Overview</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+      <h1>Contribute</h1>
+
+      <ul>
+<li>
+<a href="#easy-issues-for-starters">Easy Issues for Starters</a>
+</li>
+<li>
+<a href="#contributing-code-&-documentation">Contributing Code &amp; Documentation</a>
+<ul>
+<li>
+<a href="#setting-up-the-infrastructure-and-creating-a-pull-request">Setting up the Infrastructure and Creating a Pull Request</a>
+</li>
+<li>
+<a href="#verifying-the-compliance-of-your-code">Verifying the Compliance of your Code</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#how-to-become-a-committer">How to become a committer</a>
+</li>
+</ul>
+
+
+      <p>The Flink project welcomes all sorts contributions in the form of code (improvements, features, bugfixes), documentation, tests, and community participation (discussions &amp; questions).</p>
+
+<h2 id="easy-issues-for-starters">Easy Issues for Starters</h2>
+
+<p>We maintain all known issues and feature drafts in the <a href="https://issues.apache.org/jira/browse/FLINK-989?jql=project%20%3D%20FLINK">Flink project JIRA</a>.</p>
+
+<p>We also try to maintain a <a href="https://issues.apache.org/jira/browse/FLINK-933?jql=project%20%3D%20FLINK%20AND%20labels%20%3D%20starter">list of simple &quot;starter issues&quot;</a> that we believe are good tasks for new contributors. Those tasks are meant to allow people to get into the project and become familiar with the process of contributing. Feel free to ask questions about issues that you would be interested in working on.</p>
+
+<p>In addition, you can find a list of ideas for projects and improvements in the <a href="http://the/wiki/url">projects wiki page</a>.</p>
+
+<h2 id="contributing-code-&amp;-documentation">Contributing Code &amp; Documentation</h2>
+
+<p>This section gives you a brief introduction in how to contribute code and documentation to Flink. We maintain both the code and the documentation in the same repository, so the process is essentially the same for both. We use <a href="http://git-scm.com/">git</a> for the code and documentation version control.</p>
+
+<p>The Flink project accepts code contributions though the <a href="https://github.com/apache/incubator-flink">GitHub Mirror</a>, in the form of <a href="https://help.github.com/articles/using-pull-requests">Pull Requests</a>. Pull requests are basically a simpler way of offering a patch, by providing a pointer to a code branch that contains the change.</p>
+
+<h3 id="setting-up-the-infrastructure-and-creating-a-pull-request">Setting up the Infrastructure and Creating a Pull Request</h3>
+
+<ol>
+<li><p>The first step is to create yourself a copy of the Flink code base. We suggest to fork the <a href="https://github.com/apache/incubator-flink">Flink GitHub Mirror Repository</a> into your own <a href="https://github.com">GitHub</a> account. You need to register on GitHub for that, if you have no account so far.</p></li>
+<li><p>Next, clone your repository fork to your local machine.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git clone https://github.com/&lt;your-user-name&gt;/incubator-flink.git
+</code></pre></div></li>
+<li><p>It is typically helpful to switch to a <em>topic branch</em> for the changes. To create a dedicated branch based on the current master, use the following command:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout -b myBranch master
+</code></pre></div></li>
+<li><p>Now you can create your changes, compile the code, and validate the changes. Here are some pointers on how to <a href="https://github.com/apache/incubator-flink/#eclipse-setup-and-debugging">set up the Eclipse IDE for development</a>, and how to <a href="https://github.com/apache/incubator-flink/#build-stratosphere">build the code</a>.</p></li>
+<li><p>After you have finalized your contribution, verify the compliance with the contribution guidelines (see below), and commit them. To make the changes easily mergeable, please rebase them to the latest version of the main repositories master branch. Assuming you created a topic branch (step 3), you can follow this sequence of commands to do that:
+Switch to the master branch, update it to the latest revision, switch back to your topic branch, and rebase it on top of the master branch.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout master
+git pull https://github.com/apache/incubator-flink.git master
+git checkout myBranch
+git rebase master
+</code></pre></div>
+<p>Have a look <a href="https://help.github.com/articles/using-git-rebase">here</a> for more information about rebasing commits.</p></li>
+<li><p>Push the contribution it back into your fork of the Flink repository.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git push origin myBranch
+</code></pre></div>
+<p>Go the website of your repository fork (<code>https://github.com/&lt;your-user-name&gt;/incubator-flink</code>) and use the &quot;Create Pull Request&quot; button to start creating a pull request. Make sure that the base fork is <code>apache/incubator-flink master</code> and the head fork selects the branch with your changes. Give the pull request a meaningful description and send it.</p></li>
+</ol>
+
+<h3 id="verifying-the-compliance-of-your-code">Verifying the Compliance of your Code</h3>
+
+<p>Before sending a patch or pull request, please verify that it complies with the guidelines of the project. While we try to keep the set of guidelines small and easy, it is important to follow those rules in order to guarantee good code quality, to allow efficient reviews, and to allow committers to easily merge your changes.</p>
+
+<p>Please have a look at the <a href="coding_guidelines.html">coding guidelines</a> for a guide to the format of code and pull requests.</p>
+
+<p>Most important of all, verify that your changes are correct and do not break existing functionality. Run the existing tests by calling <code>mvn verify</code> in the root directory of the repository, and make sure that the tests succeed. We encourage every contributor to use a <em>continuous integration</em> service that will automatically test the code in your repository whenever you push a change. Flink is pre-configured for <a href="http://docs.travis-ci.com/">Travis CI</a>, which can be easily enabled for your private repository fork (it uses GitHub for authentication, so you so not need an additional account). Simply add the <em>Travis CI</em> hook to your repository (<em>settings --&gt; webhooks &amp; services --&gt; add service</em>) and enable tests for the &quot;incubator-flink&quot; repository on <a href="https://travis-ci.org/profile">Travis</a>.</p>
+
+<p>When contributing documentation, please review the rendered HTML versions of the documents you changed. You can look at the HTML pages by using the rendering script in preview mode. </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">cd docs
+./build_docs.sh -p
+</code></pre></div>
+<p>Now, open your browser at <code>http://localhost:4000</code> and check out the pages you changed.</p>
+
+<h2 id="how-to-become-a-committer">How to become a committer</h2>
+
+<p>There is no strict protocol for becoming a committer. Candidates for new committers are typically people that are active contributors and community members.</p>
+
+<p>Being an active community member means participating on mailing list discussions, helping to answer questions, being respectful towards others, and following the meritocratic principles of community management. Since the &quot;Apache Way&quot; has a strong focus on the project community, this part is very important.</p>
+
+<p>Of course, contributing code to the project is important as well. A good way to start is contributing improvements, new features, or bugfixes. You need to show that you take responsibility for the code that you contribute, add tests/documentation, and help maintaining it. </p>
+
+<p>Finally, candidates for new committers are suggested by current committers, mentors, or PMC members, and voted upon by the PMC.</p>
+
+  </div>
+</div>
+
+     <div class="footer">
+
+<hr class="divider">
+
+<p>Apache Flink is an effort undergoing incubation at The Apache Software
+Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
+required of all newly accepted projects until a further review indicates that
+the infrastructure, communications, and decision making process have
+stabilized in a manner consistent with other successful ASF projects. While
+incubation status is not necessarily a reflection of the completeness or
+stability of the code, it does indicate that the project has yet to be fully
+endorsed by the ASF.</p>
+
+<p><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
+
+<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>
