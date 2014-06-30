@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Apache Flink (incubating): Downloads</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bootstrap.js"></script>
   </head>
@@ -21,28 +21,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+      <a class="navbar-brand" href="/incubator-flink-website/index.html">Apache Flink</a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=""><a href="/index.html">Home</a></li>
+        <li class=""><a href="/incubator-flink-website/index.html">Home</a></li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/scala_api_quickstart.html">Scala API</a></li>
+            <li><a href="/incubator-flink-website/docs/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/incubator-flink-website/docs/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/incubator-flink-website/docs/scala_api_quickstart.html">Scala API</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="/downloads.html" class="active">Downloads</a>
+          <a href="/incubator-flink-website/downloads.html" class="active">Downloads</a>
         </li>
 
         <li>
-          <a href="/docs/index.html" class="">Documentation</a>
+          <a href="/incubator-flink-website/docs/index.html" class="">Documentation</a>
         </li>
 
         <li class="dropdown">
@@ -76,7 +76,7 @@
 
 <p class="lead">Pick the <strong>Apache Flink</strong> package matching your Hadoop version.</p>
 
-<h2 id="stable">Stable</h2>
+<h2 id="toc_0">Stable</h2>
 
 <p>Apache Flink 0.5.1 is our latest stable release.</p>
 
@@ -97,10 +97,10 @@
   </a>
 </div>
 
-<h3 id="maven-dependencies">Maven Dependencies</h3>
+<h3 id="toc_1">Maven Dependencies</h3>
 
 <p>You can add the following dependencies to your <code>pom.xml</code> to include Apache Flink in your project.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>stratosphere-java<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>0.5.1<span class="nt">&lt;/version&gt;</span>
@@ -118,7 +118,7 @@
 <li><strong>Scala API</strong>: To use the Scala API, replace the <code>stratosphere-java</code> artifact id with <code>stratosphere-scala</code>.</li>
 </ul>
 
-<h2 id="latest">Latest</h2>
+<h2 id="toc_2">Latest</h2>
 
 <p>Apache Flink 0.6-SNAPSHOT is our latest development version.</p>
 
@@ -140,7 +140,7 @@ before its release. Only builds that pass all tests are published here.</p>
 </div>
 
 <p>Add the <strong>Sonatype Snapshot repository</strong> to your Maven <code>pom.xml</code>:</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;repositories&gt;</span>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;repositories&gt;</span>
   <span class="nt">&lt;repository&gt;</span>
     <span class="nt">&lt;id&gt;</span>snapshots-repo<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;url&gt;</span>https://oss.sonatype.org/content/repositories/snapshots<span class="nt">&lt;/url&gt;</span>
@@ -151,10 +151,10 @@ before its release. Only builds that pass all tests are published here.</p>
 </code></pre></div>
 <p>You can now include Apache Flink as a Maven dependency (see above) with version <code>0.6-SNAPSHOT</code>.</p>
 
-<h2 id="checkout-from-source">Checkout from Source</h2>
+<h2 id="toc_3">Checkout from Source</h2>
 
 <p>You can checkout Apache Flink 0.6-SNAPSHOT and build it on your own machine.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/apache/incubator-flink
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">git clone https://github.com/apache/incubator-flink
 <span class="nb">cd </span>incubator-flink
 mvn clean package -DskipTests
 </code></pre></div>
@@ -174,14 +174,14 @@ incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
 endorsed by the ASF.</p>
 
-<p><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
+<p><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
 
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+<p class="text-center"><a href="/incubator-flink-website/privacy-policy.html">Privacy Policy<a></p>
 
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="/incubator-flink-website/js/bootstrap.min.js"></script>
   </body>
 </html>

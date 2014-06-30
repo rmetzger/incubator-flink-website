@@ -1,164 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Apache Flink (incubating): Quickstart: Setup</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
-  </head>
-  <body>
+<p>Get Stratosphere up and running in a few simple steps.</p>
 
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class=""><a href="/index.html">Home</a></li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/scala_api_quickstart.html">Scala API</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="/downloads.html" class="">Downloads</a>
-        </li>
-
-        <li>
-          <a href="/docs/index.html" class="active">Documentation</a>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="community.html#issues">Issues</a></li>
-            <li><a href="community.html#committers">Committers</a></li>
-            <li class="divider"></li>
-            <li><a href="how-to-contribute.html">How To Contribute</a></li>
-          </ul>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="project.html#history">History</a></li>
-            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal</a></li>
-            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
-            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="container">
-
-<div class="row">
-  <div class="col-md-3">
-    <ul>
-      <li><a href="faq.html">FAQ</a></li>
-      <li>Quickstart
-        <ul>
-          <li><a href="setup_quickstart.html">Setup</a></li>
-          <li><a href="run_example_quickstart.html">Run Example</a></li>
-          <li><a href="java_api_quickstart.html">Java API</a></li>
-          <li><a href="scala_api_quickstart.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Setup &amp; Configuration
-        <ul>
-          <li><a href="local_setup.html">Local Setup</a></li>
-          <li><a href="cluster_setup.html">Cluster Setup</a></li>
-          <li><a href="yarn_setup.html">YARN Setup</a></li>
-          <li><a href="config.html">Configuration</a></li>
-        </ul>
-      </li>
-
-      <li>Programming Guides
-        <ul>
-          <li><a href="java_api_guide.html">Java API</a></li>
-          <li><a href="scala_api_guide.html">Scala API</a></li>
-          <li><a href="hadoop_compatability.html">Hadoop Compatability</a></li>
-          <li><a href="iterations.html">Iterations</a></li>
-          <li><a href="spargel_guide.html">Spargel Graph API</a></li>
-        </ul>
-      </li>
-
-      <li>Examples
-        <ul>
-          <li><a href="java_api_examples.html">Java API</a></li>
-          <li><a href="scala_api_examples.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Execution
-        <ul>
-          <li><a href="local_execution.html">Local/Debugging</a></li>
-          <li><a href="cluster_execution.html">Cluster</a></li>
-          <li><a href="cli.html">Command-Line Interface</a></li>
-          <li><a href="web_client.html">Web Interface</a></li>
-        </ul>
-      </li>
-
-      <li>Internals
-        <ul>
-          <li><a href="internals/overview.html">Overview</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-9">
-      <h1>Quickstart: Setup</h1>
-
-      <ul>
-<li>
-<a href="#requirements">Requirements</a>
-</li>
-<li>
-<a href="#download">Download</a>
-</li>
-<li>
-<a href="#start">Start</a>
-</li>
-<li>
-<a href="#run-example">Run Example</a>
-</li>
-<li>
-<a href="#cluster-setup">Cluster Setup</a>
-</li>
-<li>
-<a href="#stratosphere-on-yarn">Stratosphere on YARN</a>
-</li>
-</ul>
-
-
-      <p>Get Stratosphere up and running in a few simple steps.</p>
-
-<h1 id="requirements">Requirements</h1>
+<h1 id="toc_0">Requirements</h1>
 
 <p>Stratosphere runs on all <strong>UNIX-like</strong> environments: <strong>Linux</strong>, <strong>Mac OS X</strong>, <strong>Cygwin</strong>. The only requirement is to have a working <strong>Java 6.x</strong> (or higher) installation.</p>
 
-<h1 id="download">Download</h1>
+<h1 id="toc_1">Download</h1>
 
 <p>Download the ready to run binary package. Choose the Stratosphere distribution that <strong>matches your Hadoop version</strong>. If you are unsure which version to choose or you just want to run locally, pick the package for Hadoop 1.2.</p>
 
@@ -177,7 +23,7 @@
  </div>
 </p></p>
 
-<h1 id="start">Start</h1>
+<h1 id="toc_2">Start</h1>
 
 <p>You are almost done.</p>
 
@@ -186,14 +32,14 @@
 <li>Unpack the downloaded archive.</li>
 <li>Start Stratosphere.</li>
 </ol>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> ~/Downloads              <span class="c"># Go to download directory</span>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> ~/Downloads              <span class="c"># Go to download directory</span>
 <span class="nv">$ </span>tar xzf stratosphere-*.tgz  <span class="c"># Unpack the downloaded archive</span>
 <span class="nv">$ </span><span class="nb">cd </span>stratosphere
 <span class="nv">$ </span>bin/start-local.sh          <span class="c"># Start Stratosphere</span>
 </code></pre></div>
 <p>Check the <strong>JobManager&#39;s web frontend</strong> at <a href="http://localhost:8081">http://localhost:8081</a> and make sure everything is up and running.</p>
 
-<h1 id="run-example">Run Example</h1>
+<h1 id="toc_3">Run Example</h1>
 
 <p>Run the <strong>Word Count example</strong> to see Stratosphere at work.</p>
 
@@ -212,7 +58,7 @@ $ bin/stratosphere run \
 <li>You will find a file called <strong>wordcount-result.txt</strong> in your current directory.</li>
 </ul>
 
-<h1 id="cluster-setup">Cluster Setup</h1>
+<h1 id="toc_4">Cluster Setup</h1>
 
 <p><strong>Running Stratosphere on a cluster</strong> is as easy as running it locally. Having <strong>passwordless SSH</strong> and <strong>the same directory structure</strong> on all your cluster nodes lets you use our scripts to control everything.</p>
 
@@ -228,7 +74,7 @@ $ bin/stratosphere run \
 
 <div class="row">
   <div class="col-md-6 text-center">
-    <img src="/img/quickstart_cluster.png" style="width: 85%">
+    <img src="/incubator-flink-website/img/quickstart_cluster.png" style="width: 85%">
   </div>
 <div class="col-md-6">
   <div class="row">
@@ -250,7 +96,7 @@ $ bin/stratosphere run \
 <p></div>
 </div></p>
 
-<h1 id="stratosphere-on-yarn">Stratosphere on YARN</h1>
+<h1 id="toc_5">Stratosphere on YARN</h1>
 
 <p>You can easily deploy Stratosphere on your existing <strong>YARN cluster</strong>. </p>
 
@@ -261,31 +107,3 @@ $ bin/stratosphere run \
 </ol>
 
 <p>For <strong>more detailed instructions</strong>, check out the programming Guides and examples.</p>
-
-  </div>
-</div>
-
-     <div class="footer">
-
-<hr class="divider">
-
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
-Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
-required of all newly accepted projects until a further review indicates that
-the infrastructure, communications, and decision making process have
-stabilized in a manner consistent with other successful ASF projects. While
-incubation status is not necessarily a reflection of the completeness or
-stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
-
-<p><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
-
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
-
-      </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
-</html>

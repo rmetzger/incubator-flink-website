@@ -1,146 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Apache Flink (incubating): Command-Line Interface</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
-  </head>
-  <body>
-
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class=""><a href="/index.html">Home</a></li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/scala_api_quickstart.html">Scala API</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="/downloads.html" class="">Downloads</a>
-        </li>
-
-        <li>
-          <a href="/docs/index.html" class="active">Documentation</a>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="community.html#issues">Issues</a></li>
-            <li><a href="community.html#committers">Committers</a></li>
-            <li class="divider"></li>
-            <li><a href="how-to-contribute.html">How To Contribute</a></li>
-          </ul>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="project.html#history">History</a></li>
-            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal</a></li>
-            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
-            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="container">
-
-<div class="row">
-  <div class="col-md-3">
-    <ul>
-      <li><a href="faq.html">FAQ</a></li>
-      <li>Quickstart
-        <ul>
-          <li><a href="setup_quickstart.html">Setup</a></li>
-          <li><a href="run_example_quickstart.html">Run Example</a></li>
-          <li><a href="java_api_quickstart.html">Java API</a></li>
-          <li><a href="scala_api_quickstart.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Setup &amp; Configuration
-        <ul>
-          <li><a href="local_setup.html">Local Setup</a></li>
-          <li><a href="cluster_setup.html">Cluster Setup</a></li>
-          <li><a href="yarn_setup.html">YARN Setup</a></li>
-          <li><a href="config.html">Configuration</a></li>
-        </ul>
-      </li>
-
-      <li>Programming Guides
-        <ul>
-          <li><a href="java_api_guide.html">Java API</a></li>
-          <li><a href="scala_api_guide.html">Scala API</a></li>
-          <li><a href="hadoop_compatability.html">Hadoop Compatability</a></li>
-          <li><a href="iterations.html">Iterations</a></li>
-          <li><a href="spargel_guide.html">Spargel Graph API</a></li>
-        </ul>
-      </li>
-
-      <li>Examples
-        <ul>
-          <li><a href="java_api_examples.html">Java API</a></li>
-          <li><a href="scala_api_examples.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Execution
-        <ul>
-          <li><a href="local_execution.html">Local/Debugging</a></li>
-          <li><a href="cluster_execution.html">Cluster</a></li>
-          <li><a href="cli.html">Command-Line Interface</a></li>
-          <li><a href="web_client.html">Web Interface</a></li>
-        </ul>
-      </li>
-
-      <li>Internals
-        <ul>
-          <li><a href="internals/overview.html">Overview</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-9">
-      <h1>Command-Line Interface</h1>
-
-      <ul>
-<li>
-<a href="#examples">Examples</a>
-</li>
-<li>
-<a href="#usage">Usage</a>
-</li>
-</ul>
-
-
-      <p>Stratosphere provides a command-line interface to run programs that are packaged
+<p>Stratosphere provides a command-line interface to run programs that are packaged
 as JAR files, and control their execution.  The command line interface is part
 of any Stratosphere setup, available in local single node setups and in
 distributed setups. It is located under <code>&lt;stratosphere-home&gt;/bin/stratosphere</code>
@@ -160,45 +18,45 @@ local.sh</code> or <code>&lt;stratosphere-home&gt;/bin/start-cluster.sh</code>).
 <li>list running and waiting jobs.</li>
 </ul>
 
-<h1 id="examples">Examples</h1>
+<h1 id="toc_0">Examples</h1>
 
 <ul>
 <li><p>Run example program with no arguments.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run ./examples/stratosphere-java-examples--WordCount.jar
+<div class="highlight"><pre><code class="text language-text" data-lang="text">./bin/stratosphere run ./examples/stratosphere-java-examples--WordCount.jar
 </code></pre></div></li>
 <li><p>Run example program with arguments for input and result files</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run ./examples/stratosphere-java-examples--WordCount.jar \
+<div class="highlight"><pre><code class="text language-text" data-lang="text">./bin/stratosphere run ./examples/stratosphere-java-examples--WordCount.jar \
                        file:///home/user/hamlet.txt file:///home/user/wordcount_out
 </code></pre></div></li>
 <li><p>Run example program with parallelism 16 and arguments for input and result files</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run -p 16 ./examples/stratosphere-java-examples--WordCount.jar \
+<div class="highlight"><pre><code class="text language-text" data-lang="text">./bin/stratosphere run -p 16 ./examples/stratosphere-java-examples--WordCount.jar \
                         file:///home/user/hamlet.txt file:///home/user/wordcount_out
 </code></pre></div></li>
 <li><p>Run example program on a specific JobManager:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run -m myJMHost:6123 \
+<div class="highlight"><pre><code class="text language-text" data-lang="text">./bin/stratosphere run -m myJMHost:6123 \
                        ./examples/stratosphere-java-examples--WordCount.jar \
                        -file:///home/user/hamlet.txt file:///home/user/wordcount_out
 </code></pre></div></li>
 <li><p>Display the expected arguments for the WordCount example program:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere info -d ./examples/stratosphere-java-examples--WordCount.jar
+<div class="highlight"><pre><code class="text language-text" data-lang="text">./bin/stratosphere info -d ./examples/stratosphere-java-examples--WordCount.jar
 </code></pre></div></li>
 <li><p>Display the optimized execution plan for the WordCount example program as JSON:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere info -e 
+<div class="highlight"><pre><code class="text language-text" data-lang="text">./bin/stratosphere info -e 
                         ./examples/stratosphere-java-examples--WordCount.jar \
                         file:///home/user/hamlet.txt file:///home/user/wordcount_out
 </code></pre></div></li>
 <li><p>List scheduled and running jobs (including their JobIDs):</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere list -s -r
+<div class="highlight"><pre><code class="text language-text" data-lang="text">./bin/stratosphere list -s -r
 </code></pre></div></li>
 <li><p>Cancel a job:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere cancel -i &lt;jobID&gt;
+<div class="highlight"><pre><code class="text language-text" data-lang="text">./bin/stratosphere cancel -i &lt;jobID&gt;
 </code></pre></div></li>
 </ul>
 
-<h1 id="usage">Usage</h1>
+<h1 id="toc_1">Usage</h1>
 
 <p>The command line syntax is as follows:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./stratosphere &lt;ACTION&gt; [OPTIONS] [ARGUMENTS]
+<div class="highlight"><pre><code class="text language-text" data-lang="text">./stratosphere &lt;ACTION&gt; [OPTIONS] [ARGUMENTS]
 
 General options:
      -h,--help      Show the help for the CLI Frontend, or a specific action.
@@ -259,30 +117,3 @@ Action &quot;cancel&quot; cancels a submitted Stratosphere program.
 
      -m,--jobmanager &lt;host:port&gt;    Option to connect to a different Stratosphere master (JobManager).
 </code></pre></div>
-  </div>
-</div>
-
-     <div class="footer">
-
-<hr class="divider">
-
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
-Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
-required of all newly accepted projects until a further review indicates that
-the infrastructure, communications, and decision making process have
-stabilized in a manner consistent with other successful ASF projects. While
-incubation status is not necessarily a reflection of the completeness or
-stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
-
-<p><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
-
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
-
-      </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
-</html>

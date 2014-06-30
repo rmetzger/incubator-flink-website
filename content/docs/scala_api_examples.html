@@ -1,160 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Apache Flink (incubating): Scala API Examples</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
-  </head>
-  <body>
-
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class=""><a href="/index.html">Home</a></li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/scala_api_quickstart.html">Scala API</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="/downloads.html" class="">Downloads</a>
-        </li>
-
-        <li>
-          <a href="/docs/index.html" class="active">Documentation</a>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="community.html#issues">Issues</a></li>
-            <li><a href="community.html#committers">Committers</a></li>
-            <li class="divider"></li>
-            <li><a href="how-to-contribute.html">How To Contribute</a></li>
-          </ul>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="project.html#history">History</a></li>
-            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal</a></li>
-            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
-            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="container">
-
-<div class="row">
-  <div class="col-md-3">
-    <ul>
-      <li><a href="faq.html">FAQ</a></li>
-      <li>Quickstart
-        <ul>
-          <li><a href="setup_quickstart.html">Setup</a></li>
-          <li><a href="run_example_quickstart.html">Run Example</a></li>
-          <li><a href="java_api_quickstart.html">Java API</a></li>
-          <li><a href="scala_api_quickstart.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Setup &amp; Configuration
-        <ul>
-          <li><a href="local_setup.html">Local Setup</a></li>
-          <li><a href="cluster_setup.html">Cluster Setup</a></li>
-          <li><a href="yarn_setup.html">YARN Setup</a></li>
-          <li><a href="config.html">Configuration</a></li>
-        </ul>
-      </li>
-
-      <li>Programming Guides
-        <ul>
-          <li><a href="java_api_guide.html">Java API</a></li>
-          <li><a href="scala_api_guide.html">Scala API</a></li>
-          <li><a href="hadoop_compatability.html">Hadoop Compatability</a></li>
-          <li><a href="iterations.html">Iterations</a></li>
-          <li><a href="spargel_guide.html">Spargel Graph API</a></li>
-        </ul>
-      </li>
-
-      <li>Examples
-        <ul>
-          <li><a href="java_api_examples.html">Java API</a></li>
-          <li><a href="scala_api_examples.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Execution
-        <ul>
-          <li><a href="local_execution.html">Local/Debugging</a></li>
-          <li><a href="cluster_execution.html">Cluster</a></li>
-          <li><a href="cli.html">Command-Line Interface</a></li>
-          <li><a href="web_client.html">Web Interface</a></li>
-        </ul>
-      </li>
-
-      <li>Internals
-        <ul>
-          <li><a href="internals/overview.html">Overview</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-9">
-      <h1>Scala API Examples</h1>
-
-      <ul>
-<li>
-<a href="#word-count">Word Count</a>
-</li>
-<li>
-<a href="#page-rank">Page Rank</a>
-</li>
-<li>
-<a href="#connected-components">Connected Components</a>
-</li>
-<li>
-<a href="#relational-query">Relational Query</a>
-</li>
-</ul>
-
-
-      <p>The following example programs showcase different applications of Stratosphere from simple word counting to graph algorithms.
-The code samples illustrate the use of <strong><a href="/docs//programming_guides/scala.html">Stratosphere&#39;s Scala API</a></strong>. </p>
+<p>The following example programs showcase different applications of Stratosphere from simple word counting to graph algorithms.
+The code samples illustrate the use of <strong><a href="/incubator-flink-website/docs//programming_guides/scala.html">Stratosphere&#39;s Scala API</a></strong>. </p>
 
 <p>The full source code of the following and more examples can be found in the <strong><a href="https://github.com/stratosphere/stratosphere/tree/release-/stratosphere-examples/stratosphere-scala-examples">stratosphere-scala-examples</a></strong> module.</p>
 
-<h1 id="word-count">Word Count</h1>
+<h1 id="toc_0">Word Count</h1>
 
 <p>WordCount is the &quot;Hello World&quot; of Big Data processing systems. It computes the frequency of words in a text collection. The algorithm works in two steps: First, the texts are splits the text to individual words. Second, the words are grouped and counted.</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="c1">// read input data</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="c1">// read input data</span>
 <span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">TextFile</span><span class="o">(</span><span class="n">textInput</span><span class="o">)</span>
 
 <span class="c1">// tokenize words</span>
@@ -168,12 +20,12 @@ The code samples illustrate the use of <strong><a href="/docs//programming_guide
 </code></pre></div>
 <p>The <a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-examples/stratosphere-scala-examples/src/main/scala/eu/stratosphere/examples/scala/wordcount/WordCount.scala">WordCount example</a> implements the above described algorithm with input parameters: <code>&lt;degree of parallelism&gt;, &lt;text input path&gt;, &lt;output path&gt;</code>. As test data, any text file will do.</p>
 
-<h1 id="page-rank">Page Rank</h1>
+<h1 id="toc_1">Page Rank</h1>
 
 <p>The PageRank algorithm computes the &quot;importance&quot; of pages in a graph defined by links, which point from one pages to another page. It is an iterative graph algorithm, which means that it repeatedly applies the same computation. In each iteration, each page distributes its current rank over all its neighbors, and compute its new rank as a taxed sum of the ranks it received from its neighbors. The PageRank algorithm was popularized by the Google search engine which uses the importance of webpages to rank the results of search queries.</p>
 
-<p>In this simple example, PageRank is implemented with a <a href="/docs//programming_guides/java.html#iterations">bulk iteration</a> and a fixed number of iterations.</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="c1">// cases classes so we have named fields</span>
+<p>In this simple example, PageRank is implemented with a <a href="/incubator-flink-website/docs//programming_guides/java.html#iterations">bulk iteration</a> and a fixed number of iterations.</p>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="c1">// cases classes so we have named fields</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">PageWithRank</span><span class="o">(</span><span class="n">pageId</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">rank</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">Edge</span><span class="o">(</span><span class="n">from</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">to</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">transitionProbability</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span>
 
@@ -227,12 +79,12 @@ It requires the following parameters to run: <code>&lt;pages input path&gt;, &lt
 
 <p>For this simple implementation it is required that each page has at least one incoming and one outgoing link (a page can point to itself).</p>
 
-<h1 id="connected-components">Connected Components</h1>
+<h1 id="toc_2">Connected Components</h1>
 
 <p>The Connected Components algorithm identifies parts of a larger graph which are connected by assigning all vertices in the same connected part the same component ID. Similar to PageRank, Connected Components is an iterative algorithm. In each step, each vertex propagates its current component ID to all its neighbors. A vertex accepts the component ID from a neighbor, if it is smaller than its own component ID.</p>
 
-<p>This implementation uses a <a href="/docs//programming_guides/java.html#iterations">delta iteration</a>: Vertices that have not changed their component id do not participate in the next step. This yields much better performance, because the later iterations typically deal only with a few outlier vertices.</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="c1">// define case classes</span>
+<p>This implementation uses a <a href="/incubator-flink-website/docs//programming_guides/java.html#iterations">delta iteration</a>: Vertices that have not changed their component id do not participate in the next step. This yields much better performance, because the later iterations typically deal only with a few outlier vertices.</p>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="c1">// define case classes</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">VertexWithComponent</span><span class="o">(</span><span class="n">vertex</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">componentId</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">Edge</span><span class="o">(</span><span class="n">from</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">to</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
 
@@ -282,12 +134,12 @@ It requires the following parameters to run: <code>&lt;pages input path&gt;, &lt
 </ul></li>
 </ul>
 
-<h1 id="relational-query">Relational Query</h1>
+<h1 id="toc_3">Relational Query</h1>
 
 <p>The Relational Query example assumes two tables, one with <code>orders</code> and the other with <code>lineitems</code> as specified by the <a href="http://www.tpc.org/tpch/">TPC-H decision support benchmark</a>. TPC-H is a standard benchmark in the database industry. See below for instructions how to generate the input data.</p>
 
 <p>The example implements the following SQL query.</p>
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">l_orderkey</span><span class="p">,</span> <span class="n">o_shippriority</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">l_extendedprice</span><span class="p">)</span> <span class="k">as</span> <span class="n">revenue</span>
+<div class="highlight"><pre><code class="sql language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">l_orderkey</span><span class="p">,</span> <span class="n">o_shippriority</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">l_extendedprice</span><span class="p">)</span> <span class="k">as</span> <span class="n">revenue</span>
     <span class="k">FROM</span> <span class="n">orders</span><span class="p">,</span> <span class="n">lineitem</span>
 <span class="k">WHERE</span> <span class="n">l_orderkey</span> <span class="o">=</span> <span class="n">o_orderkey</span>
     <span class="k">AND</span> <span class="n">o_orderstatus</span> <span class="o">=</span> <span class="ss">&quot;F&quot;</span> 
@@ -296,7 +148,7 @@ It requires the following parameters to run: <code>&lt;pages input path&gt;, &lt
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">l_orderkey</span><span class="p">,</span> <span class="n">o_shippriority</span><span class="p">;</span>
 </code></pre></div>
 <p>The Stratosphere Scala program, which implements the above query looks as follows.</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="c1">// --- define some custom classes to address fields by name ---</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="c1">// --- define some custom classes to address fields by name ---</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">Order</span><span class="o">(</span><span class="n">orderId</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">status</span><span class="k">:</span> <span class="kt">Char</span><span class="o">,</span> <span class="n">date</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">orderPriority</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">shipPriority</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">LineItem</span><span class="o">(</span><span class="n">orderId</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">extendedPrice</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">PrioritizedOrder</span><span class="o">(</span><span class="n">orderId</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">shipPriority</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">revenue</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span>
@@ -325,7 +177,7 @@ Take the following steps to generate arbitrary large input files for the provide
 <li> Download and unpack DBGEN</li>
 <li> Make a copy of <em>makefile.suite</em> called <em>Makefile</em> and perform the following changes:</li>
 </ol>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">DATABASE</span> <span class="o">=</span> DB2
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">DATABASE</span> <span class="o">=</span> DB2
 <span class="nv">MACHINE</span>  <span class="o">=</span> LINUX
 <span class="nv">WORKLOAD</span> <span class="o">=</span> TPCH
 <span class="nv">CC</span>       <span class="o">=</span> gcc
@@ -335,32 +187,5 @@ Take the following steps to generate arbitrary large input files for the provide
 <li> Generate lineitem and orders relations using dbgen. A scale factor
 (-s) of 1 results in a generated data set with about 1 GB size.</li>
 </ol>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">./dbgen -T o -s 1
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">./dbgen -T o -s 1
 </code></pre></div>
-  </div>
-</div>
-
-     <div class="footer">
-
-<hr class="divider">
-
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
-Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
-required of all newly accepted projects until a further review indicates that
-the infrastructure, communications, and decision making process have
-stabilized in a manner consistent with other successful ASF projects. While
-incubation status is not necessarily a reflection of the completeness or
-stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
-
-<p><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
-
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
-
-      </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
-</html>

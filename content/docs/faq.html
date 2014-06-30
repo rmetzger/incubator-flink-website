@@ -1,215 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Apache Flink (incubating): Frequently Asked Questions (FAQ)</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
-  </head>
-  <body>
+<h1 id="toc_0">General</h1>
 
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class=""><a href="/index.html">Home</a></li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/scala_api_quickstart.html">Scala API</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="/downloads.html" class="">Downloads</a>
-        </li>
-
-        <li>
-          <a href="/docs/index.html" class="active">Documentation</a>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="community.html#issues">Issues</a></li>
-            <li><a href="community.html#committers">Committers</a></li>
-            <li class="divider"></li>
-            <li><a href="how-to-contribute.html">How To Contribute</a></li>
-          </ul>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="project.html#history">History</a></li>
-            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal</a></li>
-            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
-            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="container">
-
-<div class="row">
-  <div class="col-md-3">
-    <ul>
-      <li><a href="faq.html">FAQ</a></li>
-      <li>Quickstart
-        <ul>
-          <li><a href="setup_quickstart.html">Setup</a></li>
-          <li><a href="run_example_quickstart.html">Run Example</a></li>
-          <li><a href="java_api_quickstart.html">Java API</a></li>
-          <li><a href="scala_api_quickstart.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Setup &amp; Configuration
-        <ul>
-          <li><a href="local_setup.html">Local Setup</a></li>
-          <li><a href="cluster_setup.html">Cluster Setup</a></li>
-          <li><a href="yarn_setup.html">YARN Setup</a></li>
-          <li><a href="config.html">Configuration</a></li>
-        </ul>
-      </li>
-
-      <li>Programming Guides
-        <ul>
-          <li><a href="java_api_guide.html">Java API</a></li>
-          <li><a href="scala_api_guide.html">Scala API</a></li>
-          <li><a href="hadoop_compatability.html">Hadoop Compatability</a></li>
-          <li><a href="iterations.html">Iterations</a></li>
-          <li><a href="spargel_guide.html">Spargel Graph API</a></li>
-        </ul>
-      </li>
-
-      <li>Examples
-        <ul>
-          <li><a href="java_api_examples.html">Java API</a></li>
-          <li><a href="scala_api_examples.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Execution
-        <ul>
-          <li><a href="local_execution.html">Local/Debugging</a></li>
-          <li><a href="cluster_execution.html">Cluster</a></li>
-          <li><a href="cli.html">Command-Line Interface</a></li>
-          <li><a href="web_client.html">Web Interface</a></li>
-        </ul>
-      </li>
-
-      <li>Internals
-        <ul>
-          <li><a href="internals/overview.html">Overview</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-9">
-      <h1>Frequently Asked Questions (FAQ)</h1>
-
-      <ul>
-<li>
-<a href="#general">General</a>
-<ul>
-<li>
-<a href="#is-stratosphere-a-hadoop-project?">Is Stratosphere a Hadoop Project?</a>
-</li>
-<li>
-<a href="#do-i-have-to-install-apache-hadoop-to-use-stratosphere?">Do I have to install Apache Hadoop to use Stratosphere?</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#usage">Usage</a>
-<ul>
-<li>
-<a href="#how-do-i-assess-the-progress-of-a-stratosphere-program?">How do I assess the progress of a Stratosphere program?</a>
-</li>
-<li>
-<a href="#how-can-i-figure-out-why-a-program-failed?">How can I figure out why a program failed?</a>
-</li>
-<li>
-<a href="#how-do-i-debug-stratosphere-programs?">How do I debug Stratosphere programs?</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#errors">Errors</a>
-<ul>
-<li>
-<a href="#i-get-an-error-message-saying-that-not-enough-buffers-are-available.-how-do-i-fix-this?">I get an error message saying that not enough buffers are available. How do I fix this?</a>
-</li>
-<li>
-<a href="#my-job-fails-early-with-a-java.io.eofexception.-what-could-be-the-cause?">My job fails early with a java.io.EOFException. What could be the cause?</a>
-</li>
-<li>
-<a href="#my-program-does-not-compute-the-correct-result.-why-are-my-custom-key-types">My program does not compute the correct result. Why are my custom key types</a>
-</li>
-<li>
-<a href="#i-get-a-java.lang.instantiationexception-for-my-data-type,-what-is-wrong?">I get a java.lang.InstantiationException for my data type, what is wrong?</a>
-</li>
-<li>
-<a href="#i-can't-stop-stratosphere-with-the-provided-stop-scripts.-what-can-i-do?">I can&#39;t stop Stratosphere with the provided stop-scripts. What can I do?</a>
-</li>
-<li>
-<a href="#i-got-an-outofmemoryexception.-what-can-i-do?">I got an OutOfMemoryException. What can I do?</a>
-</li>
-<li>
-<a href="#why-do-the-taskmanager-log-files-become-so-huge?">Why do the TaskManager log files become so huge?</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#yarn-deployment">YARN Deployment</a>
-<ul>
-<li>
-<a href="#the-yarn-session-runs-only-for-a-few-seconds">The YARN session runs only for a few seconds</a>
-</li>
-<li>
-<a href="#the-yarn-session-crashes-with-a-hdfs-permission-exception-during-startup">The YARN session crashes with a HDFS permission exception during startup</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#features">Features</a>
-<ul>
-<li>
-<a href="#what-kind-of-fault-tolerance-does-stratosphere-provide?">What kind of fault-tolerance does Stratosphere provide?</a>
-</li>
-<li>
-<a href="#are-hadoop-like-utilities,-such-as-counters-and-the-distributedcache-supported?">Are Hadoop-like utilities, such as Counters and the DistributedCache supported?</a>
-</li>
-</ul>
-</li>
-</ul>
-
-
-      <h1 id="general">General</h1>
-
-<h2 id="is-stratosphere-a-hadoop-project?">Is Stratosphere a Hadoop Project?</h2>
+<h2 id="toc_1">Is Stratosphere a Hadoop Project?</h2>
 
 <p>Stratosphere is a data processing system and an alternative to Hadoop&#39;s
 MapReduce component. It comes with its own runtime, rather than building on top
@@ -220,7 +11,7 @@ manager (YARN) to provision cluster resources. Since most Stratosphere users are
 using Hadoop HDFS to store their data, we ship already the required libraries to
 access HDFS.</p>
 
-<h2 id="do-i-have-to-install-apache-hadoop-to-use-stratosphere?">Do I have to install Apache Hadoop to use Stratosphere?</h2>
+<h2 id="toc_2">Do I have to install Apache Hadoop to use Stratosphere?</h2>
 
 <p>No. Stratosphere can run without a Hadoop installation. However, a very common
 setup is to use Stratosphere to analyze data stored in the Hadoop Distributed
@@ -232,9 +23,9 @@ users with an existing Hadoop YARN cluster. <a href="http://hadoop.apache.org/do
 YARN</a> is Hadoop&#39;s cluster resource manager that allows to use
 different execution engines next to each other on a cluster.</p>
 
-<h1 id="usage">Usage</h1>
+<h1 id="toc_3">Usage</h1>
 
-<h2 id="how-do-i-assess-the-progress-of-a-stratosphere-program?">How do I assess the progress of a Stratosphere program?</h2>
+<h2 id="toc_4">How do I assess the progress of a Stratosphere program?</h2>
 
 <p>There are a multiple of ways to track the progress of a Stratosphere program:</p>
 
@@ -247,7 +38,7 @@ changes of all operators as the program progresses through the operations.</li>
 <li>All status changes are also logged to the JobManager&#39;s log file.</li>
 </ul>
 
-<h2 id="how-can-i-figure-out-why-a-program-failed?">How can I figure out why a program failed?</h2>
+<h2 id="toc_5">How can I figure out why a program failed?</h2>
 
 <ul>
 <li>Thw JobManager web frontend (by default on port 8081) displays the exceptions
@@ -262,7 +53,7 @@ of the master and the worker where the exception occurred
 <code>log/stratosphere-&lt;user&gt;-taskmanager-&lt;host&gt;.log</code>).</li>
 </ul>
 
-<h2 id="how-do-i-debug-stratosphere-programs?">How do I debug Stratosphere programs?</h2>
+<h2 id="toc_6">How do I debug Stratosphere programs?</h2>
 
 <ul>
 <li>When you start a program locally with the <a href="local_execution.html">LocalExecutor</a>,
@@ -274,9 +65,9 @@ information inside the program&#39;s operations and show them after the program
 execution.</li>
 </ul>
 
-<h1 id="errors">Errors</h1>
+<h1 id="toc_7">Errors</h1>
 
-<h2 id="i-get-an-error-message-saying-that-not-enough-buffers-are-available.-how-do-i-fix-this?">I get an error message saying that not enough buffers are available. How do I fix this?</h2>
+<h2 id="toc_8">I get an error message saying that not enough buffers are available. How do I fix this?</h2>
 
 <p>If you run Stratosphere in a massively parallel setting (100+ parallel threads),
 you need to adapt the number of network buffers via the config parameter
@@ -285,7 +76,7 @@ As a rule-of-thumb, the number of buffers should be at least
 <code>4 * numberOfNodes * numberOfTasksPerNode^2</code>. See
 <a href="config.html">Configuration Reference</a> for details.</p>
 
-<h2 id="my-job-fails-early-with-a-java.io.eofexception.-what-could-be-the-cause?">My job fails early with a java.io.EOFException. What could be the cause?</h2>
+<h2 id="toc_9">My job fails early with a java.io.EOFException. What could be the cause?</h2>
 
 <p>Note: In version <em>0.4</em>, the delta iterations limit the solution set to
 records with fixed-length data types. We will  in the next version.</p>
@@ -294,7 +85,7 @@ records with fixed-length data types. We will  in the next version.</p>
 wrong HDFS version. Because different HDFS versions are often not compatible
 with each other, the connection between the filesystem master and the client
 breaks.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">Call to &lt;host:port&gt; failed on <span class="nb">local </span>exception: java.io.EOFException
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">Call to &lt;host:port&gt; failed on <span class="nb">local </span>exception: java.io.EOFException
     at org.apache.hadoop.ipc.Client.wrapException<span class="o">(</span>Client.java:775<span class="o">)</span>
     at org.apache.hadoop.ipc.Client.call<span class="o">(</span>Client.java:743<span class="o">)</span>
     at org.apache.hadoop.ipc.RPC<span class="nv">$Invoker</span>.invoke<span class="o">(</span>RPC.java:220<span class="o">)</span>
@@ -310,7 +101,7 @@ breaks.</p>
 the <a href="https://github.com/stratosphere/stratosphere/blob/master/README.md">build instructions</a>
 for details on how to set up Stratosphere for different Hadoop and HDFS versions.</p>
 
-<h2 id="my-program-does-not-compute-the-correct-result.-why-are-my-custom-key-types">My program does not compute the correct result. Why are my custom key types</h2>
+<h2 id="toc_10">My program does not compute the correct result. Why are my custom key types</h2>
 
 <p>are not grouped/joined correctly?</p>
 
@@ -319,14 +110,14 @@ for details on how to set up Stratosphere for different Hadoop and HDFS versions
 These methods are always backed with default implementations which are usually
 inadequate. Therefore, all keys must override <code>hashCode()</code> and <code>equals(Object o)</code>.</p>
 
-<h2 id="i-get-a-java.lang.instantiationexception-for-my-data-type,-what-is-wrong?">I get a java.lang.InstantiationException for my data type, what is wrong?</h2>
+<h2 id="toc_11">I get a java.lang.InstantiationException for my data type, what is wrong?</h2>
 
 <p>All data type classes must be public and have a public nullary constructor
 (constructor with no arguments). Further more, the classes must not be abstract
 or interfaces. If the classes are internal classes, they must be public and
 static.</p>
 
-<h2 id="i-can&#39;t-stop-stratosphere-with-the-provided-stop-scripts.-what-can-i-do?">I can&#39;t stop Stratosphere with the provided stop-scripts. What can I do?</h2>
+<h2 id="toc_12">I can&#39;t stop Stratosphere with the provided stop-scripts. What can I do?</h2>
 
 <p>Stopping the processes sometimes takes a few seconds, because the shutdown may
 do some cleanup work.</p>
@@ -346,7 +137,7 @@ affected JobManager or TaskManager process.</li>
 <p>On Windows, the TaskManager shows a table of all processes and allows you to
 destroy a process by right its entry.</p>
 
-<h2 id="i-got-an-outofmemoryexception.-what-can-i-do?">I got an OutOfMemoryException. What can I do?</h2>
+<h2 id="toc_13">I got an OutOfMemoryException. What can I do?</h2>
 
 <p>These exceptions occur usually when the functions in the program consume a lot
 of memory by collection large numbers of objects, for example in lists or maps.
@@ -373,20 +164,20 @@ entries <code>taskmanager.memory.fraction</code> or <code>taskmanager.memory.siz
 but may cause data processing tasks to go to disk more often.</p></li>
 </ol>
 
-<h2 id="why-do-the-taskmanager-log-files-become-so-huge?">Why do the TaskManager log files become so huge?</h2>
+<h2 id="toc_14">Why do the TaskManager log files become so huge?</h2>
 
 <p>Check the logging behavior of your jobs. Emitting logging per or tuple may be
 helpful to debug jobs in small setups with tiny data sets, it becomes very
 inefficient and disk space consuming if used for large input data.</p>
 
-<h1 id="yarn-deployment">YARN Deployment</h1>
+<h1 id="toc_15">YARN Deployment</h1>
 
-<h2 id="the-yarn-session-runs-only-for-a-few-seconds">The YARN session runs only for a few seconds</h2>
+<h2 id="toc_16">The YARN session runs only for a few seconds</h2>
 
 <p>The <code>./bin/yarn-session.sh</code> script is intended to run while the YARN-session is
 open. In some error cases however, the script immediately stops running. The
 output looks like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">07:34:27,004 INFO  org.apache.hadoop.yarn.client.api.impl.YarnClientImpl         - Submitted application application_1395604279745_273123 to ResourceManager at jobtracker-host
+<div class="highlight"><pre><code class="text language-text" data-lang="text">07:34:27,004 INFO  org.apache.hadoop.yarn.client.api.impl.YarnClientImpl         - Submitted application application_1395604279745_273123 to ResourceManager at jobtracker-host
 Stratosphere JobManager is now running on worker1:6123
 JobManager Web Interface: http://jobtracker-host:54311/proxy/application_1295604279745_273123/
 07:34:51,528 INFO  eu.stratosphere.yarn.Client                                   - Application application_1295604279745_273123 finished with state FINISHED at 1398152089553
@@ -414,10 +205,10 @@ configured. Execute <code>dmesg</code> on the machine where the AM was running t
 this happened. You see messages from Linux&#39; <a href="http://linux-mm.org/OOM_Killer">OOM killer</a>.</p></li>
 </ul>
 
-<h2 id="the-yarn-session-crashes-with-a-hdfs-permission-exception-during-startup">The YARN session crashes with a HDFS permission exception during startup</h2>
+<h2 id="toc_17">The YARN session crashes with a HDFS permission exception during startup</h2>
 
 <p>While starting the YARN session, you are receiving an exception like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Exception in thread &quot;main&quot; org.apache.hadoop.security.AccessControlException: Permission denied: user=robert, access=WRITE, inode=&quot;/user/robert&quot;:hdfs:supergroup:drwxr-xr-x
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Exception in thread &quot;main&quot; org.apache.hadoop.security.AccessControlException: Permission denied: user=robert, access=WRITE, inode=&quot;/user/robert&quot;:hdfs:supergroup:drwxr-xr-x
   at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:234)
   at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:214)
   at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:158)
@@ -472,46 +263,18 @@ directories in his own home directory.</p>
 <p>Stratosphere creates a <code>.stratosphere/</code> directory in the users home directory
 where it stores the Stratosphere jar and configuration file.</p>
 
-<h1 id="features">Features</h1>
+<h1 id="toc_18">Features</h1>
 
-<h2 id="what-kind-of-fault-tolerance-does-stratosphere-provide?">What kind of fault-tolerance does Stratosphere provide?</h2>
+<h2 id="toc_19">What kind of fault-tolerance does Stratosphere provide?</h2>
 
 <p>Stratospere can restart failed jobs. Mid-query fault tolerance will go into the
 open source project in the next versions.</p>
 
-<h2 id="are-hadoop-like-utilities,-such-as-counters-and-the-distributedcache-supported?">Are Hadoop-like utilities, such as Counters and the DistributedCache supported?</h2>
+<h2 id="toc_20">Are Hadoop-like utilities, such as Counters and the DistributedCache supported?</h2>
 
 <p><a href="java_api_guide.html">Stratosphere&#39;s Accumulators</a> work very similar like
 [Hadoop&#39;s counters, but are more powerful.</p>
 
 <p>Stratosphere has a <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/cache/DistributedCache.java">Distributed Cache</a> that is deeply integrated with the APIs. Please refer to the <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-java/src/main/java/eu/stratosphere/api/java/ExecutionEnvironment.java#L561">JavaDocs</a> for details on how to use it.</p>
 
-<p>In order to make data sets available on all tasks, we encourage you to use <a href="/docs/0.5/programming_guides/java.html#broadcast_variables">Broadcast Variables</a> instead. They are more efficient and easier to use than the distributed cache.</p>
-
-  </div>
-</div>
-
-     <div class="footer">
-
-<hr class="divider">
-
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
-Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
-required of all newly accepted projects until a further review indicates that
-the infrastructure, communications, and decision making process have
-stabilized in a manner consistent with other successful ASF projects. While
-incubation status is not necessarily a reflection of the completeness or
-stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
-
-<p><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
-
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
-
-      </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
-</html>
+<p>In order to make data sets available on all tasks, we encourage you to use <a href="/incubator-flink-website/docs/0.5/programming_guides/java.html#broadcast_variables">Broadcast Variables</a> instead. They are more efficient and easier to use than the distributed cache.</p>

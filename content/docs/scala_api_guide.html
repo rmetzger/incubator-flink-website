@@ -1,262 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Apache Flink (incubating): Scala API Programming Guide</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
-  </head>
-  <body>
-
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class=""><a href="/index.html">Home</a></li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/scala_api_quickstart.html">Scala API</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="/downloads.html" class="">Downloads</a>
-        </li>
-
-        <li>
-          <a href="/docs/index.html" class="active">Documentation</a>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="community.html#issues">Issues</a></li>
-            <li><a href="community.html#committers">Committers</a></li>
-            <li class="divider"></li>
-            <li><a href="how-to-contribute.html">How To Contribute</a></li>
-          </ul>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="project.html#history">History</a></li>
-            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal</a></li>
-            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
-            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="container">
-
-<div class="row">
-  <div class="col-md-3">
-    <ul>
-      <li><a href="faq.html">FAQ</a></li>
-      <li>Quickstart
-        <ul>
-          <li><a href="setup_quickstart.html">Setup</a></li>
-          <li><a href="run_example_quickstart.html">Run Example</a></li>
-          <li><a href="java_api_quickstart.html">Java API</a></li>
-          <li><a href="scala_api_quickstart.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Setup &amp; Configuration
-        <ul>
-          <li><a href="local_setup.html">Local Setup</a></li>
-          <li><a href="cluster_setup.html">Cluster Setup</a></li>
-          <li><a href="yarn_setup.html">YARN Setup</a></li>
-          <li><a href="config.html">Configuration</a></li>
-        </ul>
-      </li>
-
-      <li>Programming Guides
-        <ul>
-          <li><a href="java_api_guide.html">Java API</a></li>
-          <li><a href="scala_api_guide.html">Scala API</a></li>
-          <li><a href="hadoop_compatability.html">Hadoop Compatability</a></li>
-          <li><a href="iterations.html">Iterations</a></li>
-          <li><a href="spargel_guide.html">Spargel Graph API</a></li>
-        </ul>
-      </li>
-
-      <li>Examples
-        <ul>
-          <li><a href="java_api_examples.html">Java API</a></li>
-          <li><a href="scala_api_examples.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Execution
-        <ul>
-          <li><a href="local_execution.html">Local/Debugging</a></li>
-          <li><a href="cluster_execution.html">Cluster</a></li>
-          <li><a href="cli.html">Command-Line Interface</a></li>
-          <li><a href="web_client.html">Web Interface</a></li>
-        </ul>
-      </li>
-
-      <li>Internals
-        <ul>
-          <li><a href="internals/overview.html">Overview</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-9">
-      <h1>Scala API Programming Guide</h1>
-
-      <ul>
-<li>
-<a href="#scala-programming-guide">Scala Programming Guide</a>
-<ul>
-<li>
-<a href="#word-count-example">Word Count Example</a>
-</li>
-<li>
-<a href="#project-setup">Project Setup</a>
-</li>
-<li>
-<a href="#the-dataset-abstraction">The DataSet Abstraction</a>
-</li>
-<li>
-<a href="#data-types">Data Types</a>
-</li>
-<li>
-<a href="#creating-data-sources">Creating Data Sources</a>
-<ul>
-<li>
-<ul>
-<li>
-<a href="#textinputformat">TextInputFormat</a>
-</li>
-<li>
-<a href="#csvinputformat">CsvInputFormat</a>
-</li>
-<li>
-<a href="#delimitedinputformat">DelimitedInputFormat</a>
-</li>
-<li>
-<a href="#binaryinputformat">BinaryInputFormat</a>
-</li>
-<li>
-<a href="#binaryserializedinputformat">BinarySerializedInputFormat</a>
-</li>
-<li>
-<a href="#fixedlengthinputformat">FixedLengthInputFormat</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="#operations-on-dataset">Operations on DataSet</a>
-<ul>
-<li>
-<ul>
-<li>
-<a href="#basic-operator-templates">Basic Operator Templates</a>
-</li>
-<li>
-<a href="#field/key-selectors">Field/Key Selectors</a>
-</li>
-<li>
-<a href="#map-operation">Map Operation</a>
-</li>
-<li>
-<a href="#reduce-operation">Reduce Operation</a>
-</li>
-<li>
-<a href="#join-operation">Join Operation</a>
-</li>
-<li>
-<a href="#cogroup-operation">CoGroup Operation</a>
-</li>
-<li>
-<a href="#cross-operation">Cross Operation</a>
-</li>
-<li>
-<a href="#union">Union</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="#iterations">Iterations</a>
-<ul>
-<li>
-<ul>
-<li>
-<a href="#bulk-iteration">Bulk Iteration</a>
-</li>
-<li>
-<a href="#delta-iteration">Delta Iteration</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="#creating-data-sinks">Creating Data Sinks</a>
-<ul>
-<li>
-<ul>
-<li>
-<a href="#delimitedoutputformat">DelimitedOutputFormat</a>
-</li>
-<li>
-<a href="#csvoutputformat">CsvOutputFormat</a>
-</li>
-<li>
-<a href="#rawoutputformat">RawOutputFormat</a>
-</li>
-<li>
-<a href="#binaryoutputformat">BinaryOutputFormat</a>
-</li>
-<li>
-<a href="#binaryserializedoutputformat">BinarySerializedOutputFormat</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="#executing-jobs">Executing Jobs</a>
-</li>
-<li>
-<a href="#rich-functions">Rich Functions</a>
-</li>
-</ul>
-</li>
-</ul>
-
-
-      <h1 id="scala-programming-guide">Scala Programming Guide</h1>
+<h1 id="toc_0">Scala Programming Guide</h1>
 
 <p>This guide explains how to develop Stratosphere programs with the Scala
 programming interface. It assumes you are familiar with the general concepts of
@@ -275,11 +17,11 @@ of programming in general, though.</p>
 
 <p><section id="intro-example"></p>
 
-<h2 id="word-count-example">Word Count Example</h2>
+<h2 id="toc_1">Word Count Example</h2>
 
 <p>To start, let&#39;s look at a Word Count job implemented in Scala. This program is
 very simple but it will give you a basic idea of what a Scala job looks like.</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.client.LocalExecutor</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.client.LocalExecutor</span>
 
 <span class="k">import</span> <span class="nn">eu.stratosphere.api.scala._</span>
 <span class="k">import</span> <span class="nn">eu.stratosphere.api.scala.operators._</span>
@@ -328,14 +70,14 @@ for debugging your job before running it on an actual cluster.</p>
 
 <p><section id="intro-example"></p>
 
-<h2 id="project-setup">Project Setup</h2>
+<h2 id="toc_2">Project Setup</h2>
 
 <p>We will only cover maven here but the concepts should work equivalently with
 other build systems such as Gradle or sbt. When wanting to develop a Scala job
 all that is needed as dependency is is <code>stratosphere-scala</code> (and <code>stratosphere-clients</code>, if
 you want to execute your jobs). So all that needs to be done is to add the
 following lines to your POM.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
   <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>stratosphere-scala<span class="nt">&lt;/artifactId&gt;</span>
@@ -349,12 +91,12 @@ following lines to your POM.</p>
 <span class="nt">&lt;/dependencies&gt;</span>
 </code></pre></div>
 <p>To quickly get started you can use the Stratosphere Scala quickstart available
-<a href="/quickstart/scala.html">here</a>. This will give you a
+<a href="/incubator-flink-website/quickstart/scala.html">here</a>. This will give you a
 completeMaven project with some working example code that you can use to explore
 the system or as basis for your own projects.</p>
 
 <p>These imports are normally enough for any project:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.api.scala._</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.api.scala._</span>
 <span class="k">import</span> <span class="nn">eu.stratosphere.api.scala.operators._</span>
 
 <span class="k">import</span> <span class="nn">eu.stratosphere.client.LocalExecutor</span>
@@ -366,7 +108,7 @@ a data flow on your local machine, respectively cluster.</p>
 
 <p><section id="dataset"></p>
 
-<h2 id="the-dataset-abstraction">The DataSet Abstraction</h2>
+<h2 id="toc_3">The DataSet Abstraction</h2>
 
 <p>As already alluded to in the introductory example you write Scala jobs by using
 operations on a <code>DataSet</code> to create new transformed <code>DataSet</code>. This concept is
@@ -389,14 +131,14 @@ is postponed until the user submits the job.</p>
 <p><code>DataSet</code> has a generic parameter, this is the type of each data item or record
 that would be processed by further transformations. This is similar to how
 <code>List[A]</code> in Scala would behave. For example in:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span> <span class="k">=</span> <span class="o">...</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span> <span class="k">=</span> <span class="o">...</span>
 <span class="k">val</span> <span class="n">mapped</span> <span class="k">=</span> <span class="n">input</span> <span class="n">map</span> <span class="o">{</span> <span class="n">a</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)}</span>
 </code></pre></div>
 <p>The anonymous function would retrieve in <code>a</code> tuples of type <code>(String, Int)</code>.</p>
 
 <p><section id="datatypes"></p>
 
-<h2 id="data-types">Data Types</h2>
+<h2 id="toc_4">Data Types</h2>
 
 <p>There are some restrictions regarding the data types that can be used in Scala
 jobs (basically the generic parameter of <code>DataSet</code>). The usable types are
@@ -411,11 +153,11 @@ interface must be implemented.</p>
 
 <p><section id="data-sources"></p>
 
-<h2 id="creating-data-sources">Creating Data Sources</h2>
+<h2 id="toc_5">Creating Data Sources</h2>
 
 <p>To get an initial <code>DataSet</code> on which to perform operations to build a data flow
 graph the following construct is used:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;&lt;file-path&gt;&quot;</span><span class="o">,</span> <span class="o">&lt;</span><span class="n">input</span><span class="o">-</span><span class="n">format</span><span class="o">&gt;)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;&lt;file-path&gt;&quot;</span><span class="o">,</span> <span class="o">&lt;</span><span class="n">input</span><span class="o">-</span><span class="n">format</span><span class="o">&gt;)</span>
 </code></pre></div>
 <p>The value <code>input</code> is now a <code>DataSet</code> with the generic type depending on the
 input format.</p>
@@ -439,21 +181,21 @@ which situations.</p>
 
 <p><section id="text-input-format"></p>
 
-<h4 id="textinputformat">TextInputFormat</h4>
+<h4 id="toc_6">TextInputFormat</h4>
 
 <p>This input format simply reads a text file line wise and creates a <code>String</code>
 for each line. It is used as:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">TextInputFormat</span><span class="o">()</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">TextInputFormat</span><span class="o">()</span>
 </code></pre></div>
 <p>As you have already seen in the Word Count Example there is a shortcut for this.
 Instead of using a <code>DataSource</code> with <code>TextInputFormat</code> you can simply write:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">TextFile</span><span class="o">(</span><span class="s">&quot;&lt;file-path&gt;&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">TextFile</span><span class="o">(</span><span class="s">&quot;&lt;file-path&gt;&quot;</span><span class="o">)</span>
 </code></pre></div>
 <p>The <code>input</code> would then be a <code>DataSet[String]</code>.</p>
 
 <p><section id="csv-input-format"></p>
 
-<h4 id="csvinputformat">CsvInputFormat</h4>
+<h4 id="toc_7">CsvInputFormat</h4>
 
 <p>This input format is mainly used to read Csv-Files, as the name suggests. Input
 files must be text files. You can specify the <code>String</code> that should be used
@@ -462,7 +204,7 @@ also the separator between fields of a record (this would often be a comma).
 The <code>CsvInputFormat</code> will automatically read the records and create
 Scala tuples or custom case class objects for you. The format can be used
 in one of the following ways:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">CsvInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">]()</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">CsvInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">]()</span>
 <span class="nc">CsvInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">recordDelim</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
 <span class="nc">CsvInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">recordDelim</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">fieldDelim</span><span class="k">:</span> <span class="kt">Char</span><span class="o">)</span>
 
@@ -480,19 +222,19 @@ tree variants with a <code>fieldIndices</code> parameter. Here you give a list
 of the fields that should be read. Field indices start from zero.</p>
 
 <p>An example usage could look as follows:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">CsvInputFormat</span><span class="o">[(</span><span class="kt">Int</span>, <span class="kt">Int</span>, <span class="kt">String</span><span class="o">)](</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">17</span><span class="o">,</span> <span class="mi">42</span><span class="o">),</span> <span class="s">&quot;\n&quot;</span><span class="o">,</span> <span class="sc">&#39;,&#39;</span><span class="o">))</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">CsvInputFormat</span><span class="o">[(</span><span class="kt">Int</span>, <span class="kt">Int</span>, <span class="kt">String</span><span class="o">)](</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">17</span><span class="o">,</span> <span class="mi">42</span><span class="o">),</span> <span class="s">&quot;\n&quot;</span><span class="o">,</span> <span class="sc">&#39;,&#39;</span><span class="o">))</span>
 </code></pre></div>
 <p>Here only the specified fields would be read and 3-tuples created for you.
 The type of input would be <code>DataSet[(Int, Int, String)]</code>.</p>
 
 <p><section id="delimited-input-format"></p>
 
-<h4 id="delimitedinputformat">DelimitedInputFormat</h4>
+<h4 id="toc_8">DelimitedInputFormat</h4>
 
 <p>This input format is meant for textual records that are separated by
 some delimiter. The delimiter could be a newline, for example. It is used like
 this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">DelimitedInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">parseFunction</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=&gt;</span> <span class="nc">Out</span><span class="o">,</span> <span class="n">delim</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;\n&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">DelimitedInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">parseFunction</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=&gt;</span> <span class="nc">Out</span><span class="o">,</span> <span class="n">delim</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;\n&quot;</span><span class="o">)</span>
 </code></pre></div>
 <p>The input files will be split on the supplied delimiter (or the default newline)
 and the supplied parse function must parse the textual representation in the
@@ -501,7 +243,7 @@ type of the <code>DataSet</code> created by the <code>DataSource</code> operatio
 
 <p>Just as with <code>BinaryInputFormat</code> the function can be an anonymous function, so
 you could have:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">BinaryInputFormat</span><span class="o">(</span> <span class="o">{</span> <span class="n">line</span> <span class="k">=&gt;</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">BinaryInputFormat</span><span class="o">(</span> <span class="o">{</span> <span class="n">line</span> <span class="k">=&gt;</span>
   <span class="n">line</span> <span class="k">match</span> <span class="o">{</span>
     <span class="k">case</span> <span class="nc">EdgeInputPattern</span><span class="o">(</span><span class="n">from</span><span class="o">,</span> <span class="n">to</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Path</span><span class="o">(</span><span class="n">from</span><span class="o">.</span><span class="n">toInt</span><span class="o">,</span> <span class="n">to</span><span class="o">.</span><span class="n">toInt</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
   <span class="o">}</span>
@@ -513,11 +255,11 @@ the data. The type of input would in this case be <code>DataSet[Path]</code>.</p
 
 <p><section id="binary-input-format"></p>
 
-<h4 id="binaryinputformat">BinaryInputFormat</h4>
+<h4 id="toc_9">BinaryInputFormat</h4>
 
 <p>This input format is best used when you have a custom binary format that
 you store the data in. It is created using one of the following:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">BinaryInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">readFunction</span><span class="k">:</span> <span class="kt">DataInput</span> <span class="o">=&gt;</span> <span class="nc">Out</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">BinaryInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">readFunction</span><span class="k">:</span> <span class="kt">DataInput</span> <span class="o">=&gt;</span> <span class="nc">Out</span><span class="o">)</span>
 <span class="nc">BinaryInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">readFunction</span><span class="k">:</span> <span class="kt">DataInput</span> <span class="o">=&gt;</span> <span class="nc">Out</span><span class="o">,</span> <span class="n">blocksize</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
 </code></pre></div>
 <p>So you have to provide a function that gets a
@@ -528,7 +270,7 @@ contains the data. The type of this object will then also be the type of the
 
 <p>The provided function can also be an anonymous function, so you could
 have something like this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">BinaryInputFormat</span><span class="o">(</span> <span class="o">{</span> <span class="n">input</span> <span class="k">=&gt;</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">BinaryInputFormat</span><span class="o">(</span> <span class="o">{</span> <span class="n">input</span> <span class="k">=&gt;</span>
   <span class="k">val</span> <span class="n">one</span> <span class="k">=</span> <span class="n">input</span><span class="o">.</span><span class="n">readInt</span>
   <span class="k">val</span> <span class="n">two</span> <span class="k">=</span> <span class="n">input</span><span class="o">.</span><span class="n">readDouble</span>
   <span class="o">(</span><span class="n">one</span><span class="o">,</span> <span class="n">two</span><span class="o">)</span>  
@@ -538,44 +280,44 @@ have something like this:</p>
 
 <p><section id="binary-serialized-input-format"></p>
 
-<h4 id="binaryserializedinputformat">BinarySerializedInputFormat</h4>
+<h4 id="toc_10">BinarySerializedInputFormat</h4>
 
 <p>This input format is only meant to be used in conjunction with
 <code>BinarySerializedOutputFormat</code>. You can use these to write elements to files using a
 Stratosphere-internal format that can efficiently be read again. You should only
 use this when output is only meant to be consumed by other Stratosphere jobs.
 The format can be used on one of two ways:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">BinarySerializedInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">]()</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">BinarySerializedInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">]()</span>
 <span class="nc">BinarySerializedInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">blocksize</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
 </code></pre></div>
 <p>So if input files contain elements of type <code>(String, Int)</code> (a tuple type) you
 could use:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">BinarySerializedInputFormat</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]())</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">BinarySerializedInputFormat</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]())</span>
 </code></pre></div>
 <p><section id="fixed-length-input-format"></p>
 
-<h4 id="fixedlengthinputformat">FixedLengthInputFormat</h4>
+<h4 id="toc_11">FixedLengthInputFormat</h4>
 
 <p>This input format is for cases where you want to read binary blocks
 of a fixed size. The size of a block must be specified and you must
 provide code that reads elements from a byte array.</p>
 
 <p>The format is used like this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">FixedLengthInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">readFunction</span><span class="k">:</span> <span class="o">(</span><span class="kt">Array</span><span class="o">[</span><span class="kt">Byte</span><span class="o">],</span> <span class="nc">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Out</span><span class="o">,</span> <span class="n">recordLength</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">FixedLengthInputFormat</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">readFunction</span><span class="k">:</span> <span class="o">(</span><span class="kt">Array</span><span class="o">[</span><span class="kt">Byte</span><span class="o">],</span> <span class="nc">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Out</span><span class="o">,</span> <span class="n">recordLength</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 </code></pre></div>
 <p>The specified function gets an array and a position at which it must start
 reading the array and returns the element read from the binary data.</p>
 
 <p><section id="operations"></p>
 
-<h2 id="operations-on-dataset">Operations on DataSet</h2>
+<h2 id="toc_12">Operations on DataSet</h2>
 
 <p>As explained in <a href="pmodel.html#operators">Programming Model</a>,
 a Stratosphere job is a graph of operators that process data coming from
 sources that is finally written to sinks. When you use the Scala front end
 these operators as well as the graph is created behind the scenes. For example,
 when you write code like this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">TextFile</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">TextFile</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">input</span><span class="o">.</span><span class="n">map</span> <span class="o">{</span> <span class="n">x</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span> <span class="o">}</span>
 
@@ -595,7 +337,7 @@ some examples.</p>
 
 <p><section id="operator-templates"></p>
 
-<h4 id="basic-operator-templates">Basic Operator Templates</h4>
+<h4 id="toc_13">Basic Operator Templates</h4>
 
 <p>Most of the operations have three similar versions and we will
 explain them here for all of the operators together. The three versions are <code>map</code>,
@@ -604,7 +346,7 @@ defines what the operation does but the semantics are different.</p>
 
 <p>The <code>map</code> version is a simple one to one mapping. Take a look at the following
 code:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 
 <span class="k">val</span> <span class="n">mapped</span> <span class="k">=</span> <span class="n">input</span><span class="o">.</span><span class="n">map</span> <span class="o">{</span> <span class="n">x</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">x</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span> <span class="o">}</span>
 </code></pre></div>
@@ -619,7 +361,7 @@ could be a list or an array. The elements in this iterable are unnested.
 So for every element in the input data you get a list of elements. The
 concatenation of those is the result of the operator. If you had
 the following code:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 
 <span class="k">val</span> <span class="n">mapped</span> <span class="k">=</span> <span class="n">input</span><span class="o">.</span><span class="n">flatMap</span> <span class="o">{</span> <span class="n">x</span> <span class="k">=&gt;</span> <span class="nc">List</span><span class="o">(</span> <span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">x</span><span class="o">.</span><span class="n">_2</span><span class="o">),</span> <span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">x</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">)</span> <span class="o">}</span>
 </code></pre></div>
@@ -631,13 +373,13 @@ from the anonymous function.</p>
 returns a Boolean. The elements for which this Boolean is true are part of the
 result of the operation, the others are culled. An example for a filter is this
 code:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 
 <span class="k">val</span> <span class="n">mapped</span> <span class="k">=</span> <span class="n">input</span><span class="o">.</span><span class="n">filter</span> <span class="o">{</span> <span class="n">x</span> <span class="k">=&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">_2</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="o">}</span>
 </code></pre></div>
 <p><section id="key-selectors"></p>
 
-<h4 id="field/key-selectors">Field/Key Selectors</h4>
+<h4 id="toc_14">Field/Key Selectors</h4>
 
 <p>For some operations (group, join, and cogroup) it is necessary to specify which
 parts of a data type are to be considered the key. This key is used for grouping
@@ -648,7 +390,7 @@ the <code>DataSet</code> and must return a single value or a tuple of values tha
 be considered the key. This will become clear with some examples: (Note that
 we use the reduce operation here as an example, we will have a look at
 that further down):</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">reduced</span> <span class="k">=</span> <span class="n">input</span> <span class="n">groupBy</span> <span class="o">{</span> <span class="n">x</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="n">_1</span><span class="o">)</span> <span class="o">}</span> <span class="n">reduce</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 <span class="k">val</span> <span class="n">reduced2</span> <span class="k">=</span> <span class="n">input</span> <span class="n">groupBy</span> <span class="o">{</span> <span class="k">case</span> <span class="o">(</span><span class="n">w</span><span class="o">,</span> <span class="n">c</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">w</span> <span class="o">}</span> <span class="n">reduce</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 
@@ -666,18 +408,18 @@ fields as a compound key.</p>
 at runtime but it is parsed at job creation time where the key information is
 extracted and stored for efficient computation at runtime.</p>
 
-<h4 id="map-operation">Map Operation</h4>
+<h4 id="toc_15">Map Operation</h4>
 
 <p>Map is an operation that gets one element at a time and can output one or
 several elements. The operations that result in a <code>MapOperator</code> in the graph are exactly
 those mentioned in the previous section. For completeness&#39; sake we will mention
 their signatures here (in this and the following such lists <code>In</code> is the
 type of the input data set, <code>DataSet[In]</code>):</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="kt">In</span> <span class="o">=&gt;</span> <span class="nc">Out</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="kt">In</span> <span class="o">=&gt;</span> <span class="nc">Out</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 <span class="k">def</span> <span class="n">flatMap</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="kt">In</span> <span class="o">=&gt;</span> <span class="nc">Iterator</span><span class="o">[</span><span class="kt">Out</span><span class="o">])</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 <span class="k">def</span> <span class="n">filter</span><span class="o">(</span><span class="n">fun</span><span class="k">:</span> <span class="kt">In</span> <span class="o">=&gt;</span> <span class="nc">Boolean</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 </code></pre></div>
-<h4 id="reduce-operation">Reduce Operation</h4>
+<h4 id="toc_16">Reduce Operation</h4>
 
 <p>As explained <a href="pmodel.html#operators">here</a> Reduce is an operation that looks
 at groups of elements at a time and can, for one group, output one or several
@@ -685,11 +427,11 @@ elements. To specify how elements should be grouped you need to give
 a key selection function, as explained <a href="#key-selectors">above</a>.</p>
 
 <p>The basic template of the reduce operation is:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="n">input</span> <span class="n">groupBy</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span><span class="o">&gt;</span> <span class="o">}</span> <span class="n">reduce</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">reduce</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="n">input</span> <span class="n">groupBy</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span><span class="o">&gt;</span> <span class="o">}</span> <span class="n">reduce</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">reduce</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
 </code></pre></div>
 <p>The signature of the reduce function depends on the variety of reduce operation
 selected. There are right now three different versions:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">reduce</span><span class="o">(</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">In</span><span class="o">,</span> <span class="kt">In</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">In</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">In</span><span class="o">]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">def</span> <span class="n">reduce</span><span class="o">(</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">In</span><span class="o">,</span> <span class="kt">In</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">In</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">In</span><span class="o">]</span>
 
 <span class="k">def</span> <span class="n">reduceGroup</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="kt">Iterator</span><span class="o">[</span><span class="kt">In</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="nc">Out</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 <span class="k">def</span> <span class="n">combinableReduceGroup</span><span class="o">(</span><span class="n">fun</span><span class="k">:</span> <span class="kt">Iterator</span><span class="o">[</span><span class="kt">In</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="nc">In</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">In</span><span class="o">]</span>
@@ -700,7 +442,7 @@ type. You specify how to elements of the selection should be combined,
 this is then used to reduce the elements in one group (of the same key)
 down to one element. This can be used to implement aggregation operators,
 for example:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">words</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">words</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">counts</span> <span class="k">=</span> <span class="n">words</span><span class="o">.</span><span class="n">groupBy</span> <span class="o">{</span> <span class="k">case</span> <span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">word</span><span class="o">}</span>
   <span class="o">.</span><span class="n">reduce</span> <span class="o">{</span> <span class="o">(</span><span class="n">w1</span><span class="o">,</span> <span class="n">w1</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">w1</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">w1</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="n">w2</span><span class="o">.</span><span class="n">_2</span><span class="o">)</span> <span class="o">}</span>
 </code></pre></div>
@@ -712,7 +454,7 @@ your reduce function gets an <code>Iterator</code> that can be used to iterate o
 all the elements in a group. With this type or reduce operation the
 output data type can be different from the input data type. An example
 of this kind of operation is this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">words</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">words</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">minCounts</span> <span class="k">=</span> <span class="n">words</span><span class="o">.</span><span class="n">groupBy</span> <span class="o">{</span> <span class="k">case</span> <span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">word</span><span class="o">}</span>
   <span class="o">.</span><span class="n">reduceGroup</span> <span class="o">{</span> <span class="n">words</span> <span class="k">=&gt;</span> <span class="n">words</span><span class="o">.</span><span class="n">minBy</span> <span class="o">{</span> <span class="k">_</span><span class="o">.</span><span class="n">_2</span> <span class="o">}</span> <span class="o">}</span>
 </code></pre></div>
@@ -724,7 +466,7 @@ that the reduce operation is combinable. This is an optimization one can use,
 please have a look at <a href="pmodel.html" title="Programming Model">Programming Model</a> for
 the details.</p>
 
-<h4 id="join-operation">Join Operation</h4>
+<h4 id="toc_17">Join Operation</h4>
 
 <p>The join operation is similar to a database equi-join. It is a two input
 iteration where you have to specify a key selector for each of the inputs
@@ -732,10 +474,10 @@ and then the anonymous function is called for every pair of matching
 elements from the two input sides.</p>
 
 <p>The basic template is:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="n">input1</span> <span class="n">join</span> <span class="n">input2</span> <span class="n">where</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">}</span> <span class="n">isEqualTo</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">2</span><span class="o">&gt;}</span> <span class="n">map</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">join</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="n">input1</span> <span class="n">join</span> <span class="n">input2</span> <span class="n">where</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">}</span> <span class="n">isEqualTo</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">2</span><span class="o">&gt;}</span> <span class="n">map</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">join</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
 </code></pre></div>
 <p>or, because lines will get to long fast:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="n">input1</span><span class="o">.</span><span class="n">join</span><span class="o">(</span><span class="n">input2</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="n">input1</span><span class="o">.</span><span class="n">join</span><span class="o">(</span><span class="n">input2</span><span class="o">)</span>
   <span class="o">.</span><span class="n">where</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">}</span>
   <span class="o">.</span><span class="n">isEqualTo</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">2</span><span class="o">&gt;}</span>
   <span class="o">.</span><span class="n">map</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">join</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
@@ -745,12 +487,12 @@ parentheses, so it&#39;s best to use dots in multi-line code like this.)</p>
 
 <p>As mentioned in <a href="#operator-templates">here</a> there are three versions of
 this operator, so you can use one of these in the last position:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">LeftIn</span><span class="o">,</span> <span class="kt">RightIn</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Out</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">LeftIn</span><span class="o">,</span> <span class="kt">RightIn</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Out</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 <span class="k">def</span> <span class="n">flatMap</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">LeftIn</span><span class="o">,</span> <span class="kt">RightIn</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Iterator</span><span class="o">[</span><span class="kt">Out</span><span class="o">])</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 <span class="k">def</span> <span class="n">filter</span><span class="o">(</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">LeftIn</span><span class="o">,</span> <span class="kt">RightIn</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Boolean</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">LeftIn</span>, <span class="kt">RightIn</span><span class="o">)]</span>
 </code></pre></div>
 <p>One example where this can be used is database-style joining with projection:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="n">input1</span><span class="o">.</span><span class="n">join</span><span class="o">(</span><span class="n">input2</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="n">input1</span><span class="o">.</span><span class="n">join</span><span class="o">(</span><span class="n">input2</span><span class="o">)</span>
   <span class="o">.</span><span class="n">where</span> <span class="o">{</span> <span class="k">case</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">}</span>
   <span class="o">.</span><span class="n">isEqualTo</span> <span class="o">{</span> <span class="k">case</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">d</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">d</span><span class="o">)</span> <span class="o">}</span>
   <span class="o">.</span><span class="n">map</span> <span class="o">{</span> <span class="o">(</span><span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">left</span><span class="o">.</span><span class="n">_3</span><span class="o">,</span> <span class="n">right</span><span class="o">.</span><span class="n">_1</span><span class="o">)</span> <span class="o">}</span>
@@ -759,7 +501,7 @@ this operator, so you can use one of these in the last position:</p>
 while the key for the second input is a compound of the last two fields. We then
 pick one field each from both sides as the result of the operation.</p>
 
-<h4 id="cogroup-operation">CoGroup Operation</h4>
+<h4 id="toc_18">CoGroup Operation</h4>
 
 <p>The cogroup operation is a cross between join and reduce. It has two inputs
 and you have to specify a key selector for each of them. This is where the
@@ -770,47 +512,47 @@ an <code>Iterator</code> for the elements from the left input and another <code>
 for the elements from the right input.</p>
 
 <p>The basic template is:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="n">input1</span> <span class="n">cogroup</span> <span class="n">input2</span> <span class="n">where</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">}</span> <span class="n">isEqualTo</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">2</span><span class="o">&gt;}</span> <span class="n">map</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">cogroup</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="n">input1</span> <span class="n">cogroup</span> <span class="n">input2</span> <span class="n">where</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">}</span> <span class="n">isEqualTo</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">2</span><span class="o">&gt;}</span> <span class="n">map</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">cogroup</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
 </code></pre></div>
 <p>or, because lines will get to long fast:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="n">input1</span><span class="o">.</span><span class="n">cogroup</span><span class="o">(</span><span class="n">input2</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="n">input1</span><span class="o">.</span><span class="n">cogroup</span><span class="o">(</span><span class="n">input2</span><span class="o">)</span>
   <span class="o">.</span><span class="n">where</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">}</span>
   <span class="o">.</span><span class="n">isEqualTo</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">selector</span> <span class="mi">2</span><span class="o">&gt;}</span>
   <span class="o">.</span><span class="n">map</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">cogroup</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
 </code></pre></div>
 <p>There are to variants you can use, with the semantics explained
 <a href="#operator-templates">here</a>.</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">Iterator</span><span class="o">[</span><span class="kt">LeftIn</span><span class="o">],</span> <span class="nc">Iterator</span><span class="o">[</span><span class="kt">RightIn</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="nc">Out</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">Iterator</span><span class="o">[</span><span class="kt">LeftIn</span><span class="o">],</span> <span class="nc">Iterator</span><span class="o">[</span><span class="kt">RightIn</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="nc">Out</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 <span class="k">def</span> <span class="n">flatMap</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">Iterator</span><span class="o">[</span><span class="kt">LeftIn</span><span class="o">],</span> <span class="nc">Iterator</span><span class="o">[</span><span class="kt">RightIn</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="nc">Iterator</span><span class="o">[</span><span class="kt">Out</span><span class="o">])</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 </code></pre></div>
-<h4 id="cross-operation">Cross Operation</h4>
+<h4 id="toc_19">Cross Operation</h4>
 
 <p>The cross operation is used to form the Cartesian product of the elements
 from two inputs. The basic template is:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="n">input1</span> <span class="n">cross</span> <span class="n">input2</span> <span class="n">map</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">cogroup</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="n">input1</span> <span class="n">cross</span> <span class="n">input2</span> <span class="n">map</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">cogroup</span> <span class="n">function</span><span class="o">&gt;</span> <span class="o">}</span>
 </code></pre></div>
 <p>Again there are three variants, with the semantics explained
 <a href="#operator-templates">here</a>.</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">LeftIn</span><span class="o">,</span> <span class="kt">RightIn</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Out</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">LeftIn</span><span class="o">,</span> <span class="kt">RightIn</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Out</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 <span class="k">def</span> <span class="n">flatMap</span><span class="o">[</span><span class="kt">Out</span><span class="o">](</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">LeftIn</span><span class="o">,</span> <span class="kt">RightIn</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Iterator</span><span class="o">[</span><span class="kt">Out</span><span class="o">])</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">Out</span><span class="o">]</span>
 <span class="k">def</span> <span class="n">filter</span><span class="o">(</span><span class="n">fun</span><span class="k">:</span> <span class="o">(</span><span class="kt">LeftIn</span><span class="o">,</span> <span class="kt">RightIn</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Boolean</span><span class="o">)</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">LeftIn</span>, <span class="kt">RightIn</span><span class="o">)]</span>
 </code></pre></div>
-<h4 id="union">Union</h4>
+<h4 id="toc_20">Union</h4>
 
 <p>When you want to have the combination of several data sets as the input of
 an operation you can use a union to combine them. It is used like this</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input1</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">input1</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
 <span class="k">val</span> <span class="n">input2</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
 <span class="k">val</span> <span class="n">unioned</span> <span class="k">=</span> <span class="n">input1</span><span class="o">.</span><span class="n">union</span><span class="o">(</span><span class="n">input2</span><span class="o">)</span>
 </code></pre></div>
 <p>The signature of union is:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">union</span><span class="o">(</span><span class="n">secondInput</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">def</span> <span class="n">union</span><span class="o">(</span><span class="n">secondInput</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span>
 </code></pre></div>
 <p>Where <code>A</code> is the generic type of the <code>DataSet</code> on which you execute the <code>union</code>.</p>
 
 <p><section id="iterations"></p>
 
-<h2 id="iterations">Iterations</h2>
+<h2 id="toc_21">Iterations</h2>
 
 <p>Iterations allow you to implement <em>loops</em> in Stratosphere programs.
 <a href="iterations.html">This page</a> gives a
@@ -826,14 +568,14 @@ that has data sets as input and returns a new data set. The difference is
 that bulk iterations map from one data set two one new data set while
 delta iterations map two data sets to two new data sets.</p>
 
-<h4 id="bulk-iteration">Bulk Iteration</h4>
+<h4 id="toc_22">Bulk Iteration</h4>
 
 <p>The signature of the bulk iterate method is this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">iterate</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">stepFunction</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="nc">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">def</span> <span class="n">iterate</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">stepFunction</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="nc">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span>
 </code></pre></div>
 <p>where <code>A</code> is the type of the <code>DataSet</code> on which <code>iterate</code> is called. The number
 of steps is given in <code>n</code>. This is how you use it in practice:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">dataPoints</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="n">dataPointInput</span><span class="o">,</span> <span class="nc">DelimitedInputFormat</span><span class="o">(</span><span class="n">parseInput</span><span class="o">))</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">dataPoints</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="n">dataPointInput</span><span class="o">,</span> <span class="nc">DelimitedInputFormat</span><span class="o">(</span><span class="n">parseInput</span><span class="o">))</span>
 <span class="k">val</span> <span class="n">clusterPoints</span> <span class="k">=</span> <span class="nc">DataSource</span><span class="o">(</span><span class="n">clusterInput</span><span class="o">,</span> <span class="nc">DelimitedInputFormat</span><span class="o">(</span><span class="n">parseInput</span><span class="o">))</span>
 
 <span class="k">def</span> <span class="n">kMeansStep</span><span class="o">(</span><span class="n">centers</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">Int</span>, <span class="kt">Point</span><span class="o">)])</span> <span class="k">=</span> <span class="o">{</span>
@@ -854,10 +596,10 @@ of steps is given in <code>n</code>. This is how you use it in practice:</p>
 <p>Not that we use some functions here which we don&#39;t show. If you want, you
 can check out the complete code in our KMeans example.</p>
 
-<h4 id="delta-iteration">Delta Iteration</h4>
+<h4 id="toc_23">Delta Iteration</h4>
 
 <p>The signature of the delta iterate method is this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">iterateWithDelta</span><span class="o">(</span><span class="n">workset</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">W</span><span class="o">],</span> <span class="n">solutionSetKey</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="n">K</span><span class="o">,</span> <span class="n">stepFunction</span><span class="k">:</span> <span class="o">(</span><span class="kt">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">],</span> <span class="nc">DataSet</span><span class="o">[</span><span class="kt">W</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="nc">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">],</span> <span class="nc">DataSet</span><span class="o">[</span><span class="kt">W</span><span class="o">]),</span> <span class="n">maxIterations</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">def</span> <span class="n">iterateWithDelta</span><span class="o">(</span><span class="n">workset</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[</span><span class="kt">W</span><span class="o">],</span> <span class="n">solutionSetKey</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="n">K</span><span class="o">,</span> <span class="n">stepFunction</span><span class="k">:</span> <span class="o">(</span><span class="kt">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">],</span> <span class="nc">DataSet</span><span class="o">[</span><span class="kt">W</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="nc">DataSet</span><span class="o">[</span><span class="kt">A</span><span class="o">],</span> <span class="nc">DataSet</span><span class="o">[</span><span class="kt">W</span><span class="o">]),</span> <span class="n">maxIterations</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 </code></pre></div>
 <p>where <code>A</code> is the type of the <code>DataSet</code> on which <code>iterateWithDelta</code> is called,
 <code>W</code> is the type of the <code>DataSet</code> that represents the workset and <code>K</code> is the
@@ -870,13 +612,13 @@ available here:
 
 <p><section id="data-sinks"></p>
 
-<h2 id="creating-data-sinks">Creating Data Sinks</h2>
+<h2 id="toc_24">Creating Data Sinks</h2>
 
 <p>The creation of data sinks is analog to the creation of data sources. <code>DataSet</code>
 has a <code>write</code> method that is used to create a sink that writes the output
 of the operation to a file in the local file system or HDFS. The general pattern
 is this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">sink</span> <span class="k">=</span> <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;&lt;file-path&gt;&quot;</span><span class="o">,</span> <span class="o">&lt;</span><span class="n">output</span><span class="o">-</span><span class="n">format</span><span class="o">&gt;)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">sink</span> <span class="k">=</span> <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;&lt;file-path&gt;&quot;</span><span class="o">,</span> <span class="o">&lt;</span><span class="n">output</span><span class="o">-</span><span class="n">format</span><span class="o">&gt;)</span>
 </code></pre></div>
 <p>Where <code>out</code> is some <code>DataSet</code>. Just as for data sources, the file path can be
 on of either <code>file:///some/file</code> to acces files on the local machine or
@@ -896,19 +638,19 @@ which situations.</p>
 
 <p><section id="delimited-output-format"></p>
 
-<h4 id="delimitedoutputformat">DelimitedOutputFormat</h4>
+<h4 id="toc_25">DelimitedOutputFormat</h4>
 
 <p>This output format is meant for writing textual records that are separated by
 some delimiter. The delimiter could be a newline, for example. It is used like
 this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">DelimitedOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">formatFunction</span><span class="k">:</span> <span class="kt">In</span> <span class="o">=&gt;</span> <span class="nc">String</span><span class="o">,</span> <span class="n">delim</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;\n&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">DelimitedOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">formatFunction</span><span class="k">:</span> <span class="kt">In</span> <span class="o">=&gt;</span> <span class="nc">String</span><span class="o">,</span> <span class="n">delim</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;\n&quot;</span><span class="o">)</span>
 </code></pre></div>
 <p>For every element in the <code>DataSet</code> the formatting function is called and
 the result of that is appended to the output file. In between the elements
 the <code>delim</code> string is inserted.</p>
 
 <p>An example would be:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">sink</span> <span class="k">=</span> <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">DelimitedOutputFormat</span><span class="o">(</span> <span class="o">{</span> <span class="n">elem</span> <span class="k">=&gt;</span>
   <span class="s">&quot;%s|%d&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">elem</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">elem</span><span class="o">.</span><span class="n">_2</span><span class="o">)</span>
 <span class="o">}))</span>
@@ -919,12 +661,12 @@ between the elements in the output files.</p>
 
 <p><section id="csv-output-format"></p>
 
-<h4 id="csvoutputformat">CsvOutputFormat</h4>
+<h4 id="toc_26">CsvOutputFormat</h4>
 
 <p>This output format can be used to automatically write fields of tuple
 elements or case classes to CSV files. You can specify what separator should
 be used between fields of an element and also the separator between elements.</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">CsvOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">]()</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">CsvOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">]()</span>
 <span class="nc">CsvOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">recordDelim</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
 <span class="nc">CsvOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">recordDelim</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">fieldDelim</span><span class="k">:</span> <span class="kt">Char</span><span class="o">)</span>
 </code></pre></div>
@@ -932,14 +674,14 @@ be used between fields of an element and also the separator between elements.</p
 comma. </p>
 
 <p>An example usage could look as follows:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">sink</span> <span class="k">=</span> <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">CsvOutputFormat</span><span class="o">())</span>
 </code></pre></div>
 <p>Notice how we don&#39;t need to specify the generic type here, it is inferred.</p>
 
 <p><section id="raw-output-format"></p>
 
-<h4 id="rawoutputformat">RawOutputFormat</h4>
+<h4 id="toc_27">RawOutputFormat</h4>
 
 <p>This input format can be used when you want to have complete control over
 what gets written. You get an
@@ -947,18 +689,18 @@ what gets written. You get an
 and can write the elements of the <code>DataSet</code> exactly as you see fit.</p>
 
 <p>A <code>RawOutputFormat</code> is created like this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">RawOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">writeFunction</span><span class="k">:</span> <span class="o">(</span><span class="kt">In</span><span class="o">,</span> <span class="kt">OutputStream</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Unit</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">RawOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">writeFunction</span><span class="k">:</span> <span class="o">(</span><span class="kt">In</span><span class="o">,</span> <span class="kt">OutputStream</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Unit</span><span class="o">)</span>
 </code></pre></div>
 <p>The function you pass in gets one element from the <code>DataSet</code> and must
 write it to the given <code>OutputStream</code>. An example would be the following:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">sink</span> <span class="k">=</span> <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">RawOutputFormat</span><span class="o">(</span> <span class="o">{</span> <span class="o">(</span><span class="n">elem</span><span class="o">,</span> <span class="n">output</span><span class="o">)</span> <span class="k">=&gt;</span>
   <span class="cm">/* write elem._1 and elem._2 to output */</span> 
 <span class="o">}))</span>
 </code></pre></div>
 <p><section id="binary-output-format"></p>
 
-<h4 id="binaryoutputformat">BinaryOutputFormat</h4>
+<h4 id="toc_28">BinaryOutputFormat</h4>
 
 <p>This format is very similar to the RawOutputFormat. The difference is that
 instead of an <a href="http://docs.oracle.com/javase/7/docs/api/java/io/OutputStream.html">OutputStream</a>
@@ -968,23 +710,23 @@ the binary output file. When you don&#39;t specify a block size some default
 is used.</p>
 
 <p>A <code>BinaryOutputFormat</code> is created like this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">BinaryOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">writeFunction</span><span class="k">:</span> <span class="o">(</span><span class="kt">In</span><span class="o">,</span> <span class="kt">DataOutput</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Unit</span><span class="o">)</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">BinaryOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">writeFunction</span><span class="k">:</span> <span class="o">(</span><span class="kt">In</span><span class="o">,</span> <span class="kt">DataOutput</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Unit</span><span class="o">)</span>
 <span class="nc">BinaryOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">writeFunction</span><span class="k">:</span> <span class="o">(</span><span class="kt">In</span><span class="o">,</span> <span class="kt">DataOutput</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Unit</span><span class="o">,</span> <span class="n">blockSize</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
 </code></pre></div>
 <p><section id="binary-serialized-output-format"></p>
 
-<h4 id="binaryserializedoutputformat">BinarySerializedOutputFormat</h4>
+<h4 id="toc_29">BinarySerializedOutputFormat</h4>
 
 <p>This output format is only meant to be used in conjunction with
 <code>BinarySerializedInputFormat</code>. You can use these to write elements to files using a
 Stratosphere-internal format that can efficiently be read again. You should only
 use this when output is only meant to be consumed by other Stratosphere jobs.
 The output format can be used on one of two ways:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nc">BinarySerializedOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">]()</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="nc">BinarySerializedOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">]()</span>
 <span class="nc">BinarySerializedOutputFormat</span><span class="o">[</span><span class="kt">In</span><span class="o">](</span><span class="n">blocksize</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
 </code></pre></div>
 <p>So to write elements of some <code>DataSet[A]</code> to a binary file you could use:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">sink</span> <span class="k">=</span> <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">BinarySerializedInputFormat</span><span class="o">())</span>
 </code></pre></div>
 <p>As you can see the type of the elements need not be specified, it is inferred
@@ -992,12 +734,12 @@ by Scala.</p>
 
 <p><section id="execution"></p>
 
-<h2 id="executing-jobs">Executing Jobs</h2>
+<h2 id="toc_30">Executing Jobs</h2>
 
 <p>To execute a data flow graph the sinks need to be wrapped in a
 <a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-scala/src/main/scala/eu/stratosphere/api/scala/ScalaPlan.scala">ScalaPlan</a>
 object like this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">sink</span> <span class="k">=</span> <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">CsvOutputFormat</span><span class="o">())</span>
 
 <span class="k">val</span> <span class="n">plan</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ScalaPlan</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="n">sink</span><span class="o">))</span>
@@ -1012,7 +754,7 @@ used on bigger data sets it can be executed on a cluster. We will
 now give an example for each of the two execution modes.</p>
 
 <p>First up is local execution:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.client.LocalExecutor</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.client.LocalExecutor</span>
 
 <span class="o">...</span>
 
@@ -1026,7 +768,7 @@ to package your code in a jar file so that it can be distributed on the cluster.
 Have a look at the <a href="/quickstart/scala.html">scala quickstart</a> to see how you
 can set up a maven project that does the packaging. Remote execution is done
 using the <a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-clients/src/main/java/eu/stratosphere/client/RemoteExecutor.java">RemoteExecutor</a>, like this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.client.RemoteExecutor</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.client.RemoteExecutor</span>
 
 <span class="o">...</span>
 
@@ -1042,17 +784,17 @@ as the first to parameters to the <code>RemoteExecutor</code> constructor.</p>
 
 <p><section id="rich-functions"></p>
 
-<h2 id="rich-functions">Rich Functions</h2>
+<h2 id="toc_31">Rich Functions</h2>
 
 <p>Sometimes having a single function that is passed to an operation is not enough.
 Using Rich Functions it is possible to have state inside your operations and
 have code executed before the first element is processed and after the last
 element is processed. For example, instead of a simple function as in this
 example:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">mapped</span> <span class="k">=</span> <span class="n">input</span> <span class="n">map</span> <span class="o">{</span> <span class="n">x</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">}</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">mapped</span> <span class="k">=</span> <span class="n">input</span> <span class="n">map</span> <span class="o">{</span> <span class="n">x</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">}</span>
 </code></pre></div>
 <p>you can have a rich function like this:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">mapped</span> <span class="k">=</span> <span class="n">input</span> <span class="n">map</span><span class="o">(</span> <span class="k">new</span> <span class="nc">MapFunction</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)</span>, <span class="o">(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">val</span> <span class="n">mapped</span> <span class="k">=</span> <span class="n">input</span> <span class="n">map</span><span class="o">(</span> <span class="k">new</span> <span class="nc">MapFunction</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)</span>, <span class="o">(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span> <span class="o">{</span>
   <span class="k">val</span> <span class="n">someState</span><span class="k">:</span> <span class="kt">SomeType</span> <span class="o">=</span> <span class="o">...</span>
   <span class="k">override</span> <span class="k">def</span> <span class="n">open</span><span class="o">(</span><span class="n">config</span><span class="k">:</span> <span class="kt">Configuration</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
     <span class="c1">// one-time initialization code</span>
@@ -1084,7 +826,7 @@ supply.</p>
 <p>The rich functions reside in the package <code>eu.stratosphere.api.scala.functions</code>.
 This is a list of all the rich functions can can be used instead of
 simple functions in the respective operations:</p>
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">abstract</span> <span class="k">class</span> <span class="nc">MapFunction</span><span class="o">[</span><span class="kt">In</span>, <span class="kt">Out</span><span class="o">]</span> 
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="k">abstract</span> <span class="k">class</span> <span class="nc">MapFunction</span><span class="o">[</span><span class="kt">In</span>, <span class="kt">Out</span><span class="o">]</span> 
 <span class="nc">abstract</span> <span class="k">class</span> <span class="nc">FlatMapFunction</span><span class="o">[</span><span class="kt">In</span>, <span class="kt">Out</span><span class="o">]</span> 
 <span class="nc">abstract</span> <span class="k">class</span> <span class="nc">FilterFunction</span><span class="o">[</span><span class="kt">In</span>, <span class="kt">Out</span><span class="o">]</span> 
 
@@ -1103,31 +845,3 @@ simple functions in the respective operations:</p>
 </code></pre></div>
 <p>Note that for all the rich stubs, you need to specify the generic type of
 the input (or inputs) and the output type.</p>
-
-  </div>
-</div>
-
-     <div class="footer">
-
-<hr class="divider">
-
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
-Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
-required of all newly accepted projects until a further review indicates that
-the infrastructure, communications, and decision making process have
-stabilized in a manner consistent with other successful ASF projects. While
-incubation status is not necessarily a reflection of the completeness or
-stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
-
-<p><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
-
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
-
-      </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
-</html>

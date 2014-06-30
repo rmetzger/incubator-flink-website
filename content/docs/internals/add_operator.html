@@ -1,154 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Apache Flink (incubating): How to add a new Operator</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
-  </head>
-  <body>
-
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class=""><a href="/index.html">Home</a></li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/scala_api_quickstart.html">Scala API</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="/downloads.html" class="">Downloads</a>
-        </li>
-
-        <li>
-          <a href="/docs/index.html" class="active">Documentation</a>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="community.html#issues">Issues</a></li>
-            <li><a href="community.html#committers">Committers</a></li>
-            <li class="divider"></li>
-            <li><a href="how-to-contribute.html">How To Contribute</a></li>
-          </ul>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="project.html#history">History</a></li>
-            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal</a></li>
-            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
-            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="container">
-
-<div class="row">
-  <div class="col-md-3">
-    <ul>
-      <li><a href="faq.html">FAQ</a></li>
-      <li>Quickstart
-        <ul>
-          <li><a href="setup_quickstart.html">Setup</a></li>
-          <li><a href="run_example_quickstart.html">Run Example</a></li>
-          <li><a href="java_api_quickstart.html">Java API</a></li>
-          <li><a href="scala_api_quickstart.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Setup &amp; Configuration
-        <ul>
-          <li><a href="local_setup.html">Local Setup</a></li>
-          <li><a href="cluster_setup.html">Cluster Setup</a></li>
-          <li><a href="yarn_setup.html">YARN Setup</a></li>
-          <li><a href="config.html">Configuration</a></li>
-        </ul>
-      </li>
-
-      <li>Programming Guides
-        <ul>
-          <li><a href="java_api_guide.html">Java API</a></li>
-          <li><a href="scala_api_guide.html">Scala API</a></li>
-          <li><a href="hadoop_compatability.html">Hadoop Compatability</a></li>
-          <li><a href="iterations.html">Iterations</a></li>
-          <li><a href="spargel_guide.html">Spargel Graph API</a></li>
-        </ul>
-      </li>
-
-      <li>Examples
-        <ul>
-          <li><a href="java_api_examples.html">Java API</a></li>
-          <li><a href="scala_api_examples.html">Scala API</a></li>
-        </ul>
-      </li>
-
-      <li>Execution
-        <ul>
-          <li><a href="local_execution.html">Local/Debugging</a></li>
-          <li><a href="cluster_execution.html">Cluster</a></li>
-          <li><a href="cli.html">Command-Line Interface</a></li>
-          <li><a href="web_client.html">Web Interface</a></li>
-        </ul>
-      </li>
-
-      <li>Internals
-        <ul>
-          <li><a href="internals/overview.html">Overview</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-9">
-      <h1>How to add a new Operator</h1>
-
-      <ul>
-<li>
-<a href="#implementing-a-new-operator-on-dataset">Implementing a new Operator on DataSet</a>
-<ul>
-<li>
-<a href="#more-complex-operators">More Complex Operators</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#implementing-a-custom-extension-operator">Implementing a Custom Extension Operator</a>
-</li>
-<li>
-<a href="#implementing-a-new-runtime-operator">Implementing a new Runtime Operator</a>
-</li>
-</ul>
-
-
-      <p>Operators in the Java API can be added in multiple different ways: </p>
+<p>Operators in the Java API can be added in multiple different ways: </p>
 
 <ol>
 <li>On the DataSet, as a specialization/combination of existing operators</li>
@@ -159,13 +9,13 @@
 <p>The first two approaches are typically more lightweight and easier to implement. Sometimes,
 new functionality does require a new runtime operator, or it is much more efficient to </p>
 
-<h2 id="implementing-a-new-operator-on-dataset">Implementing a new Operator on DataSet</h2>
+<h2 id="toc_0">Implementing a new Operator on DataSet</h2>
 
 <p>Many operators can be implemented as a specialization of another operator, or by means of a UDF.</p>
 
 <p>The simplest example are the <code>sum()</code>, <code>min()</code>, and <code>max()</code> functions on the <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-java/src/main/java/eu/stratosphere/api/java/DataSet.java">DataSet</a>. These functions simply call other operations
 with some pre-defined parameters:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">public AggregateOperator&lt;T&gt; sum (int field) {
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public AggregateOperator&lt;T&gt; sum (int field) {
     return this.aggregate (Aggregations.SUM, field);
 }
 </code></pre></div>
@@ -173,7 +23,7 @@ with some pre-defined parameters:</p>
 <em>count()</em> function through a combination of <em>map</em> and <em>aggregate</em>. </p>
 
 <p>A simple way to do this is to define a function on the <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-java/src/main/java/eu/stratosphere/api/java/DataSet.java">DataSet</a> that calls <em>map(...)</em> and <em>reduce(...)</em> in turn:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">public DataSet&lt;Long&gt; count() {
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public DataSet&lt;Long&gt; count() {
     return this.map(new MapFunction&lt;T, Long&gt;() {
                         public Long map(T value) {
                             return 1L;
@@ -188,11 +38,11 @@ with some pre-defined parameters:</p>
 </code></pre></div>
 <p>To define a new operator without altering the DataSet class is possible by putting the functions as static members
 into another class. The example of the <em>count()</em> operator would look the following way:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">public static &lt;T&gt;DataSet&lt;Long&gt; count(DataSet&lt;T&gt; data) {
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public static &lt;T&gt;DataSet&lt;Long&gt; count(DataSet&lt;T&gt; data) {
     return data.map(...).reduce(...);
 }
 </code></pre></div>
-<h3 id="more-complex-operators">More Complex Operators</h3>
+<h3 id="toc_1">More Complex Operators</h3>
 
 <p>A more complex example of an operation via specialization is the <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-java/src/main/java/eu/stratosphere/api/java/operators/AggregateOperator.java">Aggregation Operation</a> in the Java API. It is implemented by means of a <em>GroupReduce</em> UDF.</p>
 
@@ -202,16 +52,16 @@ parameterize the GroupReduce UDF that performs the aggregations.</p>
 
 <p>Because the operation is translated into a GroupReduce operation, it appears as a GroupReduceOperator in the optimizer and runtime.</p>
 
-<h2 id="implementing-a-custom-extension-operator">Implementing a Custom Extension Operator</h2>
+<h2 id="toc_2">Implementing a Custom Extension Operator</h2>
 
 <p>The DataSet offers a method for custom operators: <code>DataSet&lt;X&gt; runOperation(CustomUnaryOperation&lt;T, X&gt; operation)</code>.
 The <em>CustomUnaryOperation</em> interface defines operators by means of the two functions:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">setInput</span><span class="o">(</span><span class="n">DataSet</span><span class="o">&lt;</span><span class="n">IN</span><span class="o">&gt;</span> <span class="n">inputData</span><span class="o">);</span>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kt">void</span> <span class="nf">setInput</span><span class="o">(</span><span class="n">DataSet</span><span class="o">&lt;</span><span class="n">IN</span><span class="o">&gt;</span> <span class="n">inputData</span><span class="o">);</span>
 
 <span class="n">DataSet</span><span class="o">&lt;</span><span class="n">OUT</span><span class="o">&gt;</span> <span class="nf">createResult</span><span class="o">();</span>
 </code></pre></div>
 <p>The <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-addons/spargel/src/main/java/eu/stratosphere/spargel/java/VertexCentricIteration.java">VertexCentricIteration</a> operator is implemented that way. Below is an example how to implement the <em>count()</em> operator that way.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Counter</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">CustomUnaryOperation</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Counter</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">CustomUnaryOperation</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="n">DataSet</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">input</span><span class="o">;</span>
 
@@ -223,10 +73,10 @@ The <em>CustomUnaryOperation</em> interface defines operators by means of the tw
 <span class="o">}</span>
 </code></pre></div>
 <p>The CountOperator can be called in the following way:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">DataSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">lines</span> <span class="o">=</span> <span class="o">...;</span>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">DataSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">lines</span> <span class="o">=</span> <span class="o">...;</span>
 <span class="n">DataSet</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">count</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="na">runOperation</span><span class="o">(</span><span class="k">new</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;());</span>
 </code></pre></div>
-<h2 id="implementing-a-new-runtime-operator">Implementing a new Runtime Operator</h2>
+<h2 id="toc_3">Implementing a new Runtime Operator</h2>
 
 <p>Adding an new runtime operator requires changes throughout the entire stack, from the API to the runtime:</p>
 
@@ -247,7 +97,7 @@ function, but invoked only once per parallel partition.</p>
 <p>The runtime works with the <code>MutableObjectIterator</code>, which describes data streams with the ability to reuse objects, to reduce pressure on the garbage collector.</p>
 
 <p>An implementation of the central <code>run()</code> method for the <em>mapPartition</em> operator could look the following way:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
     <span class="kd">final</span> <span class="n">MutableObjectIterator</span><span class="o">&lt;</span><span class="n">IN</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">taskContext</span><span class="o">.</span><span class="na">getInput</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
     <span class="kd">final</span> <span class="n">MapPartitionFunction</span><span class="o">&lt;</span><span class="n">IN</span><span class="o">,</span> <span class="n">OUT</span><span class="o">&gt;</span> <span class="n">function</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">taskContext</span><span class="o">.</span><span class="na">getStub</span><span class="o">();</span>
     <span class="kd">final</span> <span class="n">Collector</span><span class="o">&lt;</span><span class="n">OUT</span><span class="o">&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">taskContext</span><span class="o">.</span><span class="na">getOutputCollector</span><span class="o">();</span>
@@ -273,13 +123,13 @@ To allow the optimizer to include a new operator in its planning, it needs a bit
 
 <ul>
 <li><p><em><a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-runtime/src/main/java/eu/stratosphere/pact/runtime/task/DriverStrategy.java">DriverStrategy</a></em>: The operation needs to be added to the Enum, to make it available to the optimizer. The parameters to the Enum entry define which class implements the runtime operator, its chained version, whether the operator accumulates records (and needs memory for that), and whether it requires a comparator (works on keys). For our example, we can add the entry</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">MAP_PARTITION</span><span class="o">(</span><span class="n">MapPartitionDriver</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">null</span> <span class="cm">/* or chained variant */</span><span class="o">,</span> <span class="n">PIPELINED</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">MAP_PARTITION</span><span class="o">(</span><span class="n">MapPartitionDriver</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">null</span> <span class="cm">/* or chained variant */</span><span class="o">,</span> <span class="n">PIPELINED</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
 </code></pre></div></li>
 <li><p><em>Cost function</em>: The class <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-compiler/src/main/java/eu/stratosphere/compiler/costs/CostEstimator.java">CostEstimator</a> needs to know how expensive the operation is to the system. The costs here refer to the non-UDF part of the operator. Since the operator does essentially no work (it forwards the record stream to the UDF), the costs are zero. We change the <code>costOperator(...)</code> method by adding the <em>MAP_PARTITION</em> constant to the switch statement similar to the <em>MAP</em> constant such that no cost is accounted for it.</p></li>
 <li><p><em>OperatorDescriptor</em>: The operator descriptors define how an operation needs to be treated by the optimizer. They describe how the operation requires the input data to be (e.g., sorted or partitioned) and that way allows the optimizer to optimize the data movement, sorting, grouping in a global fashion. They do that by describing which <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-compiler/src/main/java/eu/stratosphere/compiler/dataproperties/RequestedGlobalProperties.java">RequestedGlobalProperties</a> (partitioning, replication, etc) and which <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-compiler/src/main/java/eu/stratosphere/compiler/dataproperties/RequestedLocalProperties.java">RequestedLocalProperties</a> (sorting, grouping, uniqueness) the operator has, as well as how the operator affects the existing <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-compiler/src/main/java/eu/stratosphere/compiler/dataproperties/GlobalProperties.java">GlobalProperties</a> and <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-compiler/src/main/java/eu/stratosphere/compiler/dataproperties/LocalProperties.java">LocalProperties</a>. In addition, it defines a few utility methods, for example to instantiate an operator candidate.
 Since the <em>mapPartition()</em> function is very simple (no requirements on partitioning/grouping), the descriptor is very simple. Other operators have more complex requirements, for example the <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-compiler/src/main/java/eu/stratosphere/compiler/operators/GroupReduceProperties.java">GroupReduce</a>. Some operators, like <em>join</em> have multiple ways in which they can be executed and therefore have multiple descriptors (<a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-compiler/src/main/java/eu/stratosphere/compiler/operators/HashJoinBuildFirstProperties.java">Hash Join 1</a>, <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-compiler/src/main/java/eu/stratosphere/compiler/operators/HashJoinBuildSecondProperties.java">Hash Join 2</a>, <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-compiler/src/main/java/eu/stratosphere/compiler/operators/SortMergeJoinDescriptor.java">SortMerge Join</a>).
 The code sample below explains (with comments) how to create a descriptor for the <em>MapPartitionOperator</em></p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">DriverStrategy</span> <span class="nf">getStrategy</span><span class="o">()</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kd">public</span> <span class="n">DriverStrategy</span> <span class="nf">getStrategy</span><span class="o">()</span> <span class="o">{</span>
     <span class="k">return</span> <span class="n">MAP_PARTITION</span><span class="o">;</span>
 <span class="o">}</span>
 
@@ -331,34 +181,7 @@ optimizer.</p>
 <p>Create a Java API operator that is constructed in the same way as the <a href="https://github.com/apache/incubator-flink/blob/master/stratosphere-java/src/main/java/eu/stratosphere/api/java/operators/MapOperator.java">MapOperator</a>. The core method is the <code>translateToDataFlow(...)</code> method, which creates the Common API operator for the Java API operator.</p>
 
 <p>The final step is to add a function to the <code>DataSet</code> class:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span> <span class="n">DataSet</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span> <span class="n">mapPartition</span><span class="o">(</span><span class="n">MapPartitionFunction</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">R</span><span class="o">&gt;</span> <span class="n">function</span><span class="o">)</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kd">public</span> <span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span> <span class="n">DataSet</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span> <span class="n">mapPartition</span><span class="o">(</span><span class="n">MapPartitionFunction</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">R</span><span class="o">&gt;</span> <span class="n">function</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">return</span> <span class="k">new</span> <span class="n">MapPartitionOperator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">R</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">,</span> <span class="n">function</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
-  </div>
-</div>
-
-     <div class="footer">
-
-<hr class="divider">
-
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
-Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
-required of all newly accepted projects until a further review indicates that
-the infrastructure, communications, and decision making process have
-stabilized in a manner consistent with other successful ASF projects. While
-incubation status is not necessarily a reflection of the completeness or
-stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
-
-<p><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
-
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
-
-      </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
-</html>

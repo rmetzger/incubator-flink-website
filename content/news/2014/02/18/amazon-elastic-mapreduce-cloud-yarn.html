@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Apache Flink (incubating): Use Stratosphere with Amazon Elastic MapReduce</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bootstrap.js"></script>
   </head>
@@ -21,28 +21,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+      <a class="navbar-brand" href="/incubator-flink-website/index.html">Apache Flink</a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=""><a href="/index.html">Home</a></li>
+        <li class=""><a href="/incubator-flink-website/index.html">Home</a></li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/scala_api_quickstart.html">Scala API</a></li>
+            <li><a href="/incubator-flink-website/docs/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/incubator-flink-website/docs/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/incubator-flink-website/docs/scala_api_quickstart.html">Scala API</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="/downloads.html" class="">Downloads</a>
+          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
         </li>
 
         <li>
-          <a href="/docs/index.html" class="">Documentation</a>
+          <a href="/incubator-flink-website/docs/index.html" class="">Documentation</a>
         </li>
 
         <li class="dropdown">
@@ -81,11 +81,11 @@
 
 <p>This step-by-step tutorial will guide you through the setup of Stratosphere using Amazon Elastic MapReduce.</p>
 
-<h3 id="background">Background</h3>
+<h3 id="toc_0">Background</h3>
 
-<p><a href="http://aws.amazon.com/elasticmapreduce/">Amazon Elastic MapReduce</a> (Amazon EMR) is part of Amazon Web services. EMR allows to create Hadoop clusters that analyze data stored in Amazon S3 (AWS&#39; cloud storage). Stratosphere runs on top of Hadoop using the <a href="http://hadoop.apache.org/docs/r2.2.0/hadoop-project-dist/hadoop-common/releasenotes.html">recently</a> released cluster resource manager <a href="http://hadoop.apache.org/docs/current2/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a>. YARN allows to use many different data analysis tools in your cluster side by side. Tools that run with YARN are, for example <a href="https://giraph.apache.org/">Apache Giraph</a>, <a href="http://spark.incubator.apache.org/">Spark</a> or <a href="http://hortonworks.com/blog/introducing-hoya-hbase-on-yarn/">HBase</a>. Stratosphere also <a href="/docs/0.4/setup/yarn.html">runs on YARN</a> and that&#39;s the approach for this tutorial.</p>
+<p><a href="http://aws.amazon.com/elasticmapreduce/">Amazon Elastic MapReduce</a> (Amazon EMR) is part of Amazon Web services. EMR allows to create Hadoop clusters that analyze data stored in Amazon S3 (AWS&#39; cloud storage). Stratosphere runs on top of Hadoop using the <a href="http://hadoop.apache.org/docs/r2.2.0/hadoop-project-dist/hadoop-common/releasenotes.html">recently</a> released cluster resource manager <a href="http://hadoop.apache.org/docs/current2/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a>. YARN allows to use many different data analysis tools in your cluster side by side. Tools that run with YARN are, for example <a href="https://giraph.apache.org/">Apache Giraph</a>, <a href="http://spark.incubator.apache.org/">Spark</a> or <a href="http://hortonworks.com/blog/introducing-hoya-hbase-on-yarn/">HBase</a>. Stratosphere also <a href="/incubator-flink-website/docs/0.4/setup/yarn.html">runs on YARN</a> and that&#39;s the approach for this tutorial.</p>
 
-<h3 id="1.-step:-login-to-aws-and-prepare-secure-access">1. Step: Login to AWS and prepare secure access</h3>
+<h3 id="toc_1">1. Step: Login to AWS and prepare secure access</h3>
 
 <ul>
 <li>Log in to the <a href="https://console.aws.amazon.com/console/home">AWS Console</a></li>
@@ -95,7 +95,7 @@
 
 <div class="row" style="padding-top:15px">
     <div class="col-md-6">
-<a data-lightbox="inputs" href="/img/blog/emr-security.png" data-lightbox="example-1"><img class="img-responsive" src="/img/blog/emr-security.png" /></a>
+<a data-lightbox="inputs" href="/incubator-flink-website/img/blog/emr-security.png" data-lightbox="example-1"><img class="img-responsive" src="/incubator-flink-website/img/blog/emr-security.png" /></a>
     </div>
     <div class="col-md-6">
         <ul>
@@ -104,13 +104,14 @@
             <li>After pressing "Yes" it will download a .pem file.</li>
             <li>Change the permissions of the .pem file</li>
 
-<div class="highlight"><pre><code class="bash">chmod og-rwx ~/work-laptop.pem</code></pre></div>
+<div class="highlight"><pre><code class="bash">chmod og-rwx ~/work-laptop.pem 
+</code></pre></div>
 
         </ul>
     </div>
 </div>
 
-<h3 id="2.-step:-create-your-hadoop-cluster-in-the-cloud">2. Step: Create your Hadoop Cluster in the cloud</h3>
+<h3 id="toc_2">2. Step: Create your Hadoop Cluster in the cloud</h3>
 
 <ul>
 <li>Select <a href="https://console.aws.amazon.com/elasticmapreduce/vnext/">Elastic MapReduce</a> from the AWS console</li>
@@ -119,7 +120,7 @@
 
 <div class="row" style="padding-top:15px">
     <div class="col-md-6">
-<a data-lightbox="inputs" href="/img/blog/emr-hadoopversion.png" data-lightbox="example-1"><img class="img-responsive" src="/img/blog/emr-hadoopversion.png" /></a>
+<a data-lightbox="inputs" href="/incubator-flink-website/img/blog/emr-hadoopversion.png" data-lightbox="example-1"><img class="img-responsive" src="/incubator-flink-website/img/blog/emr-hadoopversion.png" /></a>
     </div>
     <div class="col-md-6">
         <ul>
@@ -137,7 +138,7 @@
 <li>Thats it! You can now press the &quot;Create cluster&quot; button at the end of the form to boot it!</li>
 </ul>
 
-<h3 id="3.-step:-launch-stratosphere">3. Step: Launch Stratosphere</h3>
+<h3 id="toc_3">3. Step: Launch Stratosphere</h3>
 
 <p>You might need to wait a few minutes until Amazon started your cluster. (You can monitor the progress of the instances in EC2). Use the refresh button in the top right corner.</p>
 
@@ -145,7 +146,8 @@
 
 <div class="highlight"><pre><code class="bash">ssh hadoop@&lt;your master public DNS&gt; -i &lt;path to your .pem&gt;
 <span class="c"># for my example, it looks like this:</span>
-ssh hadoop@ec2-54-213-61-105.us-west-2.compute.amazonaws.com -i ~/Downloads/work-laptop.pem</code></pre></div>
+ssh hadoop@ec2-54-213-61-105.us-west-2.compute.amazonaws.com -i ~/Downloads/work-laptop.pem
+</code></pre></div>
 
 
 
@@ -156,13 +158,15 @@ Once connected to the master, download and start Stratosphere for YARN:
 
 <div class="highlight"><pre><code class="bash">wget http://stratosphere-bin.s3-website-us-east-1.amazonaws.com/stratosphere-dist-0.5-SNAPSHOT-yarn.tar.gz
 <span class="c"># extract it</span>
-tar xvzf stratosphere-dist-0.5-SNAPSHOT-yarn.tar.gz</code></pre></div>
+tar xvzf stratosphere-dist-0.5-SNAPSHOT-yarn.tar.gz
+</code></pre></div>
 
     <li>Start Stratosphere in the cluster using Hadoop YARN</li>
 
 
 <div class="highlight"><pre><code class="bash"><span class="nb">cd </span>stratosphere-yarn-0.5-SNAPSHOT/
-./bin/yarn-session.sh -n 4 -jm 1024 -tm 3000</code></pre></div>
+./bin/yarn-session.sh -n 4 -jm 1024 -tm 3000
+</code></pre></div>
 
 
 The arguments have the following meaning
@@ -175,11 +179,13 @@ The arguments have the following meaning
 
 Once the output has changed from 
 
-<div class="highlight"><pre><code class="bash">JobManager is now running on N/A:6123</code></pre></div>
+<div class="highlight"><pre><code class="bash">JobManager is now running on N/A:6123
+</code></pre></div>
 
 to 
 
-<div class="highlight"><pre><code class="bash">JobManager is now running on ip-172-31-13-68.us-west-2.compute.internal:6123</code></pre></div>
+<div class="highlight"><pre><code class="bash">JobManager is now running on ip-172-31-13-68.us-west-2.compute.internal:6123
+</code></pre></div>
 
 Stratosphere has started the JobManager. It will take a few seconds until the TaskManagers (workers) have connected to the JobManager. To see how many TaskManagers connected, you have to access the JobManager's web interface. Follow the steps below to do that ...
 
@@ -196,7 +202,8 @@ This step shows how to submit and monitor a Stratosphere Job in the Amazon Cloud
 We recommend to create a SOCKS-proxy with your SSH that allows you to easily connect into the cluster. (If you've already a VPN setup with EC2, you can probably use that as well.)
 
 
-<div class="highlight"><pre><code class="bash">ssh -D localhost:2001 hadoop@&lt;your master dns name&gt; -i &lt;your pem file&gt;</code></pre></div>
+<div class="highlight"><pre><code class="bash">ssh -D localhost:2001 hadoop@&lt;your master dns name&gt; -i &lt;your pem file&gt;
+</code></pre></div>
 
 
 Notice the <code>-D localhost:2001</code> argument: It opens a SOCKS proxy on your computer allowing any application to use it to communicate through the proxy via an SSH tunnel to the master node. This allows you to access all services in your EMR cluster, such as the HDFS NameNode or the YARN web interface.
@@ -205,7 +212,7 @@ Notice the <code>-D localhost:2001</code> argument: It opens a SOCKS proxy on yo
 
 <div class="row" style="padding-top:15px">
     <div class="col-md-6">
-<a data-lightbox="inputs" href="/img/blog/emr-firefoxsettings.png" data-lightbox="example-1"><img class="img-responsive" src="/img/blog/emr-firefoxsettings.png" /></a>
+<a data-lightbox="inputs" href="/incubator-flink-website/img/blog/emr-firefoxsettings.png" data-lightbox="example-1"><img class="img-responsive" src="/incubator-flink-website/img/blog/emr-firefoxsettings.png" /></a>
     </div>
     <div class="col-md-6">
         <ul>
@@ -228,7 +235,8 @@ Notice the <code>-D localhost:2001</code> argument: It opens a SOCKS proxy on yo
 eth0      Link encap:Ethernet  HWaddr 02:CF:8E:CB:28:B2  
           inet addr:172.31.38.95  Bcast:172.31.47.255  Mask:255.255.240.0
           inet6 addr: fe80::cf:8eff:fecb:28b2/64 Scope:Link
-          RX bytes:166314967 <span class="o">(</span>158.6 MiB<span class="o">)</span>  TX bytes:89319246 <span class="o">(</span>85.1 MiB<span class="o">)</span></code></pre></div>
+          RX bytes:166314967 <span class="o">(</span>158.6 MiB<span class="o">)</span>  TX bytes:89319246 <span class="o">(</span>85.1 MiB<span class="o">)</span>
+</code></pre></div>
 
 <p><strong>Optional:</strong> If you want to use the hostnames within your Firefox (that also makes the NameNode links work), you have to enable DNS resolution over the SOCKS proxy. Open the Firefox config <code>about:config</code> and set <code>network.proxy.socks_remote_dns</code> to <code>true</code>.</p>
 
@@ -239,14 +247,16 @@ eth0      Link encap:Ethernet  HWaddr 02:CF:8E:CB:28:B2
 <div class="highlight"><pre><code class="bash"><span class="c"># download a text</span>
 wget http://www.gnu.org/licenses/gpl.txt
 <span class="c"># upload it to HDFS:</span>
-hadoop fs -copyFromLocal gpl.txt /input</code></pre></div>
+hadoop fs -copyFromLocal gpl.txt /input
+</code></pre></div>
 
 <p>To run a Job, enter the following command into the master&#39;s command line:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="c"># optional: go to the extracted directory</span>
 <span class="nb">cd </span>stratosphere-yarn-0.5-SNAPSHOT/
 <span class="c"># run the wordcount example</span>
-./bin/stratosphere run -w -j examples/stratosphere-java-examples-0.5-SNAPSHOT-WordCount.jar  -a 16 hdfs:///input hdfs:///output</code></pre></div>
+./bin/stratosphere run -w -j examples/stratosphere-java-examples-0.5-SNAPSHOT-WordCount.jar  -a 16 hdfs:///input hdfs:///output
+</code></pre></div>
 
 <p>Make sure that the number of TaskManager&#39;s have connected to the JobManager.</p>
 
@@ -262,7 +272,8 @@ hadoop fs -copyFromLocal gpl.txt /input</code></pre></div>
 <p>You can monitor the progress of your job in the JobManager webinterface. Once the job has finished (which should be the case after less than 10 seconds), you can analyze it there.
 Inspect the result in HDFS using:</p>
 
-<div class="highlight"><pre><code class="bash">hadoop fs -tail /output</code></pre></div>
+<div class="highlight"><pre><code class="bash">hadoop fs -tail /output
+</code></pre></div>
 
 <p>If you want to shut down the whole cluster in the cloud, use Amazon&#39;s webinterface and click on &quot;Terminate cluster&quot;. If you just want to stop the YARN session, press CTRL+C in the terminal. The Stratosphere instances will be killed by YARN.</p>
 
@@ -285,14 +296,14 @@ incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
 endorsed by the ASF.</p>
 
-<p><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
+<p><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
 
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+<p class="text-center"><a href="/incubator-flink-website/privacy-policy.html">Privacy Policy<a></p>
 
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="/incubator-flink-website/js/bootstrap.min.js"></script>
   </body>
 </html>
