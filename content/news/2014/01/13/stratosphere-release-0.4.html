@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Apache Flink (incubating): Stratosphere 0.4 Released</title>
-    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
-    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
+    <link rel="stylesheet" href="//css/bootstrap.css">
+    <link rel="stylesheet" href="//css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bootstrap.js"></script>
   </head>
@@ -21,28 +21,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/incubator-flink-website/index.html">Apache Flink</a>
+      <a class="navbar-brand" href="//index.html">Apache Flink</a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=""><a href="/incubator-flink-website/index.html">Home</a></li>
+        <li class=""><a href="//index.html">Home</a></li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/incubator-flink-website/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/incubator-flink-website/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/incubator-flink-website/docs/scala_api_quickstart.html">Scala API</a></li>
+            <li><a href="//docs/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="//docs/java_api_quickstart.html">Java API</a></li>
+            <li><a href="//docs/scala_api_quickstart.html">Scala API</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
+          <a href="//downloads.html" class="">Downloads</a>
         </li>
 
         <li>
-          <a href="/incubator-flink-website/docs/index.html" class="">Documentation</a>
+          <a href="//docs/index.html" class="">Documentation</a>
         </li>
 
         <li class="dropdown">
@@ -81,7 +81,7 @@
 
 <p>Our team has been working hard during the last few months to create an improved and stable Stratosphere version. The new version comes with many new features, usability and performance improvements in all levels, including a new Scala API for the concise specification of programs, a Pregel-like API, support for Yarn clusters, and major performance improvements. The system features now first-class support for iterative programs and thus covers traditional analytical use cases as well as data mining and graph processing use cases with great performance.</p>
 
-<p>In the course of the transition from v0.2 to v0.4 of the system, we have changed pre-existing APIs based on valuable user feedback. This means that, in the interest of easier programming, we have broken backwards compatibility and existing jobs must be adapted, as described in <a href="/incubator-flink-website/blog/tutorial/2014/01/12/0.4-migration-guide.html">the migration guide</a>.</p>
+<p>In the course of the transition from v0.2 to v0.4 of the system, we have changed pre-existing APIs based on valuable user feedback. This means that, in the interest of easier programming, we have broken backwards compatibility and existing jobs must be adapted, as described in <a href="//blog/tutorial/2014/01/12/0.4-migration-guide.html">the migration guide</a>.</p>
 
 <p>This article will guide you through the feature list of the new release.</p>
 
@@ -89,7 +89,7 @@
 
 <p>The new Stratosphere version comes with a new programming API in Scala that supports very fluent and efficient programs that can be expressed with very few lines of code. The API uses Scala&#39;s native type system (no special boxed data types) and supports grouping and joining on types beyond key/value pairs. We use code analysis and code generation to transform Scala&#39;s data model to the Stratosphere runtime. Stratosphere Scala programs are optimized before execution by Stratosphere&#39;s optimizer just like Stratosphere Java programs.</p>
 
-<p>Learn more about the Scala API at the <a href="/incubator-flink-website/docs/0.4/programming_guides/scala.html">Scala Programming Guide</a></p>
+<p>Learn more about the Scala API at the <a href="//docs/0.4/programming_guides/scala.html">Scala Programming Guide</a></p>
 
 <h3 id="toc_1">Iterations</h3>
 
@@ -97,12 +97,12 @@
 
 <p>We support a special form of iterations called “delta iterations” that selectively modify only some elements of intermediate solution in each iteration. These are applicable to a variety of applications, e.g., use cases of Apache Giraph. We have observed speedups of 70x when using delta iterations instead of regular iterations.</p>
 
-<p>Read more about the new iteration feature in <a href="/incubator-flink-website/docs/0.4/programming_guides/iterations.html">the documentation</a></p>
+<p>Read more about the new iteration feature in <a href="//docs/0.4/programming_guides/iterations.html">the documentation</a></p>
 
 <h3 id="toc_2">Hadoop YARN Support</h3>
 
 <p>YARN (Yet Another Resource Negotiator) is the major new feature of the recently announced <a href="http://hadoop.apache.org/docs/r2.2.0/">Hadoop 2.2</a>. It allows to share existing clusters with different runtimes. So you can run MapReduce alongside Storm and others. With the 0.4 release, Stratosphere supports YARN.
-Follow <a href="/incubator-flink-website/docs/0.4/setup/yarn.html">our guide</a> on how to start a Stratosphere YARN session.</p>
+Follow <a href="//docs/0.4/setup/yarn.html">our guide</a> on how to start a Stratosphere YARN session.</p>
 
 <h3 id="toc_3">Improved Scripting Language Meteor</h3>
 
@@ -126,7 +126,7 @@ Follow <a href="/incubator-flink-website/docs/0.4/setup/yarn.html">our guide</a>
 
 <h3 id="toc_8">Local Debugging</h3>
 
-<p>You can now test and debug Stratosphere jobs locally. The <a href="/incubator-flink-website/docs/0.4/program_execution/local_executor.html">LocalExecutor</a> allows to execute Stratosphere Jobs from IDE&#39;s. The same code that runs on clusters also runs in a single JVM multi-threaded. The mode supports full debugging capabilities known from regular applications (placing breakpoints and stepping through the program&#39;s functions). An advanced mode supports simulating fully distributed operation locally.</p>
+<p>You can now test and debug Stratosphere jobs locally. The <a href="//docs/0.4/program_execution/local_executor.html">LocalExecutor</a> allows to execute Stratosphere Jobs from IDE&#39;s. The same code that runs on clusters also runs in a single JVM multi-threaded. The mode supports full debugging capabilities known from regular applications (placing breakpoints and stepping through the program&#39;s functions). An advanced mode supports simulating fully distributed operation locally.</p>
 
 <h3 id="toc_9">Miscellaneous</h3>
 
@@ -146,9 +146,9 @@ Follow <a href="/incubator-flink-website/docs/0.4/setup/yarn.html">our guide</a>
 <p>There are several options for getting started with Stratosphere. </p>
 
 <ul>
-<li>Download it on the <a href="/incubator-flink-website/downloads">download page</a></li>
-<li>Start your program with the <a href="/incubator-flink-website/quickstart/">Quick-start guides</a>.</li>
-<li>Complete <a href="/incubator-flink-website/docs/0.4/">documentation and set-up guides</a></li>
+<li>Download it on the <a href="//downloads">download page</a></li>
+<li>Start your program with the <a href="//quickstart/">Quick-start guides</a>.</li>
+<li>Complete <a href="//docs/0.4/">documentation and set-up guides</a></li>
 </ul>
 
 <h3 id="toc_11">Tell us what you think!</h3>
@@ -175,14 +175,14 @@ incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
 endorsed by the ASF.</p>
 
-<p><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></p>
+<p><img src="//img/apache-incubator-logo.png" alt="Incubator Logo"></p>
 
-<p class="text-center"><a href="/incubator-flink-website/privacy-policy.html">Privacy Policy<a></p>
+<p class="text-center"><a href="//privacy-policy.html">Privacy Policy<a></p>
 
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/incubator-flink-website/js/bootstrap.min.js"></script>
+    <script src="//js/bootstrap.min.js"></script>
   </body>
 </html>

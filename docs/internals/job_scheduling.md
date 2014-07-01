@@ -1,5 +1,0 @@
----
-title:  "Jobs and Scheduling"
----
-
-

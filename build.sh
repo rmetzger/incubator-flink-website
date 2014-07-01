@@ -12,6 +12,10 @@
 # specific language governing permissions and limitations under the License.
 ########################################################################################################################
 
+##
+# Functions
+##
+
 # arguments <branch name> <dirName>
 function checkoutDocsForVersionInBranch() {
 	BRANCH=$1
@@ -41,6 +45,46 @@ function updateDocsDir() {
 	checkoutDocsForVersionInBranch "master" "0.6-SNAPSHOT"
 }
 
+
+# Source: http://stackoverflow.com/a/4025065/568695
+vercomp () {
+    if [[ $1 == $2 ]]
+    then
+        return 0
+    fi
+    local IFS=.
+    local i ver1=($1) ver2=($2)
+    # fill empty fields in ver1 with zeros
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+    do
+        ver1[i]=0
+    done
+    for ((i=0; i<${#ver1[@]}; i++))
+    do
+        if [[ -z ${ver2[i]} ]]
+        then
+            # fill empty fields in ver2 with zeros
+            ver2[i]=0
+        fi
+        if ((10#${ver1[i]} > 10#${ver2[i]}))
+        then
+            return 1
+        fi
+        if ((10#${ver1[i]} < 10#${ver2[i]}))
+        then
+            return 2
+        fi
+    done
+    return 0
+}
+
+
+
+##
+# Main body
+##
+
+
 HAS_JEKYLL=true
 
 command -v jekyll > /dev/null
@@ -49,6 +93,14 @@ if [ $? -ne 0 ]; then
 	echo "Please install with 'gem install jekyll' (see http://jekyllrb.com)."
 
 	HAS_JEKYLL=false
+fi
+
+JEKYLL_VERSION=`jekyll --version | cut -d' ' -f2`
+vercomp $JEKYLL_VERSION "2.1.0"
+
+if [ "$?" == "2" ]; then
+	echo "Please use at least jekyll version 2.1.0 instead of '$JEKYLL_VERSION'"
+	exit 1
 fi
 
 command -v redcarpet > /dev/null
@@ -90,9 +142,13 @@ while getopts ":up" opt; do
 done
 
 # integrate documentation
-cat _config.yml docs/*/_config.yml > _config.generated.yml
+
+#docs/*/_config.yml
+cat  _config.yml > _config.generated.yml
 
 if $HAS_JEKYLL; then
 	jekyll ${JEKYLL_CMD} --config _config.generated.yml --source ${SRC} --destination ${DST}
 fi
+
+
 
