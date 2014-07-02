@@ -15,15 +15,25 @@ layout: with_toc
 		<th class="text-center">Archive</th>
 	</thead>
 	<tr>
-		<td class="text-center"><strong>Dev</strong></td>
+		<td>
+			<strong>dev</strong>@flink.incubator.apache.org<br>
+			<small>Development related discussion and user support</small>
+		</td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:dev-subscribe@flink.incubator.apache.org">Subscribe</a></td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:dev-digest-subscribe@stratosphere.incubator.apache.org">Subscribe</a></td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:dev-unsubscribe@flink.incubator.apache.org">Unsubscribe</a></td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:dev@flink.incubator.apache.org">Post</a></td>
-		<td class="text-center"><a href="http://mail-archives.apache.org/mod_mbox/flink-dev/">Archives</a></td>
+		<td class="text-center">
+			<a href="http://mail-archives.apache.org/mod_mbox/flink-dev/">Archives</a> <br>
+			<a href="http://apache-flink-incubator-mailing-list-archive.1008284.n3.nabble.com/">Nabble Archive</a>
+		</td>
 	</tr>
 	<tr>
-		<td class="text-center"><strong>Issues</strong></td>
+		<td>
+			<strong>issues</strong>@flink.incubator.apache.org
+			<br>
+			<small>Mirror of all JIRA activity</small>
+		</td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:issues-subscribe@flink.incubator.apache.org">Subscribe</a></td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:issues-digest-subscribe@flink.incubator.apache.org">Subscribe</a></td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:issues-unsubscribe@flink.incubator.apache.org">Unsubscribe</a></td>
@@ -31,7 +41,11 @@ layout: with_toc
 		<td class="text-center"><a href="http://mail-archives.apache.org/mod_mbox/flink-issues/">Archives</a></td>
 	</tr>
 	<tr>
-		<td class="text-center"><strong>Commits</strong></td>
+		<td>
+			<strong>commits</strong>@flink.incubator.apache.org
+			<br>
+			<small>All commits to our Git (code) and SVN (website) repositories</small>
+		</td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:commits-subscribe@flink.incubator.apache.org">Subscribe</a></td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:commits-digest-subscribe@flink.incubator.apache.org">Subscribe</a></td>
 		<td class="text-center"><i class="fa fa-pencil-square-o"></i> <a href="mailto:commits-unsubscribe@flink.incubator.apache.org">Unsubscribe</a></td>
@@ -46,58 +60,103 @@ We use JIRA to track all code related issues: {{ site.FLINK_ISSUES_URL }}.
 
 All issue activity is also mirrored to the issues mailing list.
 
-# Committers
+# Team
 
-The following is a list of Flink committers, who have contributed to the project:
+The following is a list of Flink team:
 
 <table class="table table-striped">
 	<thead>
 		<th class="text-center"></th>
 		<th class="text-center">Name</th>
+		<th class="text-center">Role</th>
 		<th class="text-center">Apache ID</th>
 	</thead>
 		<tr>
 		<td class="text-center" width="10%"><img src="https://avatars3.githubusercontent.com/u/1756620?s=50"></a></td>
 		<td class="text-center">Ufuk Celebi</td>
+		<td class="text-center">PPMC</td>
 		<td class="text-center">uce</td>
+	</tr>
+	<tr>
+		<td class="text-center"></td>
+		<td class="text-center">Ashutosh Chauhan</td>
+		<td class="text-center">Mentor</td>
+		<td class="text-center">hashutosh</td>
+	</tr>
+	<tr>
+		<td class="text-center"></td>
+		<td class="text-center">Ted Dunning</td>
+		<td class="text-center">Mentor</td>
+		<td class="text-center">tdunning</td>
 	</tr>
 	<tr>
 		<td class="text-center"><img src="https://avatars2.githubusercontent.com/u/1727146?s=50"></td>
 		<td class="text-center">Stephan Ewen</td>
+		<td class="text-center">PPMC</td>
 		<td class="text-center">sewen</td>
+	</tr>
+	<tr>
+		<td class="text-center"></td>
+		<td class="text-center">Alan Gates</td>
+		<td class="text-center">Mentor</td>
+		<td class="text-center">gates</td>
 	</tr>
 	<tr>
 		<td class="text-center"><img src="https://avatars0.githubusercontent.com/u/2388347?s=50"></td>
 		<td class="text-center">Fabian Hueske</td>
+		<td class="text-center">PPMC</td>
 		<td class="text-center">fhueske</td>
 	</tr>
 		<tr>
 		<td class="text-center"><img src="https://avatars0.githubusercontent.com/u/68551?s=50"></td>
 		<td class="text-center">Aljoscha Krettek</td>
+		<td class="text-center">PPMC</td>
 		<td class="text-center">aljoscha</td>
 	</tr>
 	<tr>
 		<td class="text-center"><img src="https://avatars0.githubusercontent.com/u/89049?s=50"></td>
 		<td class="text-center">Robert Metzger</td>
+		<td class="text-center">PPMC</td>
 		<td class="text-center">rmetzger</td>
+	</tr>
+	</tr>
+		<tr>
+		<td class="text-center"></td>
+		<td class="text-center">Owen O'Malley</td>
+		<td class="text-center">Mentor</td>
+		<td class="text-center">omalley</td>
+	</tr>
+	<tr>
+		<td class="text-center"></td>
+		<td class="text-center">Sean Owen</td>
+		<td class="text-center">Mentor</td>
+		<td class="text-center">srowen</td>
+	</tr>
+	<tr>
+		<td class="text-center"></td>
+		<td class="text-center">Henry Saputra</td>
+		<td class="text-center">Mentor</td>
+		<td class="text-center">hsaputra</td>
 	</tr>
 	<tr>
 		<td class="text-center"><img src="https://avatars1.githubusercontent.com/u/409707?s=50"></td>
 		<td class="text-center">Sebastian Schelter</td>
+		<td class="text-center">PPMC</td>
 		<td class="text-center">ssc</td>
 	</tr>
 	<tr>
 		<td class="text-center"><img src="https://avatars2.githubusercontent.com/u/1925554?s=50"></td>
 		<td class="text-center">Kostas Tzoumas</td>
+		<td class="text-center">PPMC</td>
 		<td class="text-center">ktzoumas</td>
 	</tr>
 	<tr>
 		<td class="text-center"><img src="https://avatars1.githubusercontent.com/u/1826769?s=50"></td>
 		<td class="text-center">Daniel Warneke</td>
+		<td class="text-center">PPMC</td>
 		<td class="text-center">warneke</td>
 	</tr>
 </table>
 
-You can reach committers directly at `<apache-id>@apache.org`. A complete list of contributors is found at.
+You can reach committers directly at `<apache-id>@apache.org`. A list of all contributors can be found in the {% gh_link CONTRIBUTORS master %} file.
 
-A list of all contributors can be found in the {% gh_link CONTRIBUTORS master %} file.

@@ -12,41 +12,41 @@
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="{% if page.url contains '{{ site.baseurl }}/index.html' %}active{% endif %}"><a href="{{ site.baseurl }}/index.html">Home</a></li>
-
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ site.baseurl }}/docs/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="{{ site.baseurl }}/docs/java_api_quickstart.html">Java API</a></li>
-            <li><a href="{{ site.baseurl }}/docs/scala_api_quickstart.html">Scala API</a></li>
+            <li><a href="{{ site.baseurl }}/docs/{{ site.FLINK_CURRENT_DOCUMENTATION }}/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="{{ site.baseurl }}/docs/{{ site.FLINK_CURRENT_DOCUMENTATION }}/java_api_quickstart.html">Java API</a></li>
+            <li><a href="{{ site.baseurl }}/docs/{{ site.FLINK_CURRENT_DOCUMENTATION }}/scala_api_quickstart.html">Scala API</a></li>
           </ul>
         </li>
 
-        <li>
-          <a href="{{ site.baseurl }}/downloads.html" class="{% if page.url contains 'downloads.html' %}active{% endif %}">Downloads</a>
-        </li>
-
-        <li>
-          <a href="{{ site.baseurl }}/docs/index.html" class="{% if page.url contains 'docs/' %}active{% endif %}">Documentation</a>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ site.baseurl }}/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
+            <li><a href="{{ site.baseurl }}/docs/0.5/">0.5</a></li>
+            <li><a href="http://stratosphere-javadocs.github.io/">0.6-SNAPSHOT Javadocs</a></li>
+          </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle{% if page.url contains 'community.html' %} active{% endif %}" data-toggle="dropdown">Community <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="community.html#issues">Issues</a></li>
-            <li><a href="community.html#committers">Committers</a></li>
+            <li><a href="{{ site.baseurl }}/community.html#mailing-lists">Mailing Lists</a></li>
+            <li><a href="{{ site.baseurl }}/community.html#issues">Issues</a></li>
+            <li><a href="{{ site.baseurl }}/community.html#team">Team</a></li>
             <li class="divider"></li>
-            <li><a href="how-to-contribute.html">How To Contribute</a></li>
+            <li><a href="{{ site.baseurl }}/how-to-contribute.html">How To Contribute</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle{% if page.url contains 'project.html' %} active{% endif %}" data-toggle="dropdown">Project <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="project.html#history">History</a></li>
-            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal</a></li>
+            <li><a href="{{ site.baseurl }}/asf.html">Apache Software Foundation</a></li>
+            <!--<li><a href="{{ site.baseurl }}/project.html#history">History</a></li> -->
+            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal (external)</a></li>
             <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
             <li><a href="{{ site.FLINK_GITHUB_URL }}">Source Code</a></li>
           </ul>

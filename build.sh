@@ -23,7 +23,7 @@ function checkoutDocsForVersionInBranch() {
 	echo "Checking out docs from branch '$BRANCH' into dir '$DIR' "
 
 	cd flink-src-repo
-	git checkout origin/$BRANCH #this will be different soon
+	#git checkout origin/$BRANCH #this will be different soon
 	cd ..
 	mkdir -p docs/$DIR/
 	cp -r flink-src-repo/docs/* docs/$DIR/
@@ -33,7 +33,7 @@ function checkoutDocsForVersionInBranch() {
 function updateDocsDir() {
 	echo "Clone if necessary"
 	if [ ! -d "flink-src-repo" ]; then
-		git clone https://github.com/apache/incubator-flink.git flink-src-repo
+		git clone https://github.com/skunert/incubator-flink.git flink-src-repo
 	fi
 	echo "Fetch rep"
 	cd flink-src-repo
@@ -41,8 +41,8 @@ function updateDocsDir() {
 	cd ..
 
 	echo "Create docs for versions"
-	checkoutDocsForVersionInBranch "master" "0.5"
-	checkoutDocsForVersionInBranch "master" "0.6-SNAPSHOT"
+	checkoutDocsForVersionInBranch "docs_improvements" "0.5"
+	checkoutDocsForVersionInBranch "docs_improvements" "0.6-SNAPSHOT"
 }
 
 
@@ -144,7 +144,8 @@ done
 # integrate documentation
 
 #docs/*/_config.yml
-cat  _config.yml > _config.generated.yml
+
+# cat  _config.yml > _config.generated.yml
 
 if $HAS_JEKYLL; then
 	jekyll ${JEKYLL_CMD} --config _config.generated.yml --source ${SRC} --destination ${DST}

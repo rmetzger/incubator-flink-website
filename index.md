@@ -11,8 +11,7 @@ title: "Home"
         <button type="button" class="btn btn-primary btn-lg">
           <i class="fa fa-download"></i> Download {{ site.FLINK_VERSION_STABLE }}<br/>
           (Pre Apache)
-        </button>
-      </a>
+        </button></a>
 
        <a href="{{ site.FLINK_GITHUB_URL }}">
           <button type="button" class="btn btn-info btn-lg">
@@ -25,8 +24,7 @@ title: "Home"
       <a href="community.html#mailing-lists">
         <button type="button" class="btn btn-default btn-lg">
           <i class="fa fa-send"></i> Mailing Lists
-        </button>
-      </a>
+        </button></a>
 
       <a href="{{ site.FLINK_ISSUES_URL }} ">
         <button type="button" class="btn btn-default btn-lg">
@@ -46,7 +44,7 @@ title: "Home"
 
     <hr class="divider">
 
-    <h1>What is Apache Flink?</h1>
+    <h1>Project Overview</h1>
 
     <p>Flink features powerful programming abstractions in Java and Scala, a high-performance runtime, and automatic program optimization. It has native support for iterations, incremental iterations, and programs consisting of large DAGs of operations.</p>
 
@@ -66,9 +64,9 @@ complex tasks efficiently.
       </div>
       <div class="col-md-6">
 {% highlight java %}
-DataSet<String> input = env.readTextFile(inputPath)
+DataSet<String> input = env.readTextFile(inputPath);
 
-input.flatmap(new FlatMapFunction() {
+input.flatMap(new FlatMapFunction() {
    public void flatMap(String value, Collector out) {
        for (String s : value.split(" ")) {
            out.collect(new Tuple2<String, Long>(s, 1L);
@@ -100,8 +98,8 @@ distributed over many machines.
 
 Flink runs independently from Hadoop, but integrates
 seamlessly with YARN (Hadoop's next-generation scheduler).
-Various differnt file systems (including the Hadoop Distributed
-File System, HDFS) can act as data sources.
+Various file systems (including the Hadoop Distributed
+File System) can act as data sources.
 {% endmarkdown %}
       </div>
       <div class="col-md-6">
