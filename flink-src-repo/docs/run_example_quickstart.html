@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apache Flink (incubating): Quick Start: Run K-Means Example</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="bootstrap.js"></script>
+  </head>
+  <body>
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
+            <li><a href="/docs/0.5/">0.5</a></li>
+            <li><a href="http://stratosphere-javadocs.github.io/">0.6-SNAPSHOT Javadocs</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/community.html#mailing-lists">Mailing Lists</a></li>
+            <li><a href="/community.html#issues">Issues</a></li>
+            <li><a href="/community.html#team">Team</a></li>
+            <li class="divider"></li>
+            <li><a href="/how-to-contribute.html">How To Contribute</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/asf.html">Apache Software Foundation</a></li>
+            <!--<li><a href="/project.html#history">History</a></li> -->
+            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal (external)</a></li>
+            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
+            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="container">
+
+<p>This guide will Peter demonstrate Stratosphere&#39;s features by example. You will see how you can leverage Stratosphere&#39;s Iteration-feature to find clusters in a dataset using <a href="http://en.wikipedia.org/wiki/K-means_clustering">K-Means clustering</a>. 
+On the way, you will see the compiler, the status interface and the result of the algorithm.</p>
+
+<h1 id="generate-input-data">Generate Input Data</h1>
+
+<p>Stratosphere contains a data generator for K-Means.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># Download Stratosphere
+wget 
+tar xzf stratosphere-*.tgz 
+cd stratosphere-*
+mkdir kmeans
+cd kmeans
+# Run data generator
+java -cp  ../examples/stratosphere-java-examples--KMeans.jar eu.stratosphere.example.java.clustering.util.KMeansDataGenerator 500 10 0.08
+cp /tmp/points .
+cp /tmp/centers .
+</code></pre></div>
+<p>The generator has the following arguments:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">KMeansDataGenerator &lt;numberOfDataPoints&gt; &lt;numberOfClusterCenters&gt; [&lt;relative stddev&gt;] [&lt;centroid range&gt;] [&lt;seed&gt;]
+</code></pre></div>
+<p>The <em>relative standard deviation</em> is an interesting tuning parameter: it determines the closeness of the points to the centers.</p>
+
+<p>The <code>kmeans/</code> directory should now contain two files: <code>centers</code> and <code>points</code>.</p>
+
+<h1 id="review-input-data">Review Input Data</h1>
+
+<p>Use the <code>plotPoints.py</code> tool to review the result of the data generator. <a href="quickstart/plotPoints.py">Download Python Script</a></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">python2.7 plotPoints.py points points input
+</code></pre></div>
+<p>Note: You might have to install <a href="http://matplotlib.org/">matplotlib</a> (<code>python-matplotlib</code> package on Ubuntu) to use the Python script.</p>
+
+<p>The following overview presents the impact of the different standard deviations on the input data.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">relative stddev = 0.03</th>
+<th style="text-align: center">relative stddev = 0.08</th>
+<th style="text-align: center">relative stddev = 0.15</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><img src="img/quickstart-example/kmeans003.png" alt="example1" style="width: 275px;"/></td>
+<td style="text-align: center"><img src="img/quickstart-example/kmeans008.png" alt="example2" style="width: 275px;"/></td>
+<td style="text-align: center"><img src="img/quickstart-example/kmeans015.png" alt="example3" style="width: 275px;"/></td>
+</tr>
+</tbody></table>
+
+<h1 id="run-clustering">Run Clustering</h1>
+
+<p>We are using the generated input data to run the clustering using a Stratosphere job.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># go to the Stratosphere-root directory
+cd stratosphere
+# start Stratosphere (use ./bin/start-cluster.sh if you&#39;re on a cluster)
+./bin/start-local.sh
+# Start Stratosphere web client
+./bin/start-webclient.sh
+</code></pre></div>
+<h1 id="review-stratosphere-compiler">Review Stratosphere Compiler</h1>
+
+<p>The Stratosphere webclient allows to submit Stratosphere programs using a graphical user interface.</p>
+
+<div class="row" style="padding-top:15px">
+    <div class="col-md-6">
+        <a data-lightbox="compiler" href="/img/quickstart-example/run-webclient.png" data-lightbox="example-1"><img class="img-responsive" src="/img/quickstart-example/run-webclient.png" /></a>
+    </div>
+    <div class="col-md-6">
+        1. <a href="http://localhost:8080/launch.html">Open webclient on localhost:8080</a> <br>
+        2. Upload the file. 
+            
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">examples/stratosphere-java-examples-0.5-SNAPSHOT-KMeansIterative.jar</code></pre></div>
+ </br>
+        3. Select it in the left box to see how the operators in the plan are connected to each other. <br>
+        4. Enter the arguments in the lower left box:
+            
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">file://&lt;pathToGenerated&gt;points file://&lt;pathToGenerated&gt;centers file://&lt;pathToGenerated&gt;result 10</code></pre></div>
+
+            For example:
+            
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">file:///tmp/stratosphere/kmeans/points file:///tmp/stratosphere/kmeans/centers file:///tmp/stratosphere/kmeans/result 20</code></pre></div>
+
+    </div>
+</div>
+
+<hr>
+
+<div class="row" style="padding-top:15px">
+    <div class="col-md-6">
+        <a data-lightbox="compiler" href="/img/quickstart-example/compiler-webclient-new.png" data-lightbox="example-1"><img class="img-responsive" src="/img/quickstart-example/compiler-webclient-new.png" /></a>
+    </div>
+
+    <div class="col-md-6">
+        1. Press the <b>RunJob</b> to see the optimzer plan. <br>
+        2. Inspect the operators and see the properties (input sizes, cost estimation) determined by the optimizer.
+    </div>
+</div>
+
+<hr>
+
+<div class="row" style="padding-top:15px">
+    <div class="col-md-6">
+        <a data-lightbox="compiler" href="/img/quickstart-example/jobmanager-running-new.png" data-lightbox="example-1"><img class="img-responsive" src="/img/quickstart-example/jobmanager-running-new.png" /></a>
+    </div>
+    <div class="col-md-6">
+        1. Press the <b>Continue</b> button to start executing the job. <br>
+        2. <a href="http://localhost:8080/launch.html">Open Stratosphere's monitoring interface</a> to see the job's progress.<br>
+        3. Once the job has finished, you can analyize the runtime of the individual operators.
+    </div>
+</div>
+
+<h1 id="analyze-the-result">Analyze the Result</h1>
+
+<p>Use the <a href="/quickstart/plotPoints.py">Python Script</a> again to visualize the result</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">python2.7 plotPoints.py result result result-pdf
+</code></pre></div>
+<p>The following three pictures show the results for the sample input above. Play around with the parameters (number of iterations, number of clusters) to see how they affect the result.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">relative stddev = 0.03</th>
+<th style="text-align: center">relative stddev = 0.08</th>
+<th style="text-align: center">relative stddev = 0.15</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><img src="img/quickstart-example/result003.png" alt="example1" style="width: 275px;"/></td>
+<td style="text-align: center"><img src="img/quickstart-example/result008.png" alt="example2" style="width: 275px;"/></td>
+<td style="text-align: center"><img src="img/quickstart-example/result015.png" alt="example3" style="width: 275px;"/></td>
+</tr>
+</tbody></table>
+
+
+     <div class="footer">
+
+<hr class="divider">
+
+<p>Apache Flink is an effort undergoing incubation at The Apache Software
+Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
+required of all newly accepted projects until a further review indicates that
+the infrastructure, communications, and decision making process have
+stabilized in a manner consistent with other successful ASF projects. While
+incubation status is not necessarily a reflection of the completeness or
+stability of the code, it does indicate that the project has yet to be fully
+endorsed by the ASF.</p>
+
+<p><a href="http://incubator.apache.org/"><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
+
+<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

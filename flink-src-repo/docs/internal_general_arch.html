@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apache Flink (incubating): General Architecture and Process Model</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="bootstrap.js"></script>
+  </head>
+  <body>
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
+            <li><a href="/docs/0.5/">0.5</a></li>
+            <li><a href="http://stratosphere-javadocs.github.io/">0.6-SNAPSHOT Javadocs</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/community.html#mailing-lists">Mailing Lists</a></li>
+            <li><a href="/community.html#issues">Issues</a></li>
+            <li><a href="/community.html#team">Team</a></li>
+            <li class="divider"></li>
+            <li><a href="/how-to-contribute.html">How To Contribute</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/asf.html">Apache Software Foundation</a></li>
+            <!--<li><a href="/project.html#history">History</a></li> -->
+            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal (external)</a></li>
+            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
+            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="container">
+
+<h2 id="the-processes">The Processes</h2>
+
+<p>When the Flink system is started, it bring up the <em>JobManager</em> and one or more <em>TaskManagers</em>. The JobManager
+is the coordinator of the Flink system, while the TaskManagers are the worksers that execute parts of the
+parallel programs. When starting the systen in <em>local</em> mode, a single JobManager and TaskManager are brought
+up within the same JVM.</p>
+
+<p>When a program is submitted, a client is created that performs the pre-processing and turns the program
+into the parallel data flow form that is executed by the JobManager and TaskManagers. The figure below
+illustrates the different actors in the system very coarsely.</p>
+
+<div style="text-align: center;">
+<img src="ClientJmTm.svg" alt="The Interactions between Client, JobManager and TaskManager" height="400px" style="text-align: center;"/>
+</div>
+
+<h2 id="component-stack">Component Stack</h2>
+
+<p>An alternative view on the system is given by the stack below. The different layers of the stack build on
+top of each other and raise the abstraction level of the program representations they accept:</p>
+
+<ul>
+<li><p>The <strong>runtime</strong> layer receive a program in the form of a <em>JobGraph</em>. A JobGraph is a generic parallel
+data flow with arbitrary tasks that consume and produce data streams.</p></li>
+<li><p>The <strong>optimizer</strong> and <strong>common api</strong> layer takes programs in the form of operator DAGs. The operators are
+specific (e.g., Map, Join, Filter, Reduce, ...), but are data type agnostic. The concrete types and their
+interaction with the runtime is specified by the higher layers.</p></li>
+<li><p>The <strong>API layer</strong> implements multiple APIs that create operator DAGs for their programs. Each API needs
+to provide utilities (serializers, comparators) that describe the interaction between its data types and
+the runtime.</p></li>
+</ul>
+
+<div style="text-align: center;">
+<img src="stack.svg" alt="The Flink component stack" width="800px" />
+</div>
+
+<h2 id="projects-and-dependencies">Projects and Dependencies</h2>
+
+<p>The Flink system code is divided into multiple sub-projects. The goal is to reduce the number of
+dependencies that a project implementing a Flink progam needs, as well as to faciltate easier testing
+of smaller sub-modules.</p>
+
+<p>The individual projects and their dependencies are shown in the figure below.</p>
+
+<div style="text-align: center;">
+<img src="projects_dependencies.svg" alt="The Flink sub-projects and their dependencies" height="600px" style="text-align: center;"/>
+</div>
+
+<p>In addition to the projects listed in the figure above, Flink currently contains the following sub-projects:</p>
+
+<ul>
+<li><p><code>flink-dist</code>: The <em>distribution</em> project. It defines how to assemble the compiled code, scripts, and other resources
+into the final folder structure that is ready to use.</p></li>
+<li><p><code>flink-addons</code>: A series of projects that are in an early version. Currently contains
+among other things projects for YARN support, JDBC data sources and sinks, hadoop compatibility,
+graph specific operators, and HBase connectors.</p></li>
+<li><p><code>flink-quickstart</code>: Scripts, maven archetypes, and example programs for the quickstarts and tutorials.</p></li>
+</ul>
+
+
+     <div class="footer">
+
+<hr class="divider">
+
+<p>Apache Flink is an effort undergoing incubation at The Apache Software
+Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
+required of all newly accepted projects until a further review indicates that
+the infrastructure, communications, and decision making process have
+stabilized in a manner consistent with other successful ASF projects. While
+incubation status is not necessarily a reflection of the completeness or
+stability of the code, it does indicate that the project has yet to be fully
+endorsed by the ASF.</p>
+
+<p><a href="http://incubator.apache.org/"><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
+
+<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

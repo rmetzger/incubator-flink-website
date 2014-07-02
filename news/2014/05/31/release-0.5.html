@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apache Flink (incubating): Stratosphere version 0.5 available</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="bootstrap.js"></script>
+  </head>
+  <body>
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
+            <li><a href="/docs/0.5/">0.5</a></li>
+            <li><a href="http://stratosphere-javadocs.github.io/">0.6-SNAPSHOT Javadocs</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/community.html#mailing-lists">Mailing Lists</a></li>
+            <li><a href="/community.html#issues">Issues</a></li>
+            <li><a href="/community.html#team">Team</a></li>
+            <li class="divider"></li>
+            <li><a href="/how-to-contribute.html">How To Contribute</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/asf.html">Apache Software Foundation</a></li>
+            <!--<li><a href="/project.html#history">History</a></li> -->
+            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal (external)</a></li>
+            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
+            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="container">
+
+<article>
+  <h2>Stratosphere version 0.5 available</h2>
+  <p class="meta">31 May 2014</p>
+    
+  <div>
+<p>We are happy to announce a new major Stratosphere release, version 0.5. This release adds many new features and improves the interoperability, stability, and performance of the system. The major theme of the release is the completely new Java API that makes it easy to write powerful distributed programs.</p>
+
+<p>The release can be downloaded from the <a href="http://stratosphere.eu/downloads/">Stratosphere website</a> and from <a href="https://github.com/stratosphere/stratosphere/releases/tag/release-0.5">GitHub</a>. All components are available as Apache Maven dependencies, making it simple to include Stratosphere in other projects. The website provides <a href="http://stratosphere.eu/docs/0.5/">extensive documentation</a> of the system and the new features.</p>
+
+<h2 id="shortlist-of-new-features">Shortlist of new Features</h2>
+
+<p>Below is a short list of the most important additions to the Stratosphere system.</p>
+
+<h4 id="new-java-api">New Java API</h4>
+
+<p>This release introduces a completely new <strong>data set-centric Java API</strong>. This programming model significantly eases the development of Stratosphere programs, supports flexible use of regular Java classes as data types, and adds many new built-in operators to simplify the writing of powerful programs. The result are programs that need less code, are more readable, interoperate better with existing code, and execute faster.</p>
+
+<p>Take a look at the <a href="http://stratosphere.eu/docs/0.5/programming_guides/examples_java.html">examples</a>  to get a feel for the API.</p>
+
+<h4 id="general-api-improvements">General API Improvements</h4>
+
+<p><strong>Broadcast Variables:</strong> Publish a data set to all instances of another operator. This is handy if the your operator depends on the result of a computation, e.g., filter all values smaller than the average.</p>
+
+<p><strong>Distributed Cache:</strong> Make (local and HDFS) files locally available on each machine processing a task.</p>
+
+<p><strong>Iteration Termination Improvements</strong> Iterative algorithms can now terminate based on intermediate data sets, not only through aggregated statistics.</p>
+
+<p><strong>Collection data sources and sinks:</strong> Speed-up the development and testing of Stratosphere programs by reading data from regular Java collections and inserting back into them.</p>
+
+<p><strong>JDBC data sources and sinks:</strong> Read data from and write data to relational databases using a JDBC driver.</p>
+
+<p><strong>Hadoop input format and output format support:</strong> Read and write data with any Hadoop input or output format.</p>
+
+<p><strong>Support for Avro encoded data:</strong> Read data that has been materialized using Avro.</p>
+
+<p><strong>Deflate Files:</strong> Stratosphere now transparently reads <code>.deflate</code> compressed files.</p>
+
+<h4 id="runtime-and-optimizer-improvements">Runtime and Optimizer Improvements</h4>
+
+<p><strong>DAG Runtime Streaming:</strong> Detection and resolution of streaming data flow deadlocks in the data flow optimizer.</p>
+
+<p><strong>Intermediate results across iteration boundaries:</strong> Intermediate results computed outside iterative parts can be used inside iterative parts of the program.</p>
+
+<p><strong>Stability fixes:</strong> Various stability fixes in both optimizer and runtime.</p>
+
+<h4 id="setup-&amp;-tooling">Setup &amp; Tooling</h4>
+
+<p><strong>Improved YARN support:</strong> Many improvements based on user-feedback: Packaging, Permissions, Error handling.</p>
+
+<p><strong>Java 8 compatibility</strong></p>
+
+<h2 id="contributors">Contributors</h2>
+
+<p>In total, 26 people have contributed to Stratosphere since the last release. Thank you for making this project possible!</p>
+
+<ul>
+<li>Alexander Alexandrov</li>
+<li>Jesus Camacho</li>
+<li>Ufuk Celebi</li>
+<li>Mikhail Erofeev</li>
+<li>Stephan Ewen</li>
+<li>Alexandr Ferodov</li>
+<li>Filip Haase</li>
+<li>Jonathan Hasenberg</li>
+<li>Markus Holzemer</li>
+<li>Fabian Hueske</li>
+<li>Vasia Kalavri</li>
+<li>Aljoscha Krettek</li>
+<li>Rajika Kumarasiri</li>
+<li>Sebastian Kunert</li>
+<li>Aaron Lam</li>
+<li>Robert Metzger</li>
+<li>Faisal Moeen</li>
+<li>Martin Neumann</li>
+<li>Mingliang Qi</li>
+<li>Till Rohrmann</li>
+<li>Chesnay Schepler</li>
+<li>Vyachislav Soludev</li>
+<li>Tuan Trieu</li>
+<li>Artem Tsikiridis</li>
+<li>Timo Walther</li>
+<li>Robert Waury</li>
+</ul>
+
+<h2 id="stratosphere-is-going-apache">Stratosphere is going Apache</h2>
+
+<p>The Stratosphere project has been accepted to the Apache Incubator and will continue its work under the umbrella of the Apache Software Foundation. Due to a name conflict, we are switching the name of the project. We will make future releases of Stratosphere through the Apache foundation under a new name.</p>
+
+  </div>
+</article>
+
+     <div class="footer">
+
+<hr class="divider">
+
+<p>Apache Flink is an effort undergoing incubation at The Apache Software
+Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
+required of all newly accepted projects until a further review indicates that
+the infrastructure, communications, and decision making process have
+stabilized in a manner consistent with other successful ASF projects. While
+incubation status is not necessarily a reflection of the completeness or
+stability of the code, it does indicate that the project has yet to be fully
+endorsed by the ASF.</p>
+
+<p><a href="http://incubator.apache.org/"><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
+
+<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

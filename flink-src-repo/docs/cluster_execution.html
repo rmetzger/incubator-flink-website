@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apache Flink (incubating): Cluster Execution</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="bootstrap.js"></script>
+  </head>
+  <body>
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
+            <li><a href="/docs/0.5/">0.5</a></li>
+            <li><a href="http://stratosphere-javadocs.github.io/">0.6-SNAPSHOT Javadocs</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/community.html#mailing-lists">Mailing Lists</a></li>
+            <li><a href="/community.html#issues">Issues</a></li>
+            <li><a href="/community.html#team">Team</a></li>
+            <li class="divider"></li>
+            <li><a href="/how-to-contribute.html">How To Contribute</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/asf.html">Apache Software Foundation</a></li>
+            <!--<li><a href="/project.html#history">History</a></li> -->
+            <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal (external)</a></li>
+            <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
+            <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="container">
+
+<p>Stratosphere programs can run distributed on clusters of many machines. There
+are two ways to send a program to a cluster for execution:</p>
+
+<h1 id="command-line-interface">Command Line Interface</h1>
+
+<p>The command line interface lets you submit packaged programs (JARs) to a cluster
+(or single machine setup).</p>
+
+<p>Please refer to the <a href="cli.html">Command Line Interface</a> documentation for
+details.</p>
+
+<h1 id="remote-environment">Remote Environment</h1>
+
+<p>The remote environment lets you execute Stratosphere Java programs on a cluster
+directly. The remote environment points to the cluster on which you want to
+execute the program.</p>
+
+<h2 id="maven-dependency">Maven Dependency</h2>
+
+<p>If you are developing your program as a Maven project, you have to add the
+<code>stratosphere-clients</code> module using this dependency:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>stratosphere-clients<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<h2 id="example">Example</h2>
+
+<p>The following illustrates the use of the <code>RemoteEnvironment</code>:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="n">ExecutionEnvironment</span> <span class="n">env</span> <span class="o">=</span> <span class="n">ExecutionEnvironment</span>
+        <span class="o">.</span><span class="na">createRemoteEnvironment</span><span class="o">(</span><span class="s">&quot;strato-master&quot;</span><span class="o">,</span> <span class="s">&quot;7661&quot;</span><span class="o">,</span> <span class="s">&quot;/home/user/udfs.jar&quot;</span><span class="o">);</span>
+
+    <span class="n">DataSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="na">readTextFile</span><span class="o">(</span><span class="s">&quot;hdfs://path/to/file&quot;</span><span class="o">);</span>
+
+    <span class="n">data</span>
+        <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="k">new</span> <span class="n">FilterFunction</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">filter</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;http://&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">})</span>
+        <span class="o">.</span><span class="na">writeAsText</span><span class="o">(</span><span class="s">&quot;hdfs://path/to/result&quot;</span><span class="o">);</span>
+
+    <span class="n">env</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Note that the program contains custom UDFs and hence requires a JAR file with
+the classes of the code attached. The constructor of the remote environment
+takes the path(s) to the JAR file(s).</p>
+
+<h1 id="remote-executor">Remote Executor</h1>
+
+<p>Similar to the RemoteEnvironment, the RemoteExecutor lets you execute
+Stratosphere programs on a cluster directly. The remote executor accepts a
+<em>Plan</em> object, which describes the program as a single executable unit.</p>
+
+<h2 id="maven-dependency">Maven Dependency</h2>
+
+<p>If you are developing your program in a Maven project, you have to add the
+<code>stratosphere-clients</code> module using this dependency:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>stratosphere-clients<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<h2 id="example">Example</h2>
+
+<p>The following illustrates the use of the <code>RemoteExecutor</code> with the Scala API:</p>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">input</span> <span class="k">=</span> <span class="nc">TextFile</span><span class="o">(</span><span class="s">&quot;hdfs://path/to/file&quot;</span><span class="o">)</span>
+
+    <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">input</span> <span class="n">flatMap</span> <span class="o">{</span> <span class="k">_</span><span class="o">.</span><span class="n">toLowerCase</span><span class="o">().</span><span class="n">split</span><span class="o">(</span><span class="s">&quot;&quot;&quot;\W+&quot;&quot;&quot;</span><span class="o">)</span> <span class="n">filter</span> <span class="o">{</span> <span class="k">_</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> <span class="o">}</span> <span class="o">}</span>
+    <span class="k">val</span> <span class="n">counts</span> <span class="k">=</span> <span class="n">words</span> <span class="n">groupBy</span> <span class="o">{</span> <span class="n">x</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">}</span> <span class="n">count</span><span class="o">()</span>
+
+    <span class="k">val</span> <span class="n">output</span> <span class="k">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="n">wordsOutput</span><span class="o">,</span> <span class="nc">CsvOutputFormat</span><span class="o">())</span>
+
+    <span class="k">val</span> <span class="n">plan</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ScalaPlan</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="n">output</span><span class="o">),</span> <span class="s">&quot;Word Count&quot;</span><span class="o">)</span>
+    <span class="k">val</span> <span class="n">executor</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">RemoteExecutor</span><span class="o">(</span><span class="s">&quot;strato-master&quot;</span><span class="o">,</span> <span class="mi">7881</span><span class="o">,</span> <span class="s">&quot;/path/to/jarfile.jar&quot;</span><span class="o">)</span>
+    <span class="n">executor</span><span class="o">.</span><span class="n">executePlan</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The following illustrates the use of the <code>RemoteExecutor</code> with the Java API (as
+an alternative to the RemoteEnvironment):</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="n">ExecutionEnvironment</span> <span class="n">env</span> <span class="o">=</span> <span class="n">ExecutionEnvironment</span><span class="o">.</span><span class="na">getExecutionEnvironment</span><span class="o">();</span>
+
+    <span class="n">DataSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="na">readTextFile</span><span class="o">(</span><span class="s">&quot;hdfs://path/to/file&quot;</span><span class="o">);</span>
+
+    <span class="n">data</span>
+        <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="k">new</span> <span class="n">FilterFunction</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">filter</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;http://&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">})</span>
+        <span class="o">.</span><span class="na">writeAsText</span><span class="o">(</span><span class="s">&quot;hdfs://path/to/result&quot;</span><span class="o">);</span>
+
+    <span class="n">Plan</span> <span class="n">p</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="na">createProgramPlan</span><span class="o">();</span>
+    <span class="n">RemoteExecutor</span> <span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">RemoteExecutor</span><span class="o">(</span><span class="s">&quot;strato-master&quot;</span><span class="o">,</span> <span class="mi">7881</span><span class="o">,</span> <span class="s">&quot;/path/to/jarfile.jar&quot;</span><span class="o">);</span>
+    <span class="n">e</span><span class="o">.</span><span class="na">executePlan</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Note that the program contains custom UDFs and hence requires a JAR file with
+the classes of the code attached. The constructor of the remote executor takes
+the path(s) to the JAR file(s).</p>
+
+
+     <div class="footer">
+
+<hr class="divider">
+
+<p>Apache Flink is an effort undergoing incubation at The Apache Software
+Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
+required of all newly accepted projects until a further review indicates that
+the infrastructure, communications, and decision making process have
+stabilized in a manner consistent with other successful ASF projects. While
+incubation status is not necessarily a reflection of the completeness or
+stability of the code, it does indicate that the project has yet to be fully
+endorsed by the ASF.</p>
+
+<p><a href="http://incubator.apache.org/"><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
+
+<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>
