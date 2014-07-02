@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Apache Flink (incubating): Use Stratosphere with Amazon Elastic MapReduce</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bootstrap.js"></script>
   </head>
@@ -21,7 +21,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+      <a class="navbar-brand" href="/incubator-flink-website/index.html">Apache Flink</a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -29,17 +29,17 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
-            <li><a href="/docs/0.5/">0.5</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
+            <li><a href="/incubator-flink-website/docs/0.5/">0.5</a></li>
             <li><a href="http://stratosphere-javadocs.github.io/">0.6-SNAPSHOT Javadocs</a></li>
           </ul>
         </li>
@@ -47,19 +47,19 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="/community.html#issues">Issues</a></li>
-            <li><a href="/community.html#team">Team</a></li>
+            <li><a href="/incubator-flink-website/community.html#mailing-lists">Mailing Lists</a></li>
+            <li><a href="/incubator-flink-website/community.html#issues">Issues</a></li>
+            <li><a href="/incubator-flink-website/community.html#team">Team</a></li>
             <li class="divider"></li>
-            <li><a href="/how-to-contribute.html">How To Contribute</a></li>
+            <li><a href="/incubator-flink-website/how-to-contribute.html">How To Contribute</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/asf.html">Apache Software Foundation</a></li>
-            <!--<li><a href="/project.html#history">History</a></li> -->
+            <li><a href="/incubator-flink-website/asf.html">Apache Software Foundation</a></li>
+            <!--<li><a href="/incubator-flink-website/project.html#history">History</a></li> -->
             <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal (external)</a></li>
             <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
             <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
@@ -83,7 +83,7 @@
 
 <h3 id="background">Background</h3>
 
-<p><a href="http://aws.amazon.com/elasticmapreduce/">Amazon Elastic MapReduce</a> (Amazon EMR) is part of Amazon Web services. EMR allows to create Hadoop clusters that analyze data stored in Amazon S3 (AWS&#39; cloud storage). Stratosphere runs on top of Hadoop using the <a href="http://hadoop.apache.org/docs/r2.2.0/hadoop-project-dist/hadoop-common/releasenotes.html">recently</a> released cluster resource manager <a href="http://hadoop.apache.org/docs/current2/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a>. YARN allows to use many different data analysis tools in your cluster side by side. Tools that run with YARN are, for example <a href="https://giraph.apache.org/">Apache Giraph</a>, <a href="http://spark.incubator.apache.org/">Spark</a> or <a href="http://hortonworks.com/blog/introducing-hoya-hbase-on-yarn/">HBase</a>. Stratosphere also <a href="/docs/0.4/setup/yarn.html">runs on YARN</a> and that&#39;s the approach for this tutorial.</p>
+<p><a href="http://aws.amazon.com/elasticmapreduce/">Amazon Elastic MapReduce</a> (Amazon EMR) is part of Amazon Web services. EMR allows to create Hadoop clusters that analyze data stored in Amazon S3 (AWS&#39; cloud storage). Stratosphere runs on top of Hadoop using the <a href="http://hadoop.apache.org/docs/r2.2.0/hadoop-project-dist/hadoop-common/releasenotes.html">recently</a> released cluster resource manager <a href="http://hadoop.apache.org/docs/current2/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a>. YARN allows to use many different data analysis tools in your cluster side by side. Tools that run with YARN are, for example <a href="https://giraph.apache.org/">Apache Giraph</a>, <a href="http://spark.incubator.apache.org/">Spark</a> or <a href="http://hortonworks.com/blog/introducing-hoya-hbase-on-yarn/">HBase</a>. Stratosphere also <a href="/incubator-flink-website/docs/0.4/setup/yarn.html">runs on YARN</a> and that&#39;s the approach for this tutorial.</p>
 
 <h3 id="1.-step:-login-to-aws-and-prepare-secure-access">1. Step: Login to AWS and prepare secure access</h3>
 
@@ -95,7 +95,7 @@
 
 <div class="row" style="padding-top:15px">
     <div class="col-md-6">
-<a data-lightbox="inputs" href="/img/blog/emr-security.png" data-lightbox="example-1"><img class="img-responsive" src="/img/blog/emr-security.png" /></a>
+<a data-lightbox="inputs" href="/incubator-flink-website/img/blog/emr-security.png" data-lightbox="example-1"><img class="img-responsive" src="/incubator-flink-website/img/blog/emr-security.png" /></a>
     </div>
     <div class="col-md-6">
         <ul>
@@ -119,7 +119,7 @@
 
 <div class="row" style="padding-top:15px">
     <div class="col-md-6">
-<a data-lightbox="inputs" href="/img/blog/emr-hadoopversion.png" data-lightbox="example-1"><img class="img-responsive" src="/img/blog/emr-hadoopversion.png" /></a>
+<a data-lightbox="inputs" href="/incubator-flink-website/img/blog/emr-hadoopversion.png" data-lightbox="example-1"><img class="img-responsive" src="/incubator-flink-website/img/blog/emr-hadoopversion.png" /></a>
     </div>
     <div class="col-md-6">
         <ul>
@@ -205,7 +205,7 @@ Notice the <code>-D localhost:2001</code> argument: It opens a SOCKS proxy on yo
 
 <div class="row" style="padding-top:15px">
     <div class="col-md-6">
-<a data-lightbox="inputs" href="/img/blog/emr-firefoxsettings.png" data-lightbox="example-1"><img class="img-responsive" src="/img/blog/emr-firefoxsettings.png" /></a>
+<a data-lightbox="inputs" href="/incubator-flink-website/img/blog/emr-firefoxsettings.png" data-lightbox="example-1"><img class="img-responsive" src="/incubator-flink-website/img/blog/emr-firefoxsettings.png" /></a>
     </div>
     <div class="col-md-6">
         <ul>
@@ -285,14 +285,14 @@ incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
 endorsed by the ASF.</p>
 
-<p><a href="http://incubator.apache.org/"><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
+<p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+<p class="text-center"><a href="/incubator-flink-website/privacy-policy.html">Privacy Policy<a></p>
 
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="/incubator-flink-website/js/bootstrap.min.js"></script>
   </body>
 </html>

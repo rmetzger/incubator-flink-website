@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Apache Flink (incubating): Java API Programming Guide</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bootstrap.js"></script>
   </head>
@@ -21,7 +21,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+      <a class="navbar-brand" href="/incubator-flink-website/index.html">Apache Flink</a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -29,17 +29,17 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
-            <li><a href="/docs/0.5/">0.5</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
+            <li><a href="/incubator-flink-website/docs/0.5/">0.5</a></li>
             <li><a href="http://stratosphere-javadocs.github.io/">0.6-SNAPSHOT Javadocs</a></li>
           </ul>
         </li>
@@ -47,19 +47,19 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="/community.html#issues">Issues</a></li>
-            <li><a href="/community.html#team">Team</a></li>
+            <li><a href="/incubator-flink-website/community.html#mailing-lists">Mailing Lists</a></li>
+            <li><a href="/incubator-flink-website/community.html#issues">Issues</a></li>
+            <li><a href="/incubator-flink-website/community.html#team">Team</a></li>
             <li class="divider"></li>
-            <li><a href="/how-to-contribute.html">How To Contribute</a></li>
+            <li><a href="/incubator-flink-website/how-to-contribute.html">How To Contribute</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/asf.html">Apache Software Foundation</a></li>
-            <!--<li><a href="/project.html#history">History</a></li> -->
+            <li><a href="/incubator-flink-website/asf.html">Apache Software Foundation</a></li>
+            <!--<li><a href="/incubator-flink-website/project.html#history">History</a></li> -->
             <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal (external)</a></li>
             <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
             <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
@@ -406,7 +406,7 @@
 
 <p>To write programs with Stratosphere, you need to include Stratosphere’s Java API library in your project.</p>
 
-<p>The simplest way to do this is to use the <a href="/quickstart/java.html">quickstart scripts</a>. They create a blank project from a template (a Maven Archetype), which sets up everything for you. To manually create the project, you can use the archetype and create a project by calling:</p>
+<p>The simplest way to do this is to use the <a href="/incubator-flink-website/quickstart/java.html">quickstart scripts</a>. They create a blank project from a template (a Maven Archetype), which sets up everything for you. To manually create the project, you can use the archetype and create a project by calling:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">mvn archetype:generate /
     -DarchetypeGroupId<span class="o">=</span>eu.stratosphere /
     -DarchetypeArtifactId<span class="o">=</span>quickstart-java /
@@ -424,10 +424,10 @@
   <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></div>
-<p>In order to link against the latest SNAPSHOT versions of the code, please follow <a href="/downloads/#nightly">this guide</a>.</p>
+<p>In order to link against the latest SNAPSHOT versions of the code, please follow <a href="/incubator-flink-website/downloads/#nightly">this guide</a>.</p>
 
 <p>The <em>stratosphere-clients</em> dependency is only necessary to invoke the Stratosphere program locally (for example to run it standalone for testing and debugging). 
-If you intend to only export the program as a JAR file and <a href="/docs/0.5/program_execution/cluster_execution.html">run it on a cluster</a>, you can skip that dependency.</p>
+If you intend to only export the program as a JAR file and <a href="/incubator-flink-website/docs/0.5/program_execution/cluster_execution.html">run it on a cluster</a>, you can skip that dependency.</p>
 
 <p><a href="#top">Back to top</a></p>
 
@@ -464,8 +464,8 @@ obtain one using these static methods on class <code>ExecutionEnvironment</code>
 will do the right thing depending on the context: if you are executing
 your program inside an IDE or as a regular Java program it will create
 a local environment that will execute your program on your local machine. If
-you created a JAR file from you program, and invoke it through the <a href="/docs/0.5/program_execution/cli_client.html">command line</a>
-or the <a href="/docs/0.5/program_execution/web_interface.html">web interface</a>,
+you created a JAR file from you program, and invoke it through the <a href="/incubator-flink-website/docs/0.5/program_execution/cli_client.html">command line</a>
+or the <a href="/incubator-flink-website/docs/0.5/program_execution/web_interface.html">web interface</a>,
 the Stratosphere cluster manager will
 execute your main method and <code>getExecutionEnvironment()</code> will return
 an execution environment for executing your program on a cluster.</p>
@@ -1418,7 +1418,7 @@ A LocalEnvironment is created and used as follows:
 
 <p>Iterations implement loops in Stratosphere programs. The iteration operators encapsulate a part of the program and execute it repeatedly, feeding back the result of one iteration (the partial solution) into the next iteration. There are two types of iterations in Stratosphere: <strong>BulkIteration</strong> and <strong>DeltaIteration</strong>.</p>
 
-<p>This section provides quick examples on how to use both operators. Check out the <a href="/docs/0.5/programming_guides/iterations.html">Introduction to Iterations</a> page for a more detailed introduction.</p>
+<p>This section provides quick examples on how to use both operators. Check out the <a href="/incubator-flink-website/docs/0.5/programming_guides/iterations.html">Introduction to Iterations</a> page for a more detailed introduction.</p>
 
 <h4 id="bulk-iterations">Bulk Iterations</h4>
 
@@ -1461,7 +1461,7 @@ A LocalEnvironment is created and used as follows:
 
 <p>Delta iterations exploit the fact that certain algorithms do not change every data point of the solution in each iteration.</p>
 
-<p>In addition to the partial solution that is fed back (called workset) in every iteration, delta iterations maintain state across iterations (called solution set), which can be updated through deltas. The result of the iterative computation is the state after the last iteration. Please refer to the <a href="/docs/0.5/programming_guides/iterations.html">Introduction to Iterations</a> for an overview of the basic principle of delta iterations.</p>
+<p>In addition to the partial solution that is fed back (called workset) in every iteration, delta iterations maintain state across iterations (called solution set), which can be updated through deltas. The result of the iterative computation is the state after the last iteration. Please refer to the <a href="/incubator-flink-website/docs/0.5/programming_guides/iterations.html">Introduction to Iterations</a> for an overview of the basic principle of delta iterations.</p>
 
 <p>Defining a DeltaIteration is similar to defining a BulkIteration. For delta iterations, two data sets form the input to each iteration (workset and solution set), and two data sets are produced as the result (new workset, solution set delta) in each iteration.</p>
 
@@ -1570,7 +1570,7 @@ for auxiliary data sets, or data-dependent parameterization. The data set will t
 
 <h2 id="program-packaging-&amp;-distributed-execution">Program Packaging &amp; Distributed Execution</h2>
 
-<p>As described in the <a href="#skeleton">program skeleton</a> section, Stratosphere programs can be executed on clusters by using the <code>RemoteEnvironment</code>. Alternatively, programs can be packaged into JAR Files (Java Archives) for execution. Packaging the program is a prerequisite to executing them through the <a href="/docs/0.5/program_execution/cli_client.html">command line interface</a> or the <a href="/docs/0.5/program_execution/web_interface.html">web interface</a>.</p>
+<p>As described in the <a href="#skeleton">program skeleton</a> section, Stratosphere programs can be executed on clusters by using the <code>RemoteEnvironment</code>. Alternatively, programs can be packaged into JAR Files (Java Archives) for execution. Packaging the program is a prerequisite to executing them through the <a href="/incubator-flink-website/docs/0.5/program_execution/cli_client.html">command line interface</a> or the <a href="/incubator-flink-website/docs/0.5/program_execution/web_interface.html">web interface</a>.</p>
 
 <h4 id="packaging-programs">Packaging Programs</h4>
 
@@ -1588,7 +1588,7 @@ for auxiliary data sets, or data-dependent parameterization. The data set will t
 
 <ol>
 <li>The JAR&#39;s manifest is searched for a <em>main-class</em> or <em>program-class</em> attribute. If both attributes are found, the <em>program-class</em> attribute takes precedence over the <em>main-class</em> attribute. Both the command line and the web interface support a parameter to pass the entry point class name manually for cases where the JAR manifest contains neither attribute.</li>
-<li>If the entry point class implements the <code>eu.stratosphere.api.common.Program</code>, then the system calls the <code>getPlan(String...)</code> method to obtain the program plan to execute. The <code>getPlan(String...)</code> method was the only possible way of defining a program in the <em>Record API</em> (see <a href="/docs/0.4/">0.4 docs</a>) and is also supported in the new Java API.</li>
+<li>If the entry point class implements the <code>eu.stratosphere.api.common.Program</code>, then the system calls the <code>getPlan(String...)</code> method to obtain the program plan to execute. The <code>getPlan(String...)</code> method was the only possible way of defining a program in the <em>Record API</em> (see <a href="/incubator-flink-website/docs/0.4/">0.4 docs</a>) and is also supported in the new Java API.</li>
 <li>If the entry point class does not implement the <code>eu.stratosphere.api.common.Program</code> interface, the system will invoke the main method of the class.</li>
 </ol>
 
@@ -1691,14 +1691,14 @@ incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
 endorsed by the ASF.</p>
 
-<p><a href="http://incubator.apache.org/"><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
+<p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+<p class="text-center"><a href="/incubator-flink-website/privacy-policy.html">Privacy Policy<a></p>
 
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="/incubator-flink-website/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Apache Flink (incubating): YARN Setup</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-lumen-custom.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
+    <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bootstrap.js"></script>
   </head>
@@ -21,7 +21,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/index.html">Apache Flink</a>
+      <a class="navbar-brand" href="/incubator-flink-website/index.html">Apache Flink</a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -29,17 +29,17 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quickstart <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
-            <li><a href="/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
-            <li><a href="/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/setup_quickstart.html">Setup Flink</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
-            <li><a href="/docs/0.5/">0.5</a></li>
+            <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/">0.6-SNAPSHOT</a></li>
+            <li><a href="/incubator-flink-website/docs/0.5/">0.5</a></li>
             <li><a href="http://stratosphere-javadocs.github.io/">0.6-SNAPSHOT Javadocs</a></li>
           </ul>
         </li>
@@ -47,19 +47,19 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/community.html#mailing-lists">Mailing Lists</a></li>
-            <li><a href="/community.html#issues">Issues</a></li>
-            <li><a href="/community.html#team">Team</a></li>
+            <li><a href="/incubator-flink-website/community.html#mailing-lists">Mailing Lists</a></li>
+            <li><a href="/incubator-flink-website/community.html#issues">Issues</a></li>
+            <li><a href="/incubator-flink-website/community.html#team">Team</a></li>
             <li class="divider"></li>
-            <li><a href="/how-to-contribute.html">How To Contribute</a></li>
+            <li><a href="/incubator-flink-website/how-to-contribute.html">How To Contribute</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/asf.html">Apache Software Foundation</a></li>
-            <!--<li><a href="/project.html#history">History</a></li> -->
+            <li><a href="/incubator-flink-website/asf.html">Apache Software Foundation</a></li>
+            <!--<li><a href="/incubator-flink-website/project.html#history">History</a></li> -->
             <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal (external)</a></li>
             <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
             <li><a href="https://github.com/apache/incubator-flink">Source Code</a></li>
@@ -181,7 +181,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 <li>HDFS</li>
 </ul>
 
-<p>If you have troubles using the Stratosphere YARN client, have a look in the <a href="/docs/0.5/general/faq.html">FAQ section</a>.</p>
+<p>If you have troubles using the Stratosphere YARN client, have a look in the <a href="/incubator-flink-website/docs/0.5/general/faq.html">FAQ section</a>.</p>
 
 <h2 id="start-stratosphere-session">Start Stratosphere Session</h2>
 
@@ -191,7 +191,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 
 <h3 id="download-stratosphere-for-yarn">Download Stratosphere for YARN</h3>
 
-<p>Download the YARN tgz package on the <a href="/downloads/#nightly">download page</a>. It contains the required files.</p>
+<p>Download the YARN tgz package on the <a href="/incubator-flink-website/downloads/#nightly">download page</a>. It contains the required files.</p>
 
 <p>If you want to build the YARN .tgz file from sources, follow the build instructions. Make sure to use the <code>-Dhadoop.profile=2</code> profile. You can find the file in <code>stratosphere-dist/target/stratosphere-dist--yarn.tar.gz</code> (<em>Note: The version might be different for you</em> ).</p>
 
@@ -221,7 +221,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 <p><strong>Example:</strong> Issue the following command to allocate 10 TaskTrackers, with 8 GB of memory each:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">./bin/yarn-session.sh -n <span class="m">10</span> -tm 8192
 </code></pre></div>
-<p>The system will use the configuration in <code>conf/stratosphere-config.yaml</code>. Please follow our <a href="/docs/0.5/setup/config.html">configuration guide</a> if you want to change something. Stratosphere on YARN will overwrite the following configuration parameters <code>jobmanager.rpc.address</code> (because the JobManager is always allocated at different machines) and <code>taskmanager.tmp.dirs</code> (we are using the tmp directories given by YARN).</p>
+<p>The system will use the configuration in <code>conf/stratosphere-config.yaml</code>. Please follow our <a href="/incubator-flink-website/docs/0.5/setup/config.html">configuration guide</a> if you want to change something. Stratosphere on YARN will overwrite the following configuration parameters <code>jobmanager.rpc.address</code> (because the JobManager is always allocated at different machines) and <code>taskmanager.tmp.dirs</code> (we are using the tmp directories given by YARN).</p>
 
 <p>The example invocation starts 11 containers, since there is one additional container for the ApplicationMaster and JobTracker.</p>
 
@@ -241,7 +241,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 <p>Use the following command to submit a Stratosphere program to the YARN cluster:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">./bin/stratosphere
 </code></pre></div>
-<p>Please refer to the documentation of the <a href="/docs/0.5/program_execution/cli_client.html">commandline client</a>.</p>
+<p>Please refer to the documentation of the <a href="/incubator-flink-website/docs/0.5/program_execution/cli_client.html">commandline client</a>.</p>
 
 <p>The command will show you a help menu like this:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>...<span class="o">]</span>
@@ -334,14 +334,14 @@ incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
 endorsed by the ASF.</p>
 
-<p><a href="http://incubator.apache.org/"><img src="/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
+<p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 
-<p class="text-center"><a href="/privacy-policy.html">Privacy Policy<a></p>
+<p class="text-center"><a href="/incubator-flink-website/privacy-policy.html">Privacy Policy<a></p>
 
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="/incubator-flink-website/js/bootstrap.min.js"></script>
   </body>
 </html>
