@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
   </head>
   <body>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -33,6 +32,14 @@
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/docs/0.5/faq.html" class="">FAQ</a>
         </li>
 
         <li class="dropdown">
@@ -75,9 +82,9 @@
 <h1 id="in-a-nutshell">In a Nutshell</h1>
 
 <p>Start YARN session with 4 Taskmanagers (each with 4 GB of Heapspace):</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget 
-tar xvzf stratosphere-dist--yarn.tar.gz
-<span class="nb">cd </span>stratosphere-yarn-/
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget https://github.com/stratosphere/stratosphere/releases/download/release-0.5.1/stratosphere-bin-0.5.1-yarn.tar.gz
+tar xvzf stratosphere-dist-0.5.1-yarn.tar.gz
+<span class="nb">cd </span>stratosphere-yarn-0.5.1/
 ./bin/yarn-session.sh -n <span class="m">4</span> -jm <span class="m">1024</span> -tm 4096
 </code></pre></div>
 <h1 id="introducing-yarn">Introducing YARN</h1>
@@ -91,7 +98,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 <li>HDFS</li>
 </ul>
 
-<p>If you have troubles using the Stratosphere YARN client, have a look in the <a href="/incubator-flink-website/docs/0.5/general/faq.html">FAQ section</a>.</p>
+<p>If you have troubles using the Stratosphere YARN client, have a look in the <a href="faq.html">FAQ section</a>.</p>
 
 <h2 id="start-stratosphere-session">Start Stratosphere Session</h2>
 
@@ -101,13 +108,13 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 
 <h3 id="download-stratosphere-for-yarn">Download Stratosphere for YARN</h3>
 
-<p>Download the YARN tgz package on the <a href="/incubator-flink-website/downloads/#nightly">download page</a>. It contains the required files.</p>
+<p>Download the YARN tgz package on the <a href="downloads/#nightly">download page</a>. It contains the required files.</p>
 
-<p>If you want to build the YARN .tgz file from sources, follow the build instructions. Make sure to use the <code>-Dhadoop.profile=2</code> profile. You can find the file in <code>stratosphere-dist/target/stratosphere-dist--yarn.tar.gz</code> (<em>Note: The version might be different for you</em> ).</p>
+<p>If you want to build the YARN .tgz file from sources, follow the build instructions. Make sure to use the <code>-Dhadoop.profile=2</code> profile. You can find the file in <code>stratosphere-dist/target/stratosphere-dist-0.5.1-yarn.tar.gz</code> (<em>Note: The version might be different for you</em> ).</p>
 
 <p>Extract the package using:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">tar xvzf stratosphere-dist--yarn.tar.gz
-<span class="nb">cd </span>stratosphere-yarn-/
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">tar xvzf stratosphere-dist-0.5.1-yarn.tar.gz
+<span class="nb">cd </span>stratosphere-yarn-0.5.1/
 </code></pre></div>
 <h3 id="start-a-session">Start a Session</h3>
 
@@ -131,7 +138,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 <p><strong>Example:</strong> Issue the following command to allocate 10 TaskTrackers, with 8 GB of memory each:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">./bin/yarn-session.sh -n <span class="m">10</span> -tm 8192
 </code></pre></div>
-<p>The system will use the configuration in <code>conf/stratosphere-config.yaml</code>. Please follow our <a href="/incubator-flink-website/docs/0.5/setup/config.html">configuration guide</a> if you want to change something. Stratosphere on YARN will overwrite the following configuration parameters <code>jobmanager.rpc.address</code> (because the JobManager is always allocated at different machines) and <code>taskmanager.tmp.dirs</code> (we are using the tmp directories given by YARN).</p>
+<p>The system will use the configuration in <code>conf/stratosphere-config.yaml</code>. Please follow our <a href="config.html">configuration guide</a> if you want to change something. Stratosphere on YARN will overwrite the following configuration parameters <code>jobmanager.rpc.address</code> (because the JobManager is always allocated at different machines) and <code>taskmanager.tmp.dirs</code> (we are using the tmp directories given by YARN).</p>
 
 <p>The example invocation starts 11 containers, since there is one additional container for the ApplicationMaster and JobTracker.</p>
 
@@ -151,7 +158,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 <p>Use the following command to submit a Stratosphere program to the YARN cluster:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">./bin/stratosphere
 </code></pre></div>
-<p>Please refer to the documentation of the <a href="/incubator-flink-website/docs/0.5/program_execution/cli_client.html">commandline client</a>.</p>
+<p>Please refer to the documentation of the <a href="cli.html">commandline client</a>.</p>
 
 <p>The command will show you a help menu like this:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>...<span class="o">]</span>
@@ -169,7 +176,7 @@ Action <span class="s2">&quot;run&quot;</span> compiles and submits a Stratosphe
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">wget -O apache-license-v2.txt http://www.apache.org/licenses/LICENSE-2.0.txt
 
-./bin/stratosphere run -j ./examples/stratosphere-java-examples--WordCount.jar <span class="se">\</span>
+./bin/stratosphere run -j ./examples/stratosphere-java-examples-0.5.1-WordCount.jar <span class="se">\</span>
                        -a <span class="m">1</span> file://<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/apache-license-v2.txt file://<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/wordcount-result.txt 
 </code></pre></div>
 <p>If there is the following error, make sure that all TaskManagers started:</p>
@@ -205,7 +212,7 @@ The problem is that Stratosphere uses HDFS and YARN which are both from Apache H
 </code></pre></div>
 <p>Some Cloudera versions (such as <code>2.0.0-cdh4.2.0</code>) require this, since they have a new HDFS version with the old YARN API.</p>
 
-<p>Please post to the <a href="https://groups.google.com/d/forum/stratosphere-dev">Stratosphere mailinglist</a> or create an issue on <a href="https://github.com/stratosphere/stratosphere/issues">Github</a>, if you have issues with your YARN setup and Stratosphere.</p>
+<p>Please post to the <em>Stratosphere mailinglist</em>(<a href="mailto:dev@flink.incubator.apache.org">dev@flink.incubator.apache.org</a>) or create an issue on <a href="https://issues.apache.org/jira/browse/FLINK">Jira</a>, if you have issues with your YARN setup and Stratosphere.</p>
 
 <h1 id="background">Background</h1>
 
@@ -233,14 +240,14 @@ The problem is that Stratosphere uses HDFS and YARN which are both from Apache H
 
 <hr class="divider">
 
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
+<p><small>Apache Flink is an effort undergoing incubation at The Apache Software
 Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
 required of all newly accepted projects until a further review indicates that
 the infrastructure, communications, and decision making process have
 stabilized in a manner consistent with other successful ASF projects. While
 incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
+endorsed by the ASF.</small></p>
 
 <p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 

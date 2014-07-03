@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
   </head>
   <body>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -33,6 +32,14 @@
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/docs/0.5/faq.html" class="">FAQ</a>
         </li>
 
         <li class="dropdown">
@@ -89,10 +96,10 @@
 
 <p><div class="tab-content text-center">
    <div class="tab-pane active" id="bin-hadoop1">
-     <a class="btn btn-info btn-lg" onclick="_gaq.push(['_trackEvent','Action','download-quickstart-setup-1',this.href]);" href=""><i class="icon-download"> </i> Download Stratosphere for Hadoop 1.2</a>
+     <a class="btn btn-info btn-lg" onclick="_gaq.push(['_trackEvent','Action','download-quickstart-setup-1',this.href]);" href="https://github.com/stratosphere/stratosphere/releases/download/release-0.5.1/stratosphere-bin-0.5.1.tgz"><i class="icon-download"> </i> Download Stratosphere for Hadoop 1.2</a>
    </div>
    <div class="tab-pane" id="bin-hadoop2">
-     <a class="btn btn-info btn-lg" onclick="_gaq.push(['_trackEvent','Action','download-quickstart-setup-2',this.href]);" href=""><i class="icon-download"> </i> Download Stratosphere for Hadoop 2 (YARN)</a>
+     <a class="btn btn-info btn-lg" onclick="_gaq.push(['_trackEvent','Action','download-quickstart-setup-2',this.href]);" href="https://github.com/stratosphere/stratosphere/releases/download/release-0.5.1/stratosphere-bin-0.5.1-hadoop2.tgz"><i class="icon-download"> </i> Download Stratosphere for Hadoop 2</a>
    </div>
  </div>
 </p></p>
@@ -123,13 +130,13 @@
 $ wget -O hamlet.txt http://www.gutenberg.org/cache/epub/1787/pg1787.txt
 </code></li>
 <li>You now have a text file called <em>hamlet.txt</em> in your working directory.</li>
-<li><strong>Start the example program</strong>:
-<code>bash
-$ bin/stratosphere run \
---jarfile ./examples/stratosphere-java-examples--WordCount.jar \
---arguments file://`pwd`/hamlet.txt file://`pwd`/wordcount-result.txt
-</code></li>
-<li>You will find a file called <strong>wordcount-result.txt</strong> in your current directory.</li>
+<li><p><strong>Start the example program</strong>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bin/stratosphere run <span class="se">\</span>
+--jarfile ./examples/stratosphere-java-examples-0.5.1-WordCount.jar <span class="se">\</span>
+
+--arguments file://<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/hamlet.txt file://<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/wordcount-result.txt
+</code></pre></div></li>
+<li><p>You will find a file called <strong>wordcount-result.txt</strong> in your current directory.</p></li>
 </ul>
 
 <h1 id="cluster-setup">Cluster Setup</h1>
@@ -148,7 +155,7 @@ $ bin/stratosphere run \
 
 <div class="row">
   <div class="col-md-6 text-center">
-    <img src="/incubator-flink-websiteimg/quickstart_cluster.png" style="width: 85%">
+    <img src="img/quickstart_cluster.png" style="width: 85%">
   </div>
 <div class="col-md-6">
   <div class="row">
@@ -162,8 +169,7 @@ $ bin/stratosphere run \
     /path/to/<strong>stratosphere/<br>conf/slaves</strong>
   <pre>
     10.0.0.2
-    10.0.0.3
-  </pre>
+    10.0.0.3</pre>
   </p>
 </div>
 
@@ -175,7 +181,7 @@ $ bin/stratosphere run \
 <p>You can easily deploy Stratosphere on your existing <strong>YARN cluster</strong>. </p>
 
 <ol>
-<li>Download the <strong>Stratosphere YARN package</strong> with the YARN client: <a href="">Stratosphere for YARN</a></li>
+<li>Download the <strong>Stratosphere YARN package</strong> with the YARN client: <a href="https://github.com/stratosphere/stratosphere/releases/download/release-0.5.1/stratosphere-bin-0.5.1-yarn.tar.gz">Stratosphere for YARN</a></li>
 <li>Make sure your <strong>HADOOP_HOME</strong> (or <em>YARN_CONF_DIR</em> or <em>HADOOP_CONF_DIR</em>) <strong>environment variable</strong> is set to read your YARN and HDFS configuration.</li>
 <li>Run the <strong>YARN client</strong> with: <code>./bin/yarn-session.sh</code>. You can run the client with options <code>-n 10 -tm 8192</code> to allocate 10 TaskManagers with 8GB of memory each.</li>
 </ol>
@@ -187,14 +193,14 @@ $ bin/stratosphere run \
 
 <hr class="divider">
 
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
+<p><small>Apache Flink is an effort undergoing incubation at The Apache Software
 Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
 required of all newly accepted projects until a further review indicates that
 the infrastructure, communications, and decision making process have
 stabilized in a manner consistent with other successful ASF projects. While
 incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
+endorsed by the ASF.</small></p>
 
 <p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 

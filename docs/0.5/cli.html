@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
   </head>
   <body>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -33,6 +32,14 @@
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/docs/0.5/faq.html" class="">FAQ</a>
         </li>
 
         <li class="dropdown">
@@ -164,27 +171,27 @@ local.sh</code> or <code>&lt;stratosphere-home&gt;/bin/start-cluster.sh</code>).
 
 <ul>
 <li><p>Run example program with no arguments.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run ./examples/stratosphere-java-examples--WordCount.jar
+<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run ./examples/stratosphere-java-examples-0.5.1-WordCount.jar
 </code></pre></div></li>
 <li><p>Run example program with arguments for input and result files</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run ./examples/stratosphere-java-examples--WordCount.jar \
+<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run ./examples/stratosphere-java-examples-0.5.1-WordCount.jar \
                        file:///home/user/hamlet.txt file:///home/user/wordcount_out
 </code></pre></div></li>
 <li><p>Run example program with parallelism 16 and arguments for input and result files</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run -p 16 ./examples/stratosphere-java-examples--WordCount.jar \
+<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run -p 16 ./examples/stratosphere-java-examples-0.5.1-WordCount.jar \
                         file:///home/user/hamlet.txt file:///home/user/wordcount_out
 </code></pre></div></li>
 <li><p>Run example program on a specific JobManager:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere run -m myJMHost:6123 \
-                       ./examples/stratosphere-java-examples--WordCount.jar \
+                       ./examples/stratosphere-java-examples-0.5.1-WordCount.jar \
                        -file:///home/user/hamlet.txt file:///home/user/wordcount_out
 </code></pre></div></li>
 <li><p>Display the expected arguments for the WordCount example program:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere info -d ./examples/stratosphere-java-examples--WordCount.jar
+<div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere info -d ./examples/stratosphere-java-examples-0.5.1-WordCount.jar
 </code></pre></div></li>
 <li><p>Display the optimized execution plan for the WordCount example program as JSON:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">./bin/stratosphere info -e 
-                        ./examples/stratosphere-java-examples--WordCount.jar \
+                        ./examples/stratosphere-java-examples-0.5.1-WordCount.jar \
                         file:///home/user/hamlet.txt file:///home/user/wordcount_out
 </code></pre></div></li>
 <li><p>List scheduled and running jobs (including their JobIDs):</p>
@@ -259,6 +266,22 @@ Action &quot;cancel&quot; cancels a submitted Stratosphere program.
 
      -m,--jobmanager &lt;host:port&gt;    Option to connect to a different Stratosphere master (JobManager).
 </code></pre></div>
+
+      <div style="padding-top:30px" id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'stratosphere-eu'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
   </div>
 </div>
 
@@ -266,14 +289,14 @@ Action &quot;cancel&quot; cancels a submitted Stratosphere program.
 
 <hr class="divider">
 
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
+<p><small>Apache Flink is an effort undergoing incubation at The Apache Software
 Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
 required of all newly accepted projects until a further review indicates that
 the infrastructure, communications, and decision making process have
 stabilized in a manner consistent with other successful ASF projects. While
 incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
+endorsed by the ASF.</small></p>
 
 <p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 

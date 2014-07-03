@@ -296,12 +296,12 @@ following lines to your POM.</p>
   <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>stratosphere-scala<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.6-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
   <span class="nt">&lt;/dependency&gt;</span>
   <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>stratosphere-clients<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.6-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
   <span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;/dependencies&gt;</span>
 </code></pre></div>
@@ -365,9 +365,9 @@ the primitive Scala types, case classes (which includes tuples), and custom
 data types.</p>
 
 <p>Custom data types must implement the interface
-<a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-core/src/main/java/eu/stratosphere/types/Value.java">Value</a>.
+<a href="https://github.com/stratosphere/stratosphere/blob/release-0.6-SNAPSHOT/stratosphere-core/src/main/java/eu/stratosphere/types/Value.java">Value</a>.
 For custom data types that should also be used as a grouping key or join key
-the <a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-core/src/main/java/eu/stratosphere/types/Key.java">Key</a>
+the <a href="https://github.com/stratosphere/stratosphere/blob/release-0.6-SNAPSHOT/stratosphere-core/src/main/java/eu/stratosphere/types/Key.java">Key</a>
 interface must be implemented.</p>
 
 <p><a href="#top">Back to top</a></p>
@@ -990,7 +990,7 @@ by Scala.</p>
 <h2 id="executing-jobs">Executing Jobs</h2>
 
 <p>To execute a data flow graph the sinks need to be wrapped in a
-<a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-scala/src/main/scala/eu/stratosphere/api/scala/ScalaPlan.scala">ScalaPlan</a>
+<a href="https://github.com/stratosphere/stratosphere/blob/release-0.6-SNAPSHOT/stratosphere-scala/src/main/scala/eu/stratosphere/api/scala/ScalaPlan.scala">ScalaPlan</a>
 object like this:</p>
 <div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">sink</span> <span class="k">=</span> <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">CsvOutputFormat</span><span class="o">())</span>
@@ -1020,7 +1020,7 @@ now give an example for each of the two execution modes.</p>
 to package your code in a jar file so that it can be distributed on the cluster.
 Have a look at the <a href="/quickstart/scala.html">scala quickstart</a> to see how you
 can set up a maven project that does the packaging. Remote execution is done
-using the <a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-clients/src/main/java/eu/stratosphere/client/RemoteExecutor.java">RemoteExecutor</a>, like this:</p>
+using the <a href="https://github.com/stratosphere/stratosphere/blob/release-0.6-SNAPSHOT/stratosphere-clients/src/main/java/eu/stratosphere/client/RemoteExecutor.java">RemoteExecutor</a>, like this:</p>
 <div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.client.RemoteExecutor</span>
 
 <span class="o">...</span>
@@ -1071,7 +1071,7 @@ instead of the anonymous class we used here.</p>
 
 <p>There are rich functions for all the various operator types. The basic
 template is the some, though. The common interface that they implement 
-is <a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-core/src/main/java/eu/stratosphere/api/common/functions/Function.java">Function</a>. The <code>open</code> and <code>close</code> methods can be overridden to run set-up
+is <a href="https://github.com/stratosphere/stratosphere/blob/release-0.6-SNAPSHOT/stratosphere-core/src/main/java/eu/stratosphere/api/common/functions/Function.java">Function</a>. The <code>open</code> and <code>close</code> methods can be overridden to run set-up
 and tear-down code. The other methods can be used in a rich function to
 work with the runtime context which gives information about the context
 of the operator. Your operation code must now reside in an <code>apply</code> method

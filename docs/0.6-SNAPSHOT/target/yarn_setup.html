@@ -117,8 +117,8 @@
 
 <p>Start YARN session with 4 Taskmanagers (each with 4 GB of Heapspace):</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">wget 
-tar xvzf stratosphere-dist--yarn.tar.gz
-<span class="nb">cd </span>stratosphere-yarn-/
+tar xvzf stratosphere-dist-0.6-SNAPSHOT-yarn.tar.gz
+<span class="nb">cd </span>stratosphere-yarn-0.6-SNAPSHOT/
 ./bin/yarn-session.sh -n <span class="m">4</span> -jm <span class="m">1024</span> -tm 4096
 </code></pre></div>
 <h1 id="introducing-yarn">Introducing YARN</h1>
@@ -132,7 +132,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 <li>HDFS</li>
 </ul>
 
-<p>If you have troubles using the Stratosphere YARN client, have a look in the <a href="/docs/0.5/general/faq.html">FAQ section</a>.</p>
+<p>If you have troubles using the Stratosphere YARN client, have a look in the <a href="faq.html">FAQ section</a>.</p>
 
 <h2 id="start-stratosphere-session">Start Stratosphere Session</h2>
 
@@ -144,11 +144,11 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 
 <p>Download the YARN tgz package on the <a href="/downloads/#nightly">download page</a>. It contains the required files.</p>
 
-<p>If you want to build the YARN .tgz file from sources, follow the build instructions. Make sure to use the <code>-Dhadoop.profile=2</code> profile. You can find the file in <code>stratosphere-dist/target/stratosphere-dist--yarn.tar.gz</code> (<em>Note: The version might be different for you</em> ).</p>
+<p>If you want to build the YARN .tgz file from sources, follow the build instructions. Make sure to use the <code>-Dhadoop.profile=2</code> profile. You can find the file in <code>stratosphere-dist/target/stratosphere-dist-0.6-SNAPSHOT-yarn.tar.gz</code> (<em>Note: The version might be different for you</em> ).</p>
 
 <p>Extract the package using:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">tar xvzf stratosphere-dist--yarn.tar.gz
-<span class="nb">cd </span>stratosphere-yarn-/
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">tar xvzf stratosphere-dist-0.6-SNAPSHOT-yarn.tar.gz
+<span class="nb">cd </span>stratosphere-yarn-0.6-SNAPSHOT/
 </code></pre></div>
 <h3 id="start-a-session">Start a Session</h3>
 
@@ -172,7 +172,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 <p><strong>Example:</strong> Issue the following command to allocate 10 TaskTrackers, with 8 GB of memory each:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">./bin/yarn-session.sh -n <span class="m">10</span> -tm 8192
 </code></pre></div>
-<p>The system will use the configuration in <code>conf/stratosphere-config.yaml</code>. Please follow our <a href="/docs/0.5/setup/config.html">configuration guide</a> if you want to change something. Stratosphere on YARN will overwrite the following configuration parameters <code>jobmanager.rpc.address</code> (because the JobManager is always allocated at different machines) and <code>taskmanager.tmp.dirs</code> (we are using the tmp directories given by YARN).</p>
+<p>The system will use the configuration in <code>conf/stratosphere-config.yaml</code>. Please follow our <a href="config.html">configuration guide</a> if you want to change something. Stratosphere on YARN will overwrite the following configuration parameters <code>jobmanager.rpc.address</code> (because the JobManager is always allocated at different machines) and <code>taskmanager.tmp.dirs</code> (we are using the tmp directories given by YARN).</p>
 
 <p>The example invocation starts 11 containers, since there is one additional container for the ApplicationMaster and JobTracker.</p>
 
@@ -192,7 +192,7 @@ tar xvzf stratosphere-dist--yarn.tar.gz
 <p>Use the following command to submit a Stratosphere program to the YARN cluster:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">./bin/stratosphere
 </code></pre></div>
-<p>Please refer to the documentation of the <a href="/docs/0.5/program_execution/cli_client.html">commandline client</a>.</p>
+<p>Please refer to the documentation of the <a href="cli.html">commandline client</a>.</p>
 
 <p>The command will show you a help menu like this:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>...<span class="o">]</span>
@@ -210,7 +210,7 @@ Action <span class="s2">&quot;run&quot;</span> compiles and submits a Stratosphe
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">wget -O apache-license-v2.txt http://www.apache.org/licenses/LICENSE-2.0.txt
 
-./bin/stratosphere run -j ./examples/stratosphere-java-examples--WordCount.jar <span class="se">\</span>
+./bin/stratosphere run -j ./examples/stratosphere-java-examples-0.6-SNAPSHOT-WordCount.jar <span class="se">\</span>
                        -a <span class="m">1</span> file://<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/apache-license-v2.txt file://<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/wordcount-result.txt 
 </code></pre></div>
 <p>If there is the following error, make sure that all TaskManagers started:</p>
@@ -245,8 +245,6 @@ The problem is that Stratosphere uses HDFS and YARN which are both from Apache H
 <div class="highlight"><pre><code class="language-text" data-lang="text">-P!include-yarn
 </code></pre></div>
 <p>Some Cloudera versions (such as <code>2.0.0-cdh4.2.0</code>) require this, since they have a new HDFS version with the old YARN API.</p>
-
-<p>Please post to the <a href="https://groups.google.com/d/forum/stratosphere-dev">Stratosphere mailinglist</a> or create an issue on <a href="https://github.com/stratosphere/stratosphere/issues">Github</a>, if you have issues with your YARN setup and Stratosphere.</p>
 
 <h1 id="background">Background</h1>
 

@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
   </head>
   <body>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -33,6 +32,14 @@
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/docs/0.5/faq.html" class="">FAQ</a>
         </li>
 
         <li class="dropdown">
@@ -335,7 +342,7 @@
 </ul>
 </li>
 <li>
-<a href="#accumulators-&amp;-counters">Accumulators &amp;amp; Counters</a>
+<a href="#accumulators-&-counters">Accumulators &amp; Counters</a>
 </li>
 <li>
 <a href="#execution-plans">Execution Plans</a>
@@ -406,28 +413,28 @@
 
 <p>To write programs with Stratosphere, you need to include Stratosphere’s Java API library in your project.</p>
 
-<p>The simplest way to do this is to use the <a href="/incubator-flink-website/quickstart/java.html">quickstart scripts</a>. They create a blank project from a template (a Maven Archetype), which sets up everything for you. To manually create the project, you can use the archetype and create a project by calling:</p>
+<p>The simplest way to do this is to use the <a href="java_api_quickstart.html">quickstart scripts</a>. They create a blank project from a template (a Maven Archetype), which sets up everything for you. To manually create the project, you can use the archetype and create a project by calling:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">mvn archetype:generate /
     -DarchetypeGroupId<span class="o">=</span>eu.stratosphere /
     -DarchetypeArtifactId<span class="o">=</span>quickstart-java /
-    -DarchetypeVersion<span class="o">=</span>
+    -DarchetypeVersion<span class="o">=</span>0.5.1
 </code></pre></div>
 <p>If you want to add Stratosphere to an existing Maven project, add the following entry to your <em>dependencies</em> section in the <em>pom.xml</em> file of your project:</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>stratosphere-java<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+  <span class="nt">&lt;version&gt;</span>0.5.1<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>stratosphere-clients<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+  <span class="nt">&lt;version&gt;</span>0.5.1<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></div>
-<p>In order to link against the latest SNAPSHOT versions of the code, please follow <a href="/incubator-flink-website/downloads/#nightly">this guide</a>.</p>
+<p>In order to link against the latest SNAPSHOT versions of the code, please follow <a href="/incubator-flink-website/downloads.html/#nightly">this guide</a>.</p>
 
 <p>The <em>stratosphere-clients</em> dependency is only necessary to invoke the Stratosphere program locally (for example to run it standalone for testing and debugging). 
-If you intend to only export the program as a JAR file and <a href="/incubator-flink-website/docs/0.5/program_execution/cluster_execution.html">run it on a cluster</a>, you can skip that dependency.</p>
+If you intend to only export the program as a JAR file and <a href="cluster_execution.html">run it on a cluster</a>, you can skip that dependency.</p>
 
 <p><a href="#top">Back to top</a></p>
 
@@ -447,8 +454,7 @@ programs with a <code>main()</code> method. Each program consists of the same ba
 </ol>
 
 <p>We will now give an overview of each of those steps but please refer
-to the respective sections for more details. Note that all <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-java/src/main/java/eu/stratosphere/api/java">core classes
-of the Java API</a> are found in the package <code>eu.stratosphere.api.java</code>.</p>
+to the respective sections for more details. Note that all <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-java/src/main/java/eu/stratosphere/api/java>core classes of the Java API</a> are found in the package <code>eu.stratosphere.api.java</code>.</p>
 
 <p>The <code>ExecutionEnvironment</code> is the basis for all Stratosphere programs. You can
 obtain one using these static methods on class <code>ExecutionEnvironment</code>:</p>
@@ -464,8 +470,8 @@ obtain one using these static methods on class <code>ExecutionEnvironment</code>
 will do the right thing depending on the context: if you are executing
 your program inside an IDE or as a regular Java program it will create
 a local environment that will execute your program on your local machine. If
-you created a JAR file from you program, and invoke it through the <a href="/incubator-flink-website/docs/0.5/program_execution/cli_client.html">command line</a>
-or the <a href="/incubator-flink-website/docs/0.5/program_execution/web_interface.html">web interface</a>,
+you created a JAR file from you program, and invoke it through the <a href="cli.html">command line</a>
+or the <a href="web_client.html">web interface</a>,
 the Stratosphere cluster manager will
 execute your main method and <code>getExecutionEnvironment()</code> will return
 an execution environment for executing your program on a cluster.</p>
@@ -620,7 +626,7 @@ than one position to use composite keys (see <a href="#transformations">Section 
     <span class="o">.</span><span class="na">groupBy</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
     <span class="o">.</span><span class="na">reduce</span><span class="o">(</span><span class="k">new</span> <span class="nf">MyReduceFunction</span><span class="o">());</span>
 </code></pre></div>
-<p>In order to access fields more intuitively and to generate more readable code, it is also possible to extend a subclass of <code>Tuple</code>. You can add getters and setters with custom names that delegate to the field positions. See this <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-examples/stratosphere-java-examples/src/main/java/eu/stratosphere/example/java/relational/TPCHQuery3.java">example</a> for an illustration how to make use of that mechanism.</p>
+<p>In order to access fields more intuitively and to generate more readable code, it is also possible to extend a subclass of <code>Tuple</code>. You can add getters and setters with custom names that delegate to the field positions. See this <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-examples/stratosphere-java-examples/src/main/java/eu/stratosphere/example/java/relational/TPCHQuery3.java>example</a> for an illustration how to make use of that mechanism.</p>
 
 <h4 id="values">Values</h4>
 
@@ -642,7 +648,7 @@ than one position to use composite keys (see <a href="#transformations">Section 
 
 <p>The type inference has its limits and needs the &quot;cooperation&quot; of the programmer in some cases. Examples for that are methods that create data sets from collections, such as <code>ExecutionEnvironment.fromCollection(),</code> where you can pass an argument that describes the type. But also generic functions like <code>MapFunction&lt;I, O&gt;</code> may need extra type information.</p>
 
-<p>The <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-java/src/main/java/eu/stratosphere/api/java/typeutils/ResultTypeQueryable.java">ResultTypeQueryable</a> interface can be implemented by input formats and functions to tell the API explicitly about their return type. The <em>input types</em> that the functions are invoked with can usually be inferred by the result types of the previous operations.</p>
+<p>The <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-java/src/main/java/eu/stratosphere/api/java/typeutils/ResultTypeQueryable.java>ResultTypeQueryable</a> interface can be implemented by input formats and functions to tell the API explicitly about their return type. The <em>input types</em> that the functions are invoked with can usually be inferred by the result types of the previous operations.</p>
 
 <p><a href="#top">Back to top</a></p>
 
@@ -1237,7 +1243,7 @@ A <code>CoGroupFunction</code> can separately iterate over the elements of both 
 
 <h2 id="data-sources">Data Sources</h2>
 
-<p>Data sources create the initial data sets, such as from files or from Java collections. The general mechanism of of creating data sets is abstracted behind an <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/io/InputFormat.java">InputFormat</a>. Stratosphere comes with several built-in formats to create data sets from common file formats. Many of them have shortcut methods on the <em>ExecutionEnvironment</em>.</p>
+<p>Data sources create the initial data sets, such as from files or from Java collections. The general mechanism of of creating data sets is abstracted behind an <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/io/InputFormat.java>InputFormat</a>. Stratosphere comes with several built-in formats to create data sets from common file formats. Many of them have shortcut methods on the <em>ExecutionEnvironment</em>.</p>
 
 <p>File-based:</p>
 
@@ -1308,7 +1314,7 @@ A <code>CoGroupFunction</code> can separately iterate over the elements of both 
 
 <h2 id="data-sinks">Data Sinks</h2>
 
-<p>Data sinks consume DataSets and are used to store or return them. Data sink operations are described using an <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/io/OutputFormat.java">OutputFormat</a>. Stratosphere comes with a variety of built-in output formats that
+<p>Data sinks consume DataSets and are used to store or return them. Data sink operations are described using an <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/io/OutputFormat.java>OutputFormat</a>. Stratosphere comes with a variety of built-in output formats that
 are encapsulated behind operations on the DataSet type:</p>
 
 <ul>
@@ -1418,7 +1424,7 @@ A LocalEnvironment is created and used as follows:
 
 <p>Iterations implement loops in Stratosphere programs. The iteration operators encapsulate a part of the program and execute it repeatedly, feeding back the result of one iteration (the partial solution) into the next iteration. There are two types of iterations in Stratosphere: <strong>BulkIteration</strong> and <strong>DeltaIteration</strong>.</p>
 
-<p>This section provides quick examples on how to use both operators. Check out the <a href="/incubator-flink-website/docs/0.5/programming_guides/iterations.html">Introduction to Iterations</a> page for a more detailed introduction.</p>
+<p>This section provides quick examples on how to use both operators. Check out the <a href="iterations.html">Introduction to Iterations</a> page for a more detailed introduction.</p>
 
 <h4 id="bulk-iterations">Bulk Iterations</h4>
 
@@ -1455,13 +1461,13 @@ A LocalEnvironment is created and used as follows:
 
 <span class="n">env</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">&quot;Iterative Pi Example&quot;</span><span class="o">);</span></code></pre></div>
 
-<p>You can also check out the <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-examples/stratosphere-java-examples/src/main/java/eu/stratosphere/example/java/clustering/KMeans.java">K-Means example</a>, which uses a BulkIteration to cluster a set of unlabeled points.</p>
+<p>You can also check out the <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-examples/stratosphere-java-examples/src/main/java/eu/stratosphere/example/java/clustering/KMeans.java>K-Means example</a>, which uses a BulkIteration to cluster a set of unlabeled points.</p>
 
 <h4 id="delta-iterations">Delta Iterations</h4>
 
 <p>Delta iterations exploit the fact that certain algorithms do not change every data point of the solution in each iteration.</p>
 
-<p>In addition to the partial solution that is fed back (called workset) in every iteration, delta iterations maintain state across iterations (called solution set), which can be updated through deltas. The result of the iterative computation is the state after the last iteration. Please refer to the <a href="/incubator-flink-website/docs/0.5/programming_guides/iterations.html">Introduction to Iterations</a> for an overview of the basic principle of delta iterations.</p>
+<p>In addition to the partial solution that is fed back (called workset) in every iteration, delta iterations maintain state across iterations (called solution set), which can be updated through deltas. The result of the iterative computation is the state after the last iteration. Please refer to the <a href="iterations.html">Introduction to Iterations</a> for an overview of the basic principle of delta iterations.</p>
 
 <p>Defining a DeltaIteration is similar to defining a BulkIteration. For delta iterations, two data sets form the input to each iteration (workset and solution set), and two data sets are produced as the result (new workset, solution set delta) in each iteration.</p>
 
@@ -1560,7 +1566,8 @@ for auxiliary data sets, or data-dependent parameterization. The data set will t
     <span class="o">}</span>
 <span class="o">}).</span><span class="na">withBroadcastSet</span><span class="o">(</span><span class="n">toBroadcast</span><span class="o">,</span> <span class="s">&quot;broadcastSetName&quot;</span><span class="o">);</span> <span class="c1">// 2. Broadcast the DataSet</span>
 </code></pre></div>
-<p>Make sure that the names (<code>broadcastSetName</code> in the previous example) match when registering and accessing broadcasted data sets. For a complete example program, have a look at <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-examples/stratosphere-java-examples/src/main/java/eu/stratosphere/example/java/clustering/KMeans.java#L96">KMeans Algorithm</a>.</p>
+<p>Make sure that the names (<code>broadcastSetName</code> in the previous example) match when registering and accessing broadcasted data sets. For a complete example program, have a look at
+<a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-examples/stratosphere-java-examples/src/main/java/eu/stratosphere/example/java/clustering/KMeans.java#L96>KMeans Algorithm</a>.</p>
 
 <p><strong>Note</strong>: As the content of broadcast variables is kept in-memory on each node, it should not become too large. For simpler things like scalar values you can simply make parameters part of the closure of a function, or use the <code>withParameters(...)</code> method to pass in a configuration.</p>
 
@@ -1570,7 +1577,7 @@ for auxiliary data sets, or data-dependent parameterization. The data set will t
 
 <h2 id="program-packaging-&amp;-distributed-execution">Program Packaging &amp; Distributed Execution</h2>
 
-<p>As described in the <a href="#skeleton">program skeleton</a> section, Stratosphere programs can be executed on clusters by using the <code>RemoteEnvironment</code>. Alternatively, programs can be packaged into JAR Files (Java Archives) for execution. Packaging the program is a prerequisite to executing them through the <a href="/incubator-flink-website/docs/0.5/program_execution/cli_client.html">command line interface</a> or the <a href="/incubator-flink-website/docs/0.5/program_execution/web_interface.html">web interface</a>.</p>
+<p>As described in the <a href="#skeleton">program skeleton</a> section, Stratosphere programs can be executed on clusters by using the <code>RemoteEnvironment</code>. Alternatively, programs can be packaged into JAR Files (Java Archives) for execution. Packaging the program is a prerequisite to executing them through the <a href="cli.html">command line interface</a> or the <a href="web_client.html">web interface</a>.</p>
 
 <h4 id="packaging-programs">Packaging Programs</h4>
 
@@ -1588,7 +1595,7 @@ for auxiliary data sets, or data-dependent parameterization. The data set will t
 
 <ol>
 <li>The JAR&#39;s manifest is searched for a <em>main-class</em> or <em>program-class</em> attribute. If both attributes are found, the <em>program-class</em> attribute takes precedence over the <em>main-class</em> attribute. Both the command line and the web interface support a parameter to pass the entry point class name manually for cases where the JAR manifest contains neither attribute.</li>
-<li>If the entry point class implements the <code>eu.stratosphere.api.common.Program</code>, then the system calls the <code>getPlan(String...)</code> method to obtain the program plan to execute. The <code>getPlan(String...)</code> method was the only possible way of defining a program in the <em>Record API</em> (see <a href="/incubator-flink-website/docs/0.4/">0.4 docs</a>) and is also supported in the new Java API.</li>
+<li>If the entry point class implements the <code>eu.stratosphere.api.common.Program</code>, then the system calls the <code>getPlan(String...)</code> method to obtain the program plan to execute. The <code>getPlan(String...)</code> method was the only possible way of defining a program in the <em>Record API</em> (see <a href="http://stratosphere.eu/docs/0.4/">0.4 docs</a>) and is also supported in the new Java API.</li>
 <li>If the entry point class does not implement the <code>eu.stratosphere.api.common.Program</code> interface, the system will invoke the main method of the class.</li>
 </ol>
 
@@ -1602,11 +1609,11 @@ for auxiliary data sets, or data-dependent parameterization. The data set will t
 
 <p>The most straightforward accumulator is a <strong>counter</strong>: You can increment it using the <code>Accumulator.add(V value)</code> method. At the end of the job Stratosphere will sum up (merge) all partial results and send the result to the client. Since accumulators are very easy to use, they can be useful during debugging or if you quickly want to find out more about your data.</p>
 
-<p>Stratosphere currently has the following <strong>built-in accumulators</strong>. Each of them implements the <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/Accumulator.java">Accumulator</a> interface.</p>
+<p>Stratosphere currently has the following <strong>built-in accumulators</strong>. Each of them implements the <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/Accumulator.java>Accumulator</a> interface.</p>
 
 <ul>
-<li><a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/IntCounter.java"><strong>IntCounter</strong></a>, <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/LongCounter.java"><strong>LongCounter</strong></a> and <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/DoubleCounter.java"><strong>DoubleCounter</strong></a>: See below for an example using a counter.</li>
-<li><a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/Histogram.java"><strong>Histogram</strong></a>: A histogram implementation for a discrete number of bins. Internally it is just a map from Integer to Integer. You can use this to compute distributions of values, e.g. the distribution of words-per-line for a word count program.</li>
+<li><a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/IntCounter.java><strong>IntCounter</strong></a>, <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/LongCounter.java><strong>LongCounter</strong></a> and <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/DoubleCounter.java><strong>DoubleCounter</strong></a>: See below for an example using a counter.</li>
+<li><a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/Histogram.java><strong>Histogram</strong></a>: A histogram implementation for a discrete number of bins. Internally it is just a map from Integer to Integer. You can use this to compute distributions of values, e.g. the distribution of words-per-line for a word count program.</li>
 </ul>
 
 <p><strong>How to use accumulators:</strong></p>
@@ -1626,13 +1633,13 @@ class implementing the user defined code for an operator.</p>
 </code></pre></div>
 <p>All accumulators share a single namespace per job. Thus you can use the same accumulator in different operator functions of your job. Stratosphere will internally merge all accumulators with the same name.</p>
 
-<p>A note on accumulators and iterations: Currently the result of accumulators is only available after the overall job ended. We plan to also make the result of the previous iteration available in the next iteration. You can use <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-java/src/main/java/eu/stratosphere/api/java/IterativeDataSet.java#L98">Aggregators</a> to compute per-iteration statistics and base the termination of iterations on such statistics.</p>
+<p>A note on accumulators and iterations: Currently the result of accumulators is only available after the overall job ended. We plan to also make the result of the previous iteration available in the next iteration. You can use <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-java/src/main/java/eu/stratosphere/api/java/IterativeDataSet.java#L98>Aggregators</a> to compute per-iteration statistics and base the termination of iterations on such statistics.</p>
 
 <p><strong>Custom accumulators:</strong></p>
 
 <p>To implement your own accumulator you simply have to write your implementation of the Accumulator interface. Feel free to create a pull request if you think your custom accumulator should be shipped with Stratosphere.</p>
 
-<p>You have the choice to implement either <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/Accumulator.java">Accumulator</a> or <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/SimpleAccumulator.java">SimpleAccumulator</a>. <code>Accumulator&lt;V,R&gt;</code> is most flexible: It defines a type <code>V</code> for the value to add, and a result type <code>R</code> for the final result. E.g. for a histogram, <code>V</code> is a number and <code>R</code> is a histogram. <code>SimpleAccumulator</code> is for the cases where both types are the same, e.g. for counters.</p>
+<p>You have the choice to implement either <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/Accumulator.java>Accumulator</a> or <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/accumulators/SimpleAccumulator.java>SimpleAccumulator</a>. <code>Accumulator&lt;V,R&gt;</code> is most flexible: It defines a type <code>V</code> for the value to add, and a result type <code>R</code> for the final result. E.g. for a histogram, <code>V</code> is a number and <code>R</code> is a histogram. <code>SimpleAccumulator</code> is for the cases where both types are the same, e.g. for counters.</p>
 
 <p><a href="#top">Back to top</a></p>
 
@@ -1663,9 +1670,8 @@ System.out.println(env.getExecutionPlan());
 
 <p>After these steps, a detailed execution plan will be visualized.</p>
 
-<p><img src="http://stratosphere.eu/img/blog/plan_visualizer2.png" alt="alt text" title="A stratosphere job execution graph."></p>
-
-<p><strong>Web Interface</strong></p>
+<p><img alt="A stratosphere job execution graph." src="http://stratosphere.eu/img/blog/plan_visualizer2.png" width="80%">
+<strong>Web Interface</strong></p>
 
 <p>Stratosphere offers a web interface for submitting and executing jobs. If you choose to use this interface to submit your packaged program, you have the option to also see the plan visualization.</p>
 
@@ -1675,6 +1681,22 @@ System.out.println(env.getExecutionPlan());
 
 <p><a href="#top">Back to top</a></p>
 
+
+      <div style="padding-top:30px" id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'stratosphere-eu'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
   </div>
 </div>
 
@@ -1682,14 +1704,14 @@ System.out.println(env.getExecutionPlan());
 
 <hr class="divider">
 
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
+<p><small>Apache Flink is an effort undergoing incubation at The Apache Software
 Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
 required of all newly accepted projects until a further review indicates that
 the infrastructure, communications, and decision making process have
 stabilized in a manner consistent with other successful ASF projects. While
 incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
+endorsed by the ASF.</small></p>
 
 <p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 

@@ -4,18 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Apache Flink (incubating): Quick Start: Scala API</title>
+    <title>Apache Flink (incubating): Quickstart: Scala API</title>
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
   </head>
   <body>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -33,6 +32,14 @@
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/docs/0.5/faq.html" class="">FAQ</a>
         </li>
 
         <li class="dropdown">
@@ -128,7 +135,7 @@
     </ul>
   </div>
   <div class="col-md-9">
-      <h1>Quick Start: Scala API</h1>
+      <h1>Quickstart: Scala API</h1>
 
       <ul>
 <li>
@@ -167,7 +174,7 @@
 <div class="tab-content">
     <div class="tab-pane active" id="quickstart-script">
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>curl https://raw.githubusercontent.com/stratosphere/stratosphere-quickstart/master/quickstart-scala.sh <span class="p">|</span> bash</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>curl https://raw.githubusercontent.com/apache/incubator-flink/master/stratosphere-quickstart/quickstart-scala.sh <span class="p">|</span> bash</code></pre></div>
 
     </div>
     <div class="tab-pane" id="maven-archetype">
@@ -175,7 +182,7 @@
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mvn archetype:generate                             <span class="se">\</span>
   -DarchetypeGroupId<span class="o">=</span>eu.stratosphere               <span class="se">\</span>
   -DarchetypeArtifactId<span class="o">=</span>quickstart-scala           <span class="se">\</span>
-  -DarchetypeVersion<span class="o">=</span></code></pre></div>
+  -DarchetypeVersion<span class="o">=</span>0.5.1</code></pre></div>
 
     This allows you to <strong>name your newly created project</strong>. It will interactively ask you for the groupId, artifactId, and package name.
     </div>
@@ -217,6 +224,22 @@
 <p><strong>Write your application!</strong>
 If you have any trouble, ask on our <a href="https://issues.apache.org/jira/browse/FLINK">Jira page</a> (open an issue) or on our Mailing list. We are happy to provide help.</p>
 
+
+      <div style="padding-top:30px" id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'stratosphere-eu'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
   </div>
 </div>
 
@@ -224,14 +247,14 @@ If you have any trouble, ask on our <a href="https://issues.apache.org/jira/brow
 
 <hr class="divider">
 
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
+<p><small>Apache Flink is an effort undergoing incubation at The Apache Software
 Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
 required of all newly accepted projects until a further review indicates that
 the infrastructure, communications, and decision making process have
 stabilized in a manner consistent with other successful ASF projects. While
 incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
+endorsed by the ASF.</small></p>
 
 <p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 

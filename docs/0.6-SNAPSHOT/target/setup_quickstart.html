@@ -123,7 +123,7 @@
      <a class="btn btn-info btn-lg" onclick="_gaq.push(['_trackEvent','Action','download-quickstart-setup-1',this.href]);" href=""><i class="icon-download"> </i> Download Stratosphere for Hadoop 1.2</a>
    </div>
    <div class="tab-pane" id="bin-hadoop2">
-     <a class="btn btn-info btn-lg" onclick="_gaq.push(['_trackEvent','Action','download-quickstart-setup-2',this.href]);" href=""><i class="icon-download"> </i> Download Stratosphere for Hadoop 2 (YARN)</a>
+     <a class="btn btn-info btn-lg" onclick="_gaq.push(['_trackEvent','Action','download-quickstart-setup-2',this.href]);" href=""><i class="icon-download"> </i> Download Stratosphere for Hadoop 2</a>
    </div>
  </div>
 </p></p>
@@ -154,13 +154,13 @@
 $ wget -O hamlet.txt http://www.gutenberg.org/cache/epub/1787/pg1787.txt
 </code></li>
 <li>You now have a text file called <em>hamlet.txt</em> in your working directory.</li>
-<li><strong>Start the example program</strong>:
-<code>bash
-$ bin/stratosphere run \
---jarfile ./examples/stratosphere-java-examples--WordCount.jar \
---arguments file://`pwd`/hamlet.txt file://`pwd`/wordcount-result.txt
-</code></li>
-<li>You will find a file called <strong>wordcount-result.txt</strong> in your current directory.</li>
+<li><p><strong>Start the example program</strong>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bin/stratosphere run <span class="se">\</span>
+--jarfile ./examples/stratosphere-java-examples-0.6-SNAPSHOT-WordCount.jar <span class="se">\</span>
+
+--arguments file://<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/hamlet.txt file://<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/wordcount-result.txt
+</code></pre></div></li>
+<li><p>You will find a file called <strong>wordcount-result.txt</strong> in your current directory.</p></li>
 </ul>
 
 <h1 id="cluster-setup">Cluster Setup</h1>
@@ -193,8 +193,7 @@ $ bin/stratosphere run \
     /path/to/<strong>stratosphere/<br>conf/slaves</strong>
   <pre>
     10.0.0.2
-    10.0.0.3
-  </pre>
+    10.0.0.3</pre>
   </p>
 </div>
 

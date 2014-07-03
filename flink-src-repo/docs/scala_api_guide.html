@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
   </head>
   <body>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -33,6 +32,14 @@
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/docs/0.5/faq.html" class="">FAQ</a>
         </li>
 
         <li class="dropdown">
@@ -77,10 +84,7 @@
 <h1 id="scala-programming-guide">Scala Programming Guide</h1>
 
 <p>This guide explains how to develop Stratosphere programs with the Scala
-programming interface. It assumes you are familiar with the general concepts of
-Stratosphere&#39;s <a href="pmodel.html" title="Programming Model">Programming Model</a>. We
-recommend to learn about the basic concepts first, before continuing with the
-<a href="java.html" title="Java Programming Guide">Java</a> or this Scala programming guide.</p>
+programming interface. </p>
 
 <p>Here we will look at the general structure of a Scala job. You will learn how to
 write data sources, data sinks, and operators to create data flows that can be
@@ -161,17 +165,17 @@ following lines to your POM.</p>
   <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>stratosphere-scala<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.5.1<span class="nt">&lt;/version&gt;</span>
   <span class="nt">&lt;/dependency&gt;</span>
   <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>stratosphere-clients<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.5.1<span class="nt">&lt;/version&gt;</span>
   <span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;/dependencies&gt;</span>
 </code></pre></div>
 <p>To quickly get started you can use the Stratosphere Scala quickstart available
-<a href="/incubator-flink-website/quickstart/scala.html">here</a>. This will give you a
+<a href="scala_api_quickstart.html">here</a>. This will give you a
 completeMaven project with some working example code that you can use to explore
 the system or as basis for your own projects.</p>
 
@@ -230,9 +234,9 @@ the primitive Scala types, case classes (which includes tuples), and custom
 data types.</p>
 
 <p>Custom data types must implement the interface
-<a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-core/src/main/java/eu/stratosphere/types/Value.java">Value</a>.
+<a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/types/Value.java>Value</a>.
 For custom data types that should also be used as a grouping key or join key
-the <a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-core/src/main/java/eu/stratosphere/types/Key.java">Key</a>
+the <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/types/Key.java>Key</a>
 interface must be implemented.</p>
 
 <p><a href="#top">Back to top</a></p>
@@ -525,7 +529,7 @@ type of the input data set, <code>DataSet[In]</code>):</p>
 </code></pre></div>
 <h4 id="reduce-operation">Reduce Operation</h4>
 
-<p>As explained <a href="pmodel.html#operators">here</a> Reduce is an operation that looks
+<p>Reduce is an operation that looks
 at groups of elements at a time and can, for one group, output one or several
 elements. To specify how elements should be grouped you need to give
 a key selection function, as explained <a href="#key-selectors">above</a>.</p>
@@ -854,9 +858,7 @@ by Scala.</p>
 
 <h2 id="executing-jobs">Executing Jobs</h2>
 
-<p>To execute a data flow graph the sinks need to be wrapped in a
-<a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-scala/src/main/scala/eu/stratosphere/api/scala/ScalaPlan.scala">ScalaPlan</a>
-object like this:</p>
+<p>To execute a data flow graph the sinks need to be wrapped in a <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-scala/src/main/scala/eu/stratosphere/api/scala/ScalaPlan.scala>ScalaPlan</a> object like this:</p>
 <div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">out</span><span class="k">:</span> <span class="kt">DataSet</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">)]</span>
 <span class="k">val</span> <span class="n">sink</span> <span class="k">=</span> <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;file:///some/file&quot;</span><span class="o">,</span> <span class="nc">CsvOutputFormat</span><span class="o">())</span>
 
@@ -883,9 +885,9 @@ now give an example for each of the two execution modes.</p>
 
 <p>Remote (or cluster) execution is a bit more complicated because you have
 to package your code in a jar file so that it can be distributed on the cluster.
-Have a look at the <a href="/quickstart/scala.html">scala quickstart</a> to see how you
+Have a look at the <a href="scala_api_quickstart.html">scala quickstart</a> to see how you
 can set up a maven project that does the packaging. Remote execution is done
-using the <a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-clients/src/main/java/eu/stratosphere/client/RemoteExecutor.java">RemoteExecutor</a>, like this:</p>
+using the <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-clients/src/main/java/eu/stratosphere/client/RemoteExecutor.java>RemoteExecutor</a>, like this:</p>
 <div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">eu.stratosphere.client.RemoteExecutor</span>
 
 <span class="o">...</span>
@@ -936,7 +938,7 @@ instead of the anonymous class we used here.</p>
 
 <p>There are rich functions for all the various operator types. The basic
 template is the some, though. The common interface that they implement 
-is <a href="https://github.com/stratosphere/stratosphere/blob/release-/stratosphere-core/src/main/java/eu/stratosphere/api/common/functions/Function.java">Function</a>. The <code>open</code> and <code>close</code> methods can be overridden to run set-up
+is <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/functions/Function.java>Function</a>. The <code>open</code> and <code>close</code> methods can be overridden to run set-up
 and tear-down code. The other methods can be used in a rich function to
 work with the runtime context which gives information about the context
 of the operator. Your operation code must now reside in an <code>apply</code> method
@@ -973,14 +975,14 @@ the input (or inputs) and the output type.</p>
 
 <hr class="divider">
 
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
+<p><small>Apache Flink is an effort undergoing incubation at The Apache Software
 Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
 required of all newly accepted projects until a further review indicates that
 the infrastructure, communications, and decision making process have
 stabilized in a manner consistent with other successful ASF projects. While
 incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
+endorsed by the ASF.</small></p>
 
 <p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 

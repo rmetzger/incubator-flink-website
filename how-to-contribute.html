@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
   </head>
   <body>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -33,6 +32,14 @@
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/docs/0.5/faq.html" class="">FAQ</a>
         </li>
 
         <li class="dropdown">
@@ -93,6 +100,11 @@
 </li>
 <li>
 <a href="#how-to-become-a-committer">How to become a committer</a>
+<ul>
+<li>
+<a href="#how-to-use-git-as-a-committer">How to use git as a committer</a>
+</li>
+</ul>
 </li>
 </ul>
 
@@ -101,9 +113,9 @@
 
 <h2 id="easy-issues-for-starters">Easy Issues for Starters</h2>
 
-<p>We maintain all known issues and feature drafts in the <a href="https://issues.apache.org/jira/browse/FLINK-989?jql=project%20%3D%20FLINK">Flink project JIRA</a>.</p>
+<p>We maintain all known issues and feature drafts in the <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+FLINK">Flink project JIRA</a>.</p>
 
-<p>We also try to maintain a <a href="https://issues.apache.org/jira/browse/FLINK-933?jql=project%20%3D%20FLINK%20AND%20labels%20%3D%20starter">list of simple &quot;starter issues&quot;</a> that we believe are good tasks for new contributors. Those tasks are meant to allow people to get into the project and become familiar with the process of contributing. Feel free to ask questions about issues that you would be interested in working on.</p>
+<p>We also try to maintain a <a href="https://issues.apache.org/jira/browse/FLINK-992?jql=project%20%3D%20FLINK%20AND%20labels%20%3D%20starter%20AND%20status%20in%20(Open%2C%20Reopened)">list of simple &quot;starter issues&quot;</a> that we believe are good tasks for new contributors. Those tasks are meant to allow people to get into the project and become familiar with the process of contributing. Feel free to ask questions about issues that you would be interested in working on.</p>
 
 <p>In addition, you can find a list of ideas for projects and improvements in the <a href="http://the/wiki/url">projects wiki page</a>.</p>
 
@@ -111,7 +123,7 @@
 
 <p>This section gives you a brief introduction in how to contribute code and documentation to Flink. We maintain both the code and the documentation in the same repository, so the process is essentially the same for both. We use <a href="http://git-scm.com/">git</a> for the code and documentation version control.</p>
 
-<p>The Flink project accepts code contributions though the <a href="https://github.com/apache/incubator-flink">GitHub Mirror</a>, in the form of <a href="https://help.github.com/articles/using-pull-requests">Pull Requests</a>. Pull requests are basically a simpler way of offering a patch, by providing a pointer to a code branch that contains the change.</p>
+<p>The Flink project accepts code contributions though the <a href="https://github.com/apache/incubator-flink">GitHub Mirror</a>, in the form of <a href="https://help.github.com/articles/using-pull-requests">Pull Requests</a>. Pull requests are basically a simpler way of offering a patch, by providing a pointer to a code branch that contains the change. It is also possible to attach a patch to a JIRA issue.</p>
 
 <h3 id="setting-up-the-infrastructure-and-creating-a-pull-request">Setting up the Infrastructure and Creating a Pull Request</h3>
 
@@ -162,6 +174,19 @@ git rebase master
 
 <p>Finally, candidates for new committers are suggested by current committers, mentors, or PMC members, and voted upon by the PMC.</p>
 
+<h3 id="how-to-use-git-as-a-committer">How to use git as a committer</h3>
+
+<p>Only the infrastructure team of the ASF has administrative access to the GitHub mirror. Therefore, comitters have to push changes to the git repository at the ASF.</p>
+
+<p><strong>ASF writable git</strong>: <a href="https://git-wip-us.apache.org/repos/asf/incubator-flink.git">https://git-wip-us.apache.org/repos/asf/incubator-flink.git</a></p>
+
+<p><strong>ASF read-only git</strong>: <a href="http://git-wip-us.apache.org/repos/asf/incubator-flink.git">http://git-wip-us.apache.org/repos/asf/incubator-flink.git</a></p>
+
+<p><strong>ASF git web interface</strong>: <a href="https://git-wip-us.apache.org/repos/asf?p=incubator-flink.git;a=summary">https://git-wip-us.apache.org/repos/asf?p=incubator-flink.git;a=summary</a></p>
+
+<p>Details on how to set the credentials for the ASF git repostiory are <a href="https://git-wip-us.apache.org/">linked here</a>.
+To merge pull requests from our GitHub mirror, there is a script in the source <code>./tools/merge_pull_request.sh.template</code>. Rename it to <code>merge_pull_request.sh</code> with the appropriate settings and use it for merging.</p>
+
 </div>
 </div>
 
@@ -170,14 +195,14 @@ git rebase master
 
 <hr class="divider">
 
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
+<p><small>Apache Flink is an effort undergoing incubation at The Apache Software
 Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
 required of all newly accepted projects until a further review indicates that
 the infrastructure, communications, and decision making process have
 stabilized in a manner consistent with other successful ASF projects. While
 incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
+endorsed by the ASF.</small></p>
 
 <p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 

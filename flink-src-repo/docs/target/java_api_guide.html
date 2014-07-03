@@ -361,18 +361,18 @@
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">mvn archetype:generate /
     -DarchetypeGroupId<span class="o">=</span>eu.stratosphere /
     -DarchetypeArtifactId<span class="o">=</span>quickstart-java /
-    -DarchetypeVersion<span class="o">=</span>
+    -DarchetypeVersion<span class="o">=</span>0.6-SNAPSHOT
 </code></pre></div>
 <p>If you want to add Stratosphere to an existing Maven project, add the following entry to your <em>dependencies</em> section in the <em>pom.xml</em> file of your project:</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>stratosphere-java<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+  <span class="nt">&lt;version&gt;</span>0.6-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>eu.stratosphere<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>stratosphere-clients<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;&lt;/version&gt;</span>
+  <span class="nt">&lt;version&gt;</span>0.6-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></div>
 <p>In order to link against the latest SNAPSHOT versions of the code, please follow <a href="/downloads/#nightly">this guide</a>.</p>

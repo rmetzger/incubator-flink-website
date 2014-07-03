@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap.css">
     <link rel="stylesheet" href="/incubator-flink-website/css/bootstrap-lumen-custom.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="bootstrap.js"></script>
   </head>
   <body>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -33,6 +32,14 @@
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/java_api_quickstart.html">Java API</a></li>
             <li><a href="/incubator-flink-website/docs/0.6-SNAPSHOT/scala_api_quickstart.html">Scala API</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/downloads.html" class="">Downloads</a>
+        </li>
+
+        <li>
+          <a href="/incubator-flink-website/docs/0.5/faq.html" class="active">FAQ</a>
         </li>
 
         <li class="dropdown">
@@ -228,8 +235,9 @@ File System (HDFS). To make these setups work out of the box, we bundle the
 Hadoop client libraries with Stratosphere by default.</p>
 
 <p>Additionally, we provide a special YARN Enabled download of Stratosphere for
-users with an existing Hadoop YARN cluster. <a href="http://hadoop.apache.org/docs/r2.2.0/hadoop-yarn/hadoop-yarn-%0Asite/YARN.html">Apache Hadoop
-YARN</a> is Hadoop&#39;s cluster resource manager that allows to use
+users with an existing Hadoop YARN cluster. <a href="http://hadoop.apache.org/docs/r2.2.0/hadoop-yarn/hadoop-yarn-site/YARN.html">Apache Hadoop
+YARN</a> 
+is Hadoop&#39;s cluster resource manager that allows to use
 different execution engines next to each other on a cluster.</p>
 
 <h1 id="usage">Usage</h1>
@@ -307,7 +315,7 @@ breaks.</p>
     at eu.stratosphere.runtime.fs.hdfs.DistributedFileSystem.initialize<span class="o">(</span>DistributedFileSystem.java:276
 </code></pre></div>
 <p>Please refer to the <a href="http://stratosphere.eu/downloads/#maven">download page</a> and
-the <a href=https://github.com/apache/incubator-flink/blob/master/README.md>README.md</a>
+the <a href=https://github.com/apache/incubator-flink/blob/master/README.md>build instructions</a>
 for details on how to set up Stratosphere for different Hadoop and HDFS versions.</p>
 
 <h2 id="my-program-does-not-compute-the-correct-result.-why-are-my-custom-key-types">My program does not compute the correct result. Why are my custom key types</h2>
@@ -369,7 +377,7 @@ destage operations to disk, if necessary. By default, the system reserves around
 70% of the memory. If you frequently run applications that need more memory in
 the user-defined functions, you can reduce that value using the configuration
 entries <code>taskmanager.memory.fraction</code> or <code>taskmanager.memory.size</code>. See the
-<a href="http://stratosphere.eu/docs/0.4/setup/config.html" title="Configuration Reference">Configuration Reference</a> for details. This will leave more memory to JVM heap,
+<a href="config.html">Configuration Reference</a> for details. This will leave more memory to JVM heap,
 but may cause data processing tasks to go to disk more often.</p></li>
 </ol>
 
@@ -481,12 +489,28 @@ open source project in the next versions.</p>
 
 <h2 id="are-hadoop-like-utilities,-such-as-counters-and-the-distributedcache-supported?">Are Hadoop-like utilities, such as Counters and the DistributedCache supported?</h2>
 
-<p><a href="java_api_guide.html">Stratosphere&#39;s Accumulators</a> work very similar like
+<p><a href="java_api_guide.html#accumulators-&amp;-counters">Stratosphere&#39;s Accumulators</a> work very similar like
 [Hadoop&#39;s counters, but are more powerful.</p>
 
-<p>Stratosphere has a <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-core/src/main/java/eu/stratosphere/api/common/cache/DistributedCache.java">Distributed Cache</a> that is deeply integrated with the APIs. Please refer to the <a href="https://github.com/stratosphere/stratosphere/blob//stratosphere-java/src/main/java/eu/stratosphere/api/java/ExecutionEnvironment.java#L561">JavaDocs</a> for details on how to use it.</p>
+<p>Stratosphere has a <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-core/src/main/java/eu/stratosphere/api/common/cache/DistributedCache.java>Distributed Cache</a> that is deeply integrated with the APIs. Please refer to the <a href=https://github.com/apache/incubator-flink/blob/master//stratosphere-java/src/main/java/eu/stratosphere/api/java/ExecutionEnvironment.java#L561>JavaDocs</a> for details on how to use it.</p>
 
-<p>In order to make data sets available on all tasks, we encourage you to use <a href="/incubator-flink-website/docs/0.5/programming_guides/java.html#broadcast_variables">Broadcast Variables</a> instead. They are more efficient and easier to use than the distributed cache.</p>
+<p>In order to make data sets available on all tasks, we encourage you to use <a href="java_api_guide.html#broadcast_variables">Broadcast Variables</a> instead. They are more efficient and easier to use than the distributed cache.</p>
+
+
+      <div style="padding-top:30px" id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'stratosphere-eu'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
   </div>
 </div>
@@ -495,14 +519,14 @@ open source project in the next versions.</p>
 
 <hr class="divider">
 
-<p>Apache Flink is an effort undergoing incubation at The Apache Software
+<p><small>Apache Flink is an effort undergoing incubation at The Apache Software
 Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is
 required of all newly accepted projects until a further review indicates that
 the infrastructure, communications, and decision making process have
 stabilized in a manner consistent with other successful ASF projects. While
 incubation status is not necessarily a reflection of the completeness or
 stability of the code, it does indicate that the project has yet to be fully
-endorsed by the ASF.</p>
+endorsed by the ASF.</small></p>
 
 <p><a href="http://incubator.apache.org/"><img src="/incubator-flink-website/img/apache-incubator-logo.png" alt="Incubator Logo"></a></p>
 
