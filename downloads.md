@@ -3,6 +3,15 @@ title: "Downloads"
 layout: simple
 ---
 
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    Note
+  </div>
+  <div class="panel-body">
+    The source code and parts of the documentation have not been renamed yet to Flink.
+  </div>
+</div>
+
 <p class="lead">Pick the <strong>Apache Flink</strong> package matching your Hadoop version.</p>
 
 ## Stable
@@ -93,5 +102,7 @@ git clone {{ site.FLINK_GITHUB_URL }}
 cd {{ site.FLINK_GITHUB_REPO_NAME }}
 mvn clean package -DskipTests
 ```
+
+Note: Flink does not build with Oracle JDK 6. It runs with Oracle JDK 6.
 
 If you want to build for Hadoop 2, activate the build profile via `mvn clean package -DskipTests -Dhadoop.profile=2`.

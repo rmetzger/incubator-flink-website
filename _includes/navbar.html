@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -19,6 +19,14 @@
             <li><a href="{{ site.baseurl }}/docs/{{ site.FLINK_CURRENT_DOCUMENTATION }}/java_api_quickstart.html">Java API</a></li>
             <li><a href="{{ site.baseurl }}/docs/{{ site.FLINK_CURRENT_DOCUMENTATION }}/scala_api_quickstart.html">Scala API</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="{{ site.baseurl }}/downloads.html" class="{% if page.url contains 'downloads.html' %}active{% endif %}">Downloads</a>
+        </li>
+
+        <li>
+          <a href="{{ site.baseurl }}/docs/0.5/faq.html" class="{% if page.url contains 'faq.html' %}active{% endif %}">FAQ</a>
         </li>
 
         <li class="dropdown">
@@ -42,15 +50,30 @@
         </li>
 
         <li class="dropdown">
+          <a href="#" class="dropdown-toggle{% if page.url contains 'asf.html' %} active{% endif %}" data-toggle="dropdown">ASF <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://www.apache.org/">Apache Software Foundation</a>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks</a>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Become a Sponsor</a>
+            <li class="divider"></li>
+            <li><a href="{{ site.baseurl }}/asf.html">ASF and Flink</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle{% if page.url contains 'project.html' %} active{% endif %}" data-toggle="dropdown">Project <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ site.baseurl }}/asf.html">Apache Software Foundation</a></li>
             <!--<li><a href="{{ site.baseurl }}/project.html#history">History</a></li> -->
             <li><a href="https://wiki.apache.org/incubator/StratosphereProposal">Incubator Proposal (external)</a></li>
             <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
             <li><a href="{{ site.FLINK_GITHUB_URL }}">Source Code</a></li>
           </ul>
         </li>
+
+        <li>
+          <a href="{{ site.baseurl }}/blog/index.html" class="{% if page.url contains 'blog' %}active{% endif %}">Blog</a>
+        </li>
+
       </ul>
     </div>
   </div>

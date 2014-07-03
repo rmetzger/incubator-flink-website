@@ -41,8 +41,8 @@ function updateDocsDir() {
 	cd ..
 
 	echo "Create docs for versions"
-	checkoutDocsForVersionInBranch "docs_improvements" "0.5"
-	checkoutDocsForVersionInBranch "docs_improvements" "0.6-SNAPSHOT"
+	checkoutDocsForVersionInBranch "documentation" "0.5"
+	checkoutDocsForVersionInBranch "documentation" "0.6-SNAPSHOT"
 }
 
 

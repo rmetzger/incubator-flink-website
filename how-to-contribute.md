@@ -9,9 +9,9 @@ The Flink project welcomes all sorts contributions in the form of code (improvem
 
 ## Easy Issues for Starters
 
-We maintain all known issues and feature drafts in the [Flink project JIRA](https://issues.apache.org/jira/browse/FLINK-989?jql=project%20%3D%20FLINK).
+We maintain all known issues and feature drafts in the [Flink project JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+FLINK).
 
-We also try to maintain a [list of simple "starter issues"](https://issues.apache.org/jira/browse/FLINK-933?jql=project%20%3D%20FLINK%20AND%20labels%20%3D%20starter) that we believe are good tasks for new contributors. Those tasks are meant to allow people to get into the project and become familiar with the process of contributing. Feel free to ask questions about issues that you would be interested in working on.
+We also try to maintain a <a href="https://issues.apache.org/jira/browse/FLINK-992?jql=project%20%3D%20FLINK%20AND%20labels%20%3D%20starter%20AND%20status%20in%20(Open%2C%20Reopened)">list of simple "starter issues"</a> that we believe are good tasks for new contributors. Those tasks are meant to allow people to get into the project and become familiar with the process of contributing. Feel free to ask questions about issues that you would be interested in working on.
 
 In addition, you can find a list of ideas for projects and improvements in the [projects wiki page](http://the/wiki/url).
 
@@ -21,7 +21,7 @@ In addition, you can find a list of ideas for projects and improvements in the [
 
 This section gives you a brief introduction in how to contribute code and documentation to Flink. We maintain both the code and the documentation in the same repository, so the process is essentially the same for both. We use [git](http://git-scm.com/) for the code and documentation version control.
 
-The Flink project accepts code contributions though the [GitHub Mirror](https://github.com/apache/incubator-flink), in the form of [Pull Requests](https://help.github.com/articles/using-pull-requests). Pull requests are basically a simpler way of offering a patch, by providing a pointer to a code branch that contains the change.
+The Flink project accepts code contributions though the [GitHub Mirror](https://github.com/apache/incubator-flink), in the form of [Pull Requests](https://help.github.com/articles/using-pull-requests). Pull requests are basically a simpler way of offering a patch, by providing a pointer to a code branch that contains the change. It is also possible to attach a patch to a JIRA issue.
 
 
 ### Setting up the Infrastructure and Creating a Pull Request
@@ -85,3 +85,16 @@ Of course, contributing code to the project is important as well. A good way to 
 
 Finally, candidates for new committers are suggested by current committers, mentors, or PMC members, and voted upon by the PMC.
 
+
+### How to use git as a committer
+
+Only the infrastructure team of the ASF has administrative access to the GitHub mirror. Therefore, comitters have to push changes to the git repository at the ASF.
+
+**ASF writable git**: [https://git-wip-us.apache.org/repos/asf/incubator-flink.git](https://git-wip-us.apache.org/repos/asf/incubator-flink.git)
+
+**ASF read-only git**: [http://git-wip-us.apache.org/repos/asf/incubator-flink.git](http://git-wip-us.apache.org/repos/asf/incubator-flink.git)
+
+**ASF git web interface**: [https://git-wip-us.apache.org/repos/asf?p=incubator-flink.git;a=summary](https://git-wip-us.apache.org/repos/asf?p=incubator-flink.git;a=summary)
+
+Details on how to set the credentials for the ASF git repostiory are [linked here](https://git-wip-us.apache.org/).
+To merge pull requests from our GitHub mirror, there is a script in the source `./tools/merge_pull_request.sh.template`. Rename it to `merge_pull_request.sh` with the appropriate settings and use it for merging.

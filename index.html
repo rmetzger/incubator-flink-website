@@ -6,31 +6,44 @@ title: "Home"
   <div class="col-md-12">
     <p class="lead text-center">Apache Flink is a platform for efficient, distributed, general-purpose data processing.</p>
 
-    <div class="startpage-buttons">
-      <a href="{{ site.FLINK_DOWNLOAD_URL_HADOOP_1_STABLE }}">
-        <button type="button" class="btn btn-primary btn-lg">
-          <i class="fa fa-download"></i> Download {{ site.FLINK_VERSION_STABLE }}<br/>
-          (Pre Apache)
-        </button></a>
 
-       <a href="{{ site.FLINK_GITHUB_URL }}">
-          <button type="button" class="btn btn-info btn-lg">
-            <i class="fa fa-github"></i> View on GitHub
-          </button>
-        </a>
-    </div>
+    <div class="row">
+      <div class="col-md-6" style="vertical-align:middle;">
+        <div class="startpage-buttons">
+          <a href="{{ site.FLINK_DOWNLOAD_URL_HADOOP_1_STABLE }}">
+            <button type="button" class="btn btn-primary btn-lg">
+              <i class="fa fa-download"></i> Download {{ site.FLINK_VERSION_STABLE }}<br/>
+              (Pre Apache)
+            </button></a>
 
-    <div class="startpage-buttons">
-      <a href="community.html#mailing-lists">
-        <button type="button" class="btn btn-default btn-lg">
-          <i class="fa fa-send"></i> Mailing Lists
-        </button></a>
+           <a href="{{ site.FLINK_GITHUB_URL }}">
+              <button type="button" class="btn btn-info btn-lg">
+                <i class="fa fa-github"></i> View on GitHub
+              </button>
+            </a>
+        </div>
 
-      <a href="{{ site.FLINK_ISSUES_URL }} ">
-        <button type="button" class="btn btn-default btn-lg">
-          <i class="fa fa-coffee"></i> Issues
-        </button>
-      </a>
+        <div class="startpage-buttons">
+          <a href="community.html#mailing-lists">
+            <button type="button" class="btn btn-default btn-lg">
+              <i class="fa fa-send"></i> Mailing Lists
+            </button></a>
+
+          <a href="{{ site.FLINK_ISSUES_URL }} ">
+            <button type="button" class="btn btn-default btn-lg">
+              <i class="fa fa-coffee"></i> Issues
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5 style="margin:0px;">Recent Blog Posts</h5>
+        <ul style="list-style-position:inside;margin:0;padding:0;">
+          {% for post in site.posts limit:6 %}
+                    <li style="list-style-type: none; list-style-position:inside;"><small><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> ({{ post.date | date_to_string }})</small></li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
 
     <div class="panel panel-warning">
